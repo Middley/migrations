@@ -1,0 +1,103 @@
+<div class="col-12 col-md-12 contentDetailsPaymentMethod" [formGroup]="form" *ngIf="form">
+  <div class="headerDetailsPaymentMethod d-flex mb-1">
+    <div class="col-6 col-md-6">
+      <span class="titleDetailsPaymentMethod tsp-font-size-default-content">{{ paymentMethod.name }}</span>
+    </div>
+    <div class="col-6 col-md-6 containerButtonAddDetailPay">
+      <span><button mat-flat-button color="primary" class="buttonAddDetailPay tsp-font-size-default-content"
+          (click)="addTraza()">
+          <mat-icon>add</mat-icon>AGREGAR
+        </button></span>
+    </div>
+  </div>
+  <!-- METODO POR EFECTIVO -->
+  <div class="cashMethod" *ngIf="parameterPaymentMethod.cashPaymentMethod == paymentMethod.id">
+    <div class="col-12 col-md-12 bodyDetailsPaymentMethod">
+      <div class="col-4 col-md-4 tsp-font-size-default-content textCenter">PAGO S/</div>
+      <div class="col-8 col-md-8 tsp-font-size-default-content textAlignRigth">
+        <!-- {{ importAPay | number : '1.2-2' }} -->
+        <input formControlName="amountDelivered" type="number" matInput #message
+          class="tsp-font-size-default-content input textAlignRigth" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" step="0.01"
+          (ngModelChange)="changeValueAmountDelivered($event)" />
+      </div>
+      <div class="col-4 col-md-4 tsp-font-size-default-content textCenter">RECIBIDO S/</div>
+      <div class="col-8 col-md-8 mt-1">
+        <input formControlName="received" type="number" matInput #message
+          class="tsp-font-size-default-content input textAlignRigth" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
+          step="0.01" />
+      </div>
+      <div class="col-4 col-md-4 tsp-font-size-default-content">VUELTO S/</div>
+      <div class="col-8 col-md-8 tsp-font-size-default-content textAlignRigth">
+        {{ form.controls.received.value - form.controls.amountDelivered.value | number : '1.2-2' }}
+      </div>
+      <div class="col-12 col-md-12">
+        <textarea formControlName="observation" matInput class="tsp-font-size-default-conten input"
+          placeholder="OBSERVACIÓN"></textarea>
+      </div>
+    </div>
+  </div>
+  <!-- METODO POR TARJETA DE CREDITO O DEBITO -->
+  <div class="creditAndDebitoMethod"
+    *ngIf="parameterPaymentMethod.creditCard == paymentMethod.id || parameterPaymentMethod.debitCard == paymentMethod.id">
+    <div class="col-12 col-md-12 bodyDetailsPaymentMethod">
+      <div class="col-12 col-md-12 tsp-font-size-default-content">
+        <mat-form-field class="selected">
+          <mat-label class="tsp-font-size-default-content">BANCO</mat-label>
+          <mat-select formControlName="financialEntityId">
+            <mat-option class="tsp-font-size-default-content" *ngFor="let financialEntity of financialEntities"
+              [value]="financialEntity.id">
+              {{ financialEntity.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-12 col-md-12 tsp-font-size-default-content">
+        <mat-form-field class="selected">
+          <mat-label class="tsp-font-size-default-content">TARJETA</mat-label>
+          <mat-select formControlName="carOperatorId">
+            <mat-option class="tsp-font-size-default-content" *ngFor="let card of cards" [value]="card.id">
+              {{ card.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-4 col-md-4 tsp-font-size-default-content">PAGO S/</div>
+      <div class="col-8 col-md-8 tsp-font-size-default-content textAlignRigth">
+        <input type="number" formControlName="amountDelivered" matInput #message
+          class="tsp-font-size-default-content input textAlignRigth" maxlength="256" />
+      </div>
+      <div class="col-12 col-md-12 mt-2">
+        <textarea matInput formControlName="observation" class="tsp-font-size-default-conten input"
+          placeholder="OBSERVACIÓN"></textarea>
+      </div>
+    </div>
+  </div>
+  <!-- METODO POR TANSFERENCIA O DEPOSITO -->
+  <div class="transfAndDeposiMethod" *ngIf="
+      parameterPaymentMethod.transferOfFunds == paymentMethod.id || parameterPaymentMethod.depositInAccount == paymentMethod.id
+    ">
+    <div class="col-12 col-md-12 bodyDetailsPaymentMethod">
+      <div class="col-12 col-md-12 tsp-font-size-default-content">
+        <mat-form-field class="selected">
+          <mat-label class="tsp-font-size-default-content">CUENTA BANCARIA</mat-label>
+          <mat-select formControlName="bankAccountId">
+            <mat-option class="tsp-font-size-default-content" *ngFor="let bankAccount of bankAccounts"
+              [value]="bankAccount.id">
+              {{ bankAccount.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-4 col-md-4 tsp-font-size-default-content">RECIBIDO S/</div>
+      <div class="col-8 col-md-8">
+        <input formControlName="amountDelivered" type="number" matInput #message
+          class="tsp-font-size-default-content input textAlignRigth" maxlength="256" />
+      </div>
+      <div class="col-12 col-md-12 mt-2">
+        <textarea formControlName="observation" matInput class="tsp-font-size-default-conten input"
+          placeholder="OBSERVACIÓN"></textarea>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="activeError" class="tsp-font-size-default-content errorDuplicate">{{ messageError }}</div>
+</div>

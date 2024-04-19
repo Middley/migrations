@@ -1,0 +1,162 @@
+<div class="container" *ngIf="stockAdjustment != null">
+  <div class="titleModal row">
+    <!-- IZQUIERDA -->
+    <div class="col-10 col-sm-10 col-md-8 col-lg-8 col-xl-8 row leftSectionTitleModal">
+      <div class="titleNameModal">
+        <div class="stateAdjustment">
+          <span class="tsp-font-size-modal-titles">{{ 'WAREHOUSE.INVENTORY_ADJUSTMENT.DATA.TITLE' | translate }} |
+          </span>
+          &nbsp;
+          <span class="tsp-font-size-modal-titles"> {{ stockAdjustment.stateAdjustmentName }}</span>
+        </div>
+      </div>
+    </div>
+    <!-- DERECHA -->
+    <div class="col-2 col-sm-2 col-md-4 col-lg-4 col-xl-4 optionsModal"
+      *ngIf="stockAdjustment.stateAdjustment == stockAdjustment.stateRegistratedParameter">
+      <div class="optionModal">
+        <div class="btnConfirm">
+          <button mat-raised-button class="tsp-button-success" (click)="confirmedAdjustment()">
+            {{ 'GENERAL.BUTTONS.CONFIRM' | translate }}
+          </button>
+
+        </div>
+        <div class="btnEdit">
+          <button mat-raised-button class="tsp-button-edit" (click)="openEdit()">
+            <mat-icon class="centerIcon">edit</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Content of ShowVehicleInspections -->
+  <div mat-dialog-content class="container">
+    <hr class="ks-line" />
+    <div class="row seccion-container">
+      <div class="col-12 col-md-12 col-lg-12 col-xl-12 d-flex">
+        <div class="title-container">
+          <span class="tsp-font-size-default-title tsp-title">{{
+            'WAREHOUSE.INVENTORY_ADJUSTMENT.DATA.DATA_GENERAL' | translate
+            }}</span>
+        </div>
+      </div>
+      <div class="col-12 col-md-12 col-lg-6 col-xl-6 d-flex row">
+        <div class="tsp-font-size-default-content tsp-labels col-6 col-md-6 col-lg-6 col-xl-6">
+          {{ 'WAREHOUSE.INVENTORY_ADJUSTMENT.DATA.DATE_REGISTER' | translate }}:
+        </div>
+        <div class="col-12 col-md-12 col-lg-6 col-xl-6">
+          <span class="tsp-font-size-default-content"> {{ stockAdjustment.registrationDate | date : 'dd/MM/yyyy' }}
+          </span>
+        </div>
+      </div>
+      <div class="col-12 col-md-12 col-lg-6 col-xl-6 d-flex row">
+        <div class="tsp-font-size-default-content tsp-labels col-6 col-md-6 col-lg-6 col-xl-6">
+          {{ 'WAREHOUSE.INVENTORY_ADJUSTMENT.DATA.ESTABLISHMENT' | translate }}:
+        </div>
+        <div class="col-12 col-md-12 col-lg-6 col-xl-6">
+          <span class="tsp-font-size-default-content">{{ stockAdjustment.establishment }}</span>
+        </div>
+      </div>
+      <div class="col-12 col-md-12 col-lg-6 col-xl-6 d-flex row">
+        <div class="tsp-font-size-default-content tsp-labels col-6 col-md-6 col-lg-6 col-xl-6">
+          {{ 'WAREHOUSE.INVENTORY_ADJUSTMENT.DATA.EMPLOYEE' | translate }}:
+        </div>
+        <div class="col-12 col-md-12 col-lg-6 col-xl-6">
+          <span class="tsp-font-size-default-content ">{{ stockAdjustment.employee }}</span>
+        </div>
+      </div>
+      <div class="col-12 col-md-12 col-lg-6 col-xl-6 d-flex row">
+        <div class="tsp-font-size-default-content tsp-labels col-6 col-md-6 col-lg-6 col-xl-6">
+          {{ 'WAREHOUSE.INVENTORY_ADJUSTMENT.DATA.WAREHOUSE' | translate }}:
+        </div>
+        <div class="col-12 col-md-12 col-lg-6 col-xl-6">
+          <span class="tsp-font-size-default-content">{{ stockAdjustment.warehouse }}</span>
+        </div>
+      </div>
+      <div class="col-12 col-md-12 col-lg-6 col-xl-6 d-flex row">
+        <div class="tsp-font-size-default-content tsp-labels col-6 col-md-6 col-lg-6 col-xl-6">
+          {{ 'WAREHOUSE.INVENTORY_ADJUSTMENT.DATA.INPUT_ADJUSTEMENT' | translate }} :
+        </div>
+        <div class="col-12 col-md-12 col-lg-6 col-xl-6">
+          <span class="tsp-font-size-default-content">{{ stockAdjustment.inputStockAdjustment }}</span>
+        </div>
+      </div>
+      <div class="col-12 col-md-12 col-lg-6 col-xl-6 d-flex row">
+        <div class="tsp-font-size-default-content tsp-labels col-6 col-md-6 col-lg-6 col-xl-6">
+          {{ 'WAREHOUSE.INVENTORY_ADJUSTMENT.DATA.OUTPUT_ADJUSTEMENT' | translate }} :
+        </div>
+        <div class="col-12 col-md-12 col-lg-6 col-xl-6">
+          <span class="tsp-font-size-default-content">{{ stockAdjustment.outputStockAdjustment }}</span>
+        </div>
+      </div>
+      <div class="col-12 col-md-12 col-lg-6 col-xl-6 d-flex row">
+        <div class="tsp-font-size-default-content tsp-labels col-6 col-md-6 col-lg-6 col-xl-6">
+          {{ 'WAREHOUSE.INVENTORY_ADJUSTMENT.DATA.CONSOLIDATED_ADJUSTEMENT' | translate }} :
+        </div>
+        <div class="col-12 col-md-12 col-lg-6 col-xl-6">
+          <span class="tsp-font-size-default-content">{{ stockAdjustment.consolidatedStockAdjustment }}</span>
+        </div>
+      </div>
+      <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+        <div class="tsp-font-size-default-content tsp-labels">
+          {{ 'WAREHOUSE.INVENTORY_ADJUSTMENT.DATA.OBSERVATION' | translate }}:
+        </div>
+        <span class="tsp-font-size-default-content">{{ stockAdjustment.observation }}</span>
+      </div>
+      <hr class="ks-line" />
+      <div class="tableStockAjustmentDetail row seccion-container">
+        <div class="titleTable col-12 col-md-12 col-lg-12 col-xl-12">
+          <span class="tsp-font-size-default-title tsp-title">{{
+            'WAREHOUSE.INVENTORY_ADJUSTMENT.DATA.TABLE_ADJUSTMENT' | translate
+            }}</span>
+        </div>
+        <div class="contentTable col-12 col-md-12 col-lg-12 col-xl-12">
+          <p-table [value]="stockAdjustment.stockAdjustmentByIdDetails" [tableStyle]="{ 'min-width': '50rem' }">
+            <ng-template pTemplate="header">
+              <tr>
+                <th class="tsp-font-size-default-content columnTable">
+                  {{ 'WAREHOUSE.INVENTORY_ADJUSTMENT.DATA.TABLE_ADJUSTMENT' | translate | uppercase }}
+                </th>
+                <th class="tsp-font-size-default-content columnTable">
+                  {{ 'WAREHOUSE.INVENTORY_ADJUSTMENT.DATA.STOCK_SYSTEM' | translate | uppercase }}
+                </th>
+                <th class="tsp-font-size-default-content columnTable">
+                  {{ 'WAREHOUSE.INVENTORY_ADJUSTMENT.DATA.STOCK_CURRENT' | translate | uppercase }}
+                </th>
+                <th class="tsp-font-size-default-content columnTable">
+                  {{ 'WAREHOUSE.INVENTORY_ADJUSTMENT.DATA.ADJUSTMENT' | translate | uppercase }}
+                </th>
+                <th class="tsp-font-size-default-content textCenter">
+                  {{ 'WAREHOUSE.INVENTORY_ADJUSTMENT.DATA.UNIT_COST' | translate }}
+                </th>
+                <th class="tsp-font-size-default-content columnTable">
+                  {{ 'WAREHOUSE.INVENTORY_ADJUSTMENT.DATA.OBSERVATION' | translate | uppercase }}
+                </th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-detail>
+              <tr>
+                <td class="tsp-font-size-default-content">{{ detail.conceptName }}</td>
+                <td class="tsp-font-size-default-content">{{ detail.systemStock }}</td>
+                <td class="tsp-font-size-default-content">{{ detail.currentStock }}</td>
+                <td class="tsp-font-size-default-content"
+                  [ngClass]="{ colorDanger: detail.adjustment < 0, $tspSigesStateActive: detail.adjustment > 0 }">
+                  {{ detail.adjustment }}
+                </td>
+                <td class="tsp-font-size-default-content">{{ detail.unitCost | number:'1.2-2'}}</td>
+                <td class="tsp-font-size-default-content">{{ detail.note }}</td>
+              </tr>
+            </ng-template>
+          </p-table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="CloseModal" mat-dialog-actions>
+    <button mat-flat-button mat-button mat-dialog-close color="primary" class="button-close tsp-font-size-buttons">
+      <mat-icon class="icons">close</mat-icon>{{ 'GENERAL.BUTTONS.CLOSE' | translate }}
+    </button>
+  </div>
+</div>

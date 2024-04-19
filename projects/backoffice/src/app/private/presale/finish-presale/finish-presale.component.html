@@ -1,0 +1,83 @@
+<div class="tsp-title-header-modal view-title-container">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 align-only-text-center">
+        <span class="tsp-font-size-modal-titles ">{{ 'PRESALE.TITLES.FINISH' | translate }}</span>
+    </div>
+</div>
+
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-8" *ngIf="operation!=null">
+            <div class="align-only-text-center">
+                <span class="tsp-font-size-default-content tsp-labels">PREVENTA {{operation.presaleOrderSerie}} -
+                    {{operation.presaleOrderNumber}}</span>
+            </div>
+            <div class="tsp-generic-component-container-center">
+                <cad-operation-viwer [operation]="operation" [operationToCalculate]="sale"
+                    [decimalInAmountParameter]="2">
+                </cad-operation-viwer>
+            </div>
+        </div>
+        <div class="col-4" *ngIf="operation!=null">
+            <mat-card class="container">
+                <div class="row">
+                    <div class="tsp-facturation-header  col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                        <div class="col-12 col-sm-12 col-md-7 col-lg-7 col-xl-7">
+                            <span class="tsp-font-size-default-content tsp-labels"> {{'GENERAL.INVOICE.INVOICE' |
+                                translate }}</span>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-5 col-lg-5 col-xl-5 textRight">
+                            <span class="tsp-font-size-default-content tsp-labels">S/ {{operation.importTotal}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div mat-card-content style="padding-bottom: 15px;">
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                            <div>
+                                <div class="row">
+                                    <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                                        <span class="tsp-font-size-default-content tsp-labels">{{
+                                            'SALE.TITLES.SALE' | translate
+                                            }}</span>
+                                    </div>
+                                    <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                                        <div class="igv-input-container">
+                                            <span class="tsp-font-size-default-content tsp-labels">{{
+                                                'PRESALE.DATA.WITH_IGV' | translate
+                                                }}</span>
+                                            <input style="margin-left: 2px;" type="checkbox" disabled
+                                                [(ngModel)]="operation.applyIgv" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <cad-register-invoicing [comprobantTypeID]="operation.typeComprobantAdvancePaymentId"
+                    [parameterComprobantType]="operation.typeComprobantsFinishPresale" [disableClient]="true"
+                    [actorCommercial]="sale.order.client" (sendActorComercial)="setActorComercial($event)"
+                    (sendComprobant)="setComprobant($event)"></cad-register-invoicing>
+                <div class="ks-line-small"></div>
+
+                <cad-multipay-register *ngIf="parameterForPaymentMode && parameterPaymentMethods && operation!=null"
+                    style="margin-bottom: 10px;" [parameterPaymentMode]="parameterForPaymentMode"
+                    [AllowPaymentToCredit]="false" [paymentMethods]="paymentMethods"
+                    [parameterPaymentMethod]="parameterPaymentMethods" [bankAccounts]="bankAccounts"
+                    [ammountTotal]="operation.importTotal" [cards]="cards" [financialEntities]="financialEntities"
+                    (multipay)="setPayData($event)"></cad-multipay-register>
+            </mat-card>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mt-2 tsp-generic-component-container-end"
+            style="padding-bottom: 10px;">
+            <button mat-raised-button (click)="back()" class="tsp-button-success">
+                {{ 'GENERAL.BUTTONS.BACK' | translate |uppercase}}
+            </button>&nbsp;
+            <button mat-raised-button id="buttonSave" [ngClass]="{'tsp-button-success':validateSaleToSaveOperation}"
+                (click)="finishPresale()" [disabled]="!validateSaleToSaveOperation">
+                <mat-icon>save</mat-icon>{{ 'SALE.BUTTONS.SAVE' | translate }}
+            </button>
+        </div>
+    </div>
+</div>

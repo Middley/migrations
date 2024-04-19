@@ -1,0 +1,35 @@
+<table class="table table-bordered ">
+    <ng-container *ngFor="let fila of items;let i=index">
+        <thead>
+            <tr>
+                <th [attr.colspan]="columns.length+1" class="column-options table-font-header txt-center colorHeader">{{
+                    fila.category }}</th>
+            </tr>
+            <tr>
+                <th scope="col" class="column-options table-font-header txt-center">N</th>
+                <th *ngFor="let columna of columns" class="column-options table-font-header txt-center">{{
+                    columna.header }}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let fila of fila.items; let i=index">
+                <th scope="row" class="tsp-font-size-default-content tsp-index txt-center">{{i+1}}</th>
+                <td *ngFor="let columna of columns" class="tsp-font-size-default-content txt-center">{{
+                    fila[columna.field] }}</td>
+            </tr>
+            <tr *ngIf="items.length>1">
+                <td [attr.colspan]="columns.length" class="tsp-font-size-default-content table-font-header txt-center">
+                    SubTotal
+                </td>
+                <td class="tsp-font-size-default-content txt-center">{{fila.subTotal}}</td>
+            </tr>
+        </tbody>
+        <tfoot *ngIf="items.length-1==i">
+            <tr>
+                <td [attr.colspan]="columns.length" class="tsp-font-size-default-content table-font-header txt-center">
+                    Total</td>
+                <td class="tsp-font-size-default-content txt-center">{{totalAmount}}</td>
+            </tr>
+        </tfoot>
+    </ng-container>
+</table>

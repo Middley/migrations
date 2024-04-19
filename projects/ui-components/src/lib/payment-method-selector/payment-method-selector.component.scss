@@ -1,0 +1,34 @@
+@import 'variables';
+
+.paymentMethods {
+  border: 2px solid $tspSigesBlue;
+  display: flex;
+  border-radius: 5px;
+  flex-wrap: wrap;
+  padding-top: 4px;
+  padding-left: 0px;
+  padding-bottom: 1px;
+}
+
+.paymentMethod {
+  border: 2px solid $tspSigesMagenta;
+  display: flex;
+  margin-bottom: 2px;
+  color: $tspSigesMagenta;
+  border-radius: 5px;
+  margin-left: 5px;
+  padding: 1px;
+}
+
+.paymentMethod:hover {
+  background-color: $tspSigesBlueDark;
+  border-color: $tspSigesBlueDark;
+  color: $tspSigesWhite;
+  cursor: pointer;
+}
+
+.selectMethodPay {
+  background-color: $tspSigesBlue;
+  border-color: $tspSigesBlue;
+  color: $tspSigesWhite;
+}

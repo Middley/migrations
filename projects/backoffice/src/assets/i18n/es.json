@@ -1,0 +1,507 @@
+{
+  "GENERAL": {
+    "INVOICE": {
+      "INVOICE": "FACTURACIÓN"
+    },
+    "COMPANY": "Compañía",
+    "COMPANY_NAME_PLACEHOLDER": "Compañía",
+    "USERNAME_PLACEHOLDER": "Cuenta",
+    "CREATE": "Crear",
+    "EDIT": "Editar",
+    "EDIT_ICON": "Editar icono",
+    "CHANGE_ICON": "Cambiar icono",
+    "DELETE": "Eliminar",
+    "REMOVE": "Retirar",
+    "SAVE": "Guardar",
+    "BACK": "Atrás",
+    "CANCEL": "Cancelar",
+    "ACTIONS": "Acción",
+    "REQUIRED": "Requerido",
+    "SEARCH": "Buscar",
+    "TITLES": {
+      "SUCCESS": "Éxitoso",
+      "INFO": "Informacón",
+      "WARNING": "Advertencia",
+      "ERROR": "Error"
+    },
+    "QUIT": {
+      "HEADER": "Dejar de editar?",
+      "MESSAGE": "Está seguro de querer salir? Todos los cambias no grardados se perderán.",
+      "CONFIRM": "Salir"
+    },
+    "FORM": {
+      "DATE": {
+        "PLACEHOLDER": "Seleccione una fecha"
+      }
+    },
+    "BUTTONS": {
+      "SAVE": "Guardar",
+      "CLOSE": "Cerrar",
+      "NEW": "Nuevo",
+      "SEARCH": "Buscar",
+      "CONFIRM": "Confirmar",
+      "CANCEL": "Cancelar",
+      "ADD": "Agregar",
+      "MODAL": "Modal",
+      "BACK": "Atras"
+    },
+    "ERRORS": {
+      "REQUIRED": "El campo es requerido.",
+      "DATA_INVALID": "El valor ingresado es no valido",
+      "ERROR": "Error!",
+      "INPUT_TITLE_ERROR": "Verificar los datos Ingresados!",
+      "INPUT_DETAIL_ERROR": "Los datos ingresados no son correctos!",
+      "SPECIAL_CHARACTERS": "No se permiten carácteres especiales",
+      "LIMIT_CHARACTERS": "Sobrepaso el límite máximo de carácteres",
+      "ONLY_NUMBERS": "Solo se permiten números"
+    },
+    "FILTERS": {
+      "ALL": "Todos"
+    }
+  },
+  "LOGIN": {
+    "TITLE": "Iniciar sesión",
+    "EMAIL": "Correo",
+    "SUBMIT_BUTTON": "Iniciar sesión",
+    "PASSWORD": "Contaseña",
+    "REMEMBER_ME": "Recordar",
+    "FORGOT_PASSWORD": "Olvidaste tu contraseña?",
+    "EXAMPLE": "ejemplo@correo.com",
+    "EMAIL_REQUIRED": "Por favor ingrese su correo.",
+    "EMAIL_WRONG_FORMAT": "Una dirección de correo debe tener el formato 'ejemplo@correo.com'.",
+    "EMAIL_TO_LONG": "El correo supera el limite de caracteres. Por favor ingrese un correo más corto.",
+    "PASSWORD_REQUIRED": "Por favor ingrese su contraseña.",
+    "PASSWORD_TO_LONG": "La contraseña supera el limite de caracteres. Por favor ingrese una contraseña más corta.",
+    "TOAST": {
+      "INFO": {
+        "TITLE": " Correo/Contraseña invalidos",
+        "MESSAGE": "Por favor revise los campos marcados y vuelva a intentarlo."
+      },
+      "SUCCESS": {
+        "TITLE": "Bienvenido",
+        "MESSAGE": "Inicio de sesión exitoso"
+      },
+      "ERROR": {
+        "TITLE": "Correo/Contraseña incorrectos",
+        "MESSAGE": "El correo o la contraseña son incorrectos. Por favor virifique dos veces y vuelva a intentarlo."
+      },
+      "SESSION_EXPIRED": {
+        "TITLE": "Sesión expirada",
+        "MESSAGE": "Tu sesión ha expirado. Por favor inicie sesión."
+      }
+    },
+    "ERROR": {
+      "TITLE": "Error",
+      "MESSAGE": "No se puede conectar al servidor"
+    },
+    "SESSION_EXPIRED": {
+      "TITLE": "Sesión Expirada",
+      "MESSAGE": "Vuelva a Iniciar Sesión"
+    },
+    "FOOTER": {
+      "COPYRIGHT": "© 2023 Todos los derechos reservados",
+      "DEVELOPMENT": "Diseñado por",
+      "COMPANY_ACRONYM": "Tech Solutions Perú"
+    }
+  },
+  "HEADER": {
+    "MENU": "Menú",
+    "GENERAL_SETTINGS": "Configuración general",
+    "SEARCH": "Buscar",
+    "RECENT": "Reciente",
+    "TITLE": "Administrador"
+  },
+  "FOOTER": {
+    "COPYRIGHT": "® 2023 Compañía. Todos los derechos reservados.",
+    "GO_TO_PUBLIC": "Ir a la página principal"
+  },
+  "PRODUCT": {
+    "TITLE": "Productos",
+    "CONTROL_PANEL": "Panel de control de productos",
+    "NEW": "Nuevos productos",
+    "NAME_YOUR": "Nombre del producto",
+    "NAME_YOUR_REQUIRED": "Por favor nombre su producto.",
+    "NAME_YOUR_SPACES_ONLY": "El nombre no puede contener únicamente espacios.",
+    "TABLE": {
+      "ICON": "Icono",
+      "NAME": "Nombre",
+      "TYPE": "Tipo",
+      "AMOUNT_ITEMS": "No. de elementos",
+      "LAST_MODIFIED": "Última modificación",
+      "LOADING_PRODUCTS": "Cargando productos...",
+      "NO_PRODUCTS": "No hay productos en la lista."
+    },
+    "DOWNLOAD": {
+      "DOWNLOAD": "DESCARGAR",
+      "EXCEL": "Excel",
+      "PDF": "Pdf",
+      "DOC": "Doc"
+    },
+    "ICON": {
+      "TITLE": "Elige el icono del producto"
+    },
+    "TOAST": {
+      "CREATE_SUCCESS": {
+        "TITLE": "Producto Creado",
+        "MESSAGE": "El producto fue creado exitosamente."
+      },
+      "CREATE_ERROR_FIELDS": {
+        "TITLE": "No se pudo registrar el producto.",
+        "MESSAGE": "Por favor revise los campos marcados y vuelva a intentarlo."
+      },
+      "UPDATE_SUCCESS": {
+        "TITLE": "Producto Actualizado.",
+        "MESSAGE": "El producto fue actualizado exitosamente."
+      },
+      "ERROR": {
+        "TITLE": "Algo salió mal.",
+        "MESSAGE": "Ocurrió un error, por favor intente nuevamente o contáctenos."
+      },
+      "LIST_LOADING_FAILED": {
+        "TITLE": "No se pudo cargar la lista de productos.",
+        "MESSAGE": "Ocurrió un problema al cargar el contenido. Por favor revise su conexión y vuelva a intentarlo."
+      },
+      "DELETE_SUCCESS": {
+        "TITLE": "Producto eliminado.",
+        "MESSAGE": "El producto fue eliminado exitosamente."
+      },
+      "DELETE_ERROR": {
+        "TITLE": "No se pudo eliminar el producto.",
+        "MESSAGE": "Ocurrió un error, por favor intente nuevamente o contáctenos."
+      }
+    },
+    "CREATE": {
+      "TITLE": "Nuevo producto",
+      "QUIT": {
+        "TITLE": "Dejar de crear?"
+      }
+    },
+    "EDIT": {
+      "TITLE": "Editar producto",
+      "QUIT": {
+        "TITLE": "Dejar de editar?"
+      }
+    },
+    "DELETE": {
+      "TITLE": "Eliminar producto",
+      "MESSAGE": "Está seguro de querer eliminar permanentemente este producto? Esta acción no se puede deshacer.",
+      "CONFIRM_TOAST_TITLE": "Producto eliminado",
+      "CONFIRM_TOAST_DESCRIPTION": "El producto fue eliminado exitosamente."
+    }
+  },
+  "ACCOUNT": {
+    "TITLE": "Cuenta",
+    "PROFILE": "Mi perfil",
+    "SETTINGS": "Configuración",
+    "LOG_OUT": "Cerrar sesión"
+  },
+  "HOME": {
+    "TITLE": "Bienvenido",
+    "SUBTITLE": "Inicio"
+  },
+  "RESTAURANTE": {
+    "ITEMS": {
+      "TITLE": "ITEM RESTAURANTE",
+      "CODE": "CODIGO",
+      "ITEM": "ITEM",
+      "SEARCH": "Buscar"
+    },
+    "INSUMOS": {
+      "TITLE": "INSUMOS",
+      "ITEM": "Item",
+      "CODE": "CODIGO",
+      "INSUMO": "Insumo",
+      "QUANTITY": "Cantidad",
+      "ACTIONS": "Acciones",
+      "SEARCH": "Buscar",
+      "NOTIFICATION": {
+        "TITLEWARNING": "ADVERTENCIA",
+        "TITLEERROR": "ERROR",
+        "TITLESUCCESS": "ÉXITO",
+        "TITLEINFO": "INFO",
+        "REGITER_SUCCESSFULLY": "Registro Exitoso",
+        "ITEMEXISTS": "El elemento ya existe",
+        "CHOOSEINSUMO": "Elija o arrastre aquí su insumo"
+      },
+      "MESSAGES": {
+        "ADD": {
+          "SUCCESS_TITLE": "Registro exitoso",
+          "SUCCESS": "Los insumos fueron registrados correctamente al item seleccionado",
+          "ERROR_TITLE": "Error!",
+          "ERROR": "Hubo un error inesperado al registrar el insumo",
+          "LAST_DATE": "No se puede registrar un insumo con una fecha pasada"
+        }
+      }
+    },
+    "ESTIMATE_PRODUCTION": {
+      "AVAILABLE": "Disponible",
+      "WAREHOUSE": "Almacén",
+      "SEARCH_BY_CODE": "Buscar por Código",
+      "SEARCH_BY_NAME": "Buscar por Nombre",
+      "PLACEHOLDER": {
+        "SEARCH_BY_CODE": "Ingrese Código",
+        "SEARCH_BY_NAME": "Ingrese Nombre"
+      },
+      "MESSSAGES": {
+        "SELECTED_PRINCIPAL": "Seleccione un Item para mostrar su estimación"
+      },
+      "TABLE": {
+        "NAME": "Nombre",
+        "CURRENT_AMOUNT": "Cantidad Existente",
+        "AMOUNT_FOR_ONE": "Cantidad para uno",
+        "AMOUNT_MAX_PRODUCTION": "Cantidad Máxima de Producción"
+      },
+      "ERROR_MESSAGES": {
+        "ITEM_NOT_REGISTER": "El Item seleccionado no cuenta con registro de insumos para su preparación"
+      }
+    },
+    "INVENTENTORY_INSUMO": {
+      "FILTERS": {
+        "DATE": {
+          "TITLE": "Fecha",
+          "FROM_START": "Desde",
+          "TO_DATE": "Hasta"
+        },
+        "ITEM": {
+          "TITLE": "Item"
+        },
+        "WAREHOUSE": "Almacén"
+      },
+      "DATA": {
+        "SALE_AND_CONSUMPTION": "Ventas y Consumo",
+        "TABLE": {
+          "INSUMO": "Insumo",
+          "UM": "UM",
+          "QUANTITY": "Cantidad",
+          "PU": "PU",
+          "SUB_TOTAL": "Sub total",
+          "SALE": "Venta",
+          "COST": "Costo",
+          "GROSS_PROFIT": "Utilidad Bruta",
+          "PREVIOUS_STOCK": "Stock Anterior",
+          "INCOME_STOCK": "Ingreso de Stock",
+          "CONSUMPTION": "Consumo",
+          "CURRENT_STOCK": "Stock Disponible"
+        }
+      }
+    }
+  },
+  "WAREHOUSE": {
+    "INVENTORY_ADJUSTMENT": {
+      "DATA": {
+        "TITLE": "Ajuste de Inventario",
+        "REGISTER_TITLE": "Registrar Ajuste de Inventario",
+        "EDIT_TITLE": "Editar Ajuste de Inventario",
+        "ESTABLISHMENT": "Establecimiento",
+        "WAREHOUSE": "Almacén",
+        "OBSERVATION": "observación",
+        "DEFAULT_VALUE": "Ninguno",
+        "ITEM": "Item",
+        "CONCEPT": "Concepto",
+        "STOCK_SYSTEM": "Stock Sistema",
+        "STOCK_CURRENT": "Stock Real",
+        "ADJUSTMENT": "Ajuste",
+        "OPTION": "Opción",
+        "DATE": "Fecha",
+        "FROM_DATE": "Desde",
+        "TO_DATE": "Hasta",
+        "SELECTED_ALL": "Todos",
+        "DATE_REGISTER": "Fecha de Registro",
+        "EMPLOYEE": "Empleado",
+        "IMPORT_ADJUSTMENT": "Importe de Ajuste",
+        "DATA_GENERAL": "Datos Generales",
+        "INPUT_ADJUSTEMENT": "Ajuste por Entrada",
+        "OUTPUT_ADJUSTEMENT": "Ajuste por Salida",
+        "CONSOLIDATED_ADJUSTEMENT": "Ajuste Consolidado",
+        "TABLE_ADJUSTMENT": "Tabla de Ajuste",
+        "CONFIRM_ADJUSTMENT": "Confirmar Ajuste de Inventario",
+        "WAREHOUSE_TYPE": "Tipo de Almacén",
+        "UNIT_COST": "Costo"
+      },
+      "BUTTONS": {
+        "SAVE_DRAFT": "Guardar Borrador",
+        "CONFIRM": "Confirmar"
+      },
+      "MESSAGE": {
+        "CONFIRM_ADJUSTMENT": "¿Está seguro de confirmar el ajuste de inventario?"
+      }
+    }
+  },
+  "SMART_PRINT": {
+    "PRINT_SETTINGS": {
+      "DATA": {
+        "TITLE": "Configuración de Impresión",
+        "REGISTER_TITLE": "Registrar Configuración de Impresión",
+        "ESTABLISHMENT": "Establecimiento",
+        "SERVICE_CENTER": "Centro de atención",
+        "PRINTABLE_DOCUMENT": "Documento imprimible",
+        "PRINTER": "Impresora",
+        "UNSUSCRIBE_TITLE": "Dar de Baja Configuración de Impresión",
+        "UNSUSCRIBE_QUESTION": "¿Esta seguro de dar de baja la Configuración de Impresión?"
+      },
+      "MESSAGES": {
+        "ADD": {
+          "SUCCESS_TITLE": "Configuración de Impresión Registrado!",
+          "SUCCESS": "Se agrego correctamente la Configuración de Impresión",
+          "FAILED_TITLE": "Configuración de Impresión no Registrado",
+          "FAILED": "La Configuración de Impresión no se pudo registrar!"
+        }
+      }
+    },
+    "SERVICE_CENTER_AND_CATEGORIES": {
+      "DATA": {
+        "TITLE": "ASOCIACIÓN CATEGORIAS - CENTRO DE ATENCIÓN",
+        "CATEGORIES": "CATEGORIAS",
+        "SERVICE_CENTER": "CENTROS DE ATENCIÓN"
+      }
+    }
+  },
+  "PRESALE": {
+    "TITLES": {
+      "REGISTER": "Registrar Preventa",
+      "TITLE_PRINCIPAL": "PREVENTA",
+      "FINISH": "Finalizar Preventa",
+      "PRESALE_FOR_CONCEPT": "Preventa por Concepto",
+      "PRESALE_FOR_BASIC_CONCEPT": "Preventa por Familia",
+      "REPORT_SALE_BY_PRESALE": "Ventas por Preventas",
+      "REPORT_BY_PAYMENT_METHODS": "Medios de Pago"
+    },
+    "FILTERS": {
+      "DATE": {
+        "TITLE": "Fecha",
+        "FROM_START": "Desde",
+        "TO_DATE": "Hasta"
+      },
+      "ITEM": {
+        "TITLE": "Item"
+      },
+      "WAREHOUSE": "Almacén"
+    },
+    "SELECT": {
+      "FOR_STATE": "Estado",
+      "FOR_CLIENT": "Cliente"
+    },
+    "BUTTONS": {
+      "SAVE": "GUARDAR PREVENTA",
+      "ADD_ADVANCE_PAYMENT": "ANTICIPO"
+    },
+    "DATA": {
+      "WITH_IGV": "Con IGV",
+      "ACTICIPO": "Anticipo",
+      "PRE_VENTA": "Preventa",
+      "CLIENT": "Cliente",
+      "TOTAL_PRESALE": "Total Preventa",
+      "EMITED": "Emisión",
+      "TOTAL_ANTICIPOS": "Total Anticipos",
+      "COMPROBANT": "Comprobante",
+      "COMPROBANT_REFERENCE": "C. Referencia",
+      "OUTSTANDING": "Deuda Total",
+      "FINALICE": "Finalizar",
+      "HISTORY_ANTICIPOS": "Historial de anticipos",
+      "SALE": "Venta",
+      "REGISTER_ADVANCE_PAYMENT": "Registrar Anticipo",
+      "DATE": "Fecha",
+      "STATE": "Estado",
+      "QUANTITY": "Cantidad",
+      "RUC_DNI": "RUC/DNI",
+      "UNIT_PRICE": "Precio Unitario",
+      "IMPORT": "Importe",
+      "SERIE": "Serie",
+      "FIRST_NUMBER": "Num. Inicial",
+      "LAST_NUMBER": "Num. Final",
+      "SALE_VALUE": "Valor Venta",
+      "IGV": "IGV",
+      "ICBPER": "ICBPER",
+      "TYPE": "Tipo",
+      "NUMBER": "Numero",
+      "EMITED_DATE": "F. Emisión",
+      "TAX_BASE": "Base Imponible",
+      "BASIC_CONCEPT": "Familia",
+      "CONCEPT": "Concepto",
+      "INFORMATION": "Información",
+      "PAYMENT_METHODS": "Metodos de Pago",
+      "COLUMN": {
+        "DATE": "Fecha",
+        "DOCUMENT": "Documento",
+        "ANTICIPOS": "Anticipos",
+        "DOC_IDENTITY": "DOC. Identidad",
+        "BUSSINESS_NAME": "Razón Social",
+        "SELLER": "Vendedor",
+        "TOTAL": "Total",
+        "ANTICIPO": "Anticipo",
+        "OUTSTANDING_BALANCE": "Saldo",
+        "STATE": "Estado"
+      },
+      "COLUMN_HISTORY": {
+        "DATE": "Fecha",
+        "CLIENT": "Cliente",
+        "COMPROBANT": "Comp.",
+        "AMOUNT": "Monto",
+        "VALITY": "Vigente",
+        "REFERENCE": "Ref",
+        "OPTION": "Opciones"
+      },
+      "CLIENTS": "Clientes"
+    }
+  },
+  "MODAL": {
+    "TITLE": "CONFIMACION",
+    "JUSTIFICATION": "JUSTIFICACION",
+    "MSG_INPUT_MODAL": "Ingrese justificacion",
+    "EJM_INPUT_MODAL": "Ejm: Por la razon...",
+    "CONFIRM_QUESTION": "¿La preventa no tiene ningún anticipo, esta seguro de confirmarla?",
+    "BUTTONS": {
+      "YES": "Si",
+      "NOT": "No"
+    }
+  },
+  "SALE": {
+    "TITLES": {
+      "SALE": "VENTA"
+    },
+    "BUTTONS": {
+      "SAVE": "GUARDAR VENTA"
+    }
+  },
+  "COMPONENTS": {
+    "LIST-FAMILIES": {
+      "TITLE": "FAMILIA",
+      "BUTTON-NEW-FAMILY": "Nueva Familia",
+      "TABLE": {
+        "COLUMN-NAME": "NOMBRE",
+        "COLUMN-CATEGORY": "CATEGORIA",
+        "COLUMN-STATE": "ESTADO",
+        "COLUMN-OPTIONS": "OPCIONES"
+      }
+    },
+    "REGISTER-FAMILY": {
+      "TITLE": "NUEVA FAMILIA",
+      "GENERALS": {
+        "TITLE-GENERALS": "DATOS GENERALES",
+        "GUY": "Tipo:",
+        "CHECK-ITEMS": {
+          "GOOD": "Bien",
+          "SERVICE": "Servicio",
+          "IGV": "Incluye IGV"
+        },
+        "IMPUTS": {
+          "NAME": "Nombre",
+          "CATEGORY": "Categoria"
+        }
+      },
+      "CHARACTERISTICS": {
+        "TITLE-CHARACTERISTICS": "CARACTERÍSTICAS",
+        "BUTTON-ADD": "AGREGAR CARACTERÍSTICA",
+        "COMMON-CHARACTERISTICS": "Características comunes",
+        "CHECK-GROUP": {
+          "MEAT": "CARNE",
+          "CHILDREN-CAPACITY": "AFORO NIÑOS",
+          "CREAMS": "CREMAS",
+          "ADULT-CAPACITY": "AFORO ADULTOS"
+        }
+      },
+      "BUTTON-SAVE": "Guardar",
+      "BUTTON-CLOSE": "Cancelar"
+    }
+  }
+}

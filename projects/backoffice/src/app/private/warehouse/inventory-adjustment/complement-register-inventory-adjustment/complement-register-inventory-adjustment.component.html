@@ -1,0 +1,115 @@
+<div class="container">
+  <div [formGroup]="form" *ngIf="form">
+    <div class="tsp-title-header-modal">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+        <mat-label class="tsp-font-size-modal-titles">{{ form.value.conceptName }}</mat-label>
+      </div>
+    </div>
+    <div mat-dialog-content class="container">
+      <div class="row">
+        <div class="valuesStockAndAdjustment row col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 row">
+          <div class="col-sm-4 col-4 col-md-4 col-lg-4 col-xl-4">
+            <div class="stockAndAdjustment">
+              <mat-grid-list cols="3" rowHeight="2:1">
+                <mat-grid-tile class="tsp-font-size-default-content tsp-labels border" [colspan]="2">{{
+                  'WAREHOUSE.INVENTORY_ADJUSTMENT.DATA.STOCK_SYSTEM' | translate
+                }}</mat-grid-tile>
+                <mat-grid-tile class="tsp-font-size-default-content border" [colspan]="1">{{
+                  form.value.stockSystem
+                }}</mat-grid-tile>
+              </mat-grid-list>
+            </div>
+          </div>
+          <div class="col-sm-4 col-4 col-md-4 col-lg-4 col-xl-4">
+            <div class="stockAndAdjustment">
+              <mat-grid-list cols="3" rowHeight="2:1">
+                <mat-grid-tile class="tsp-font-size-default-content tsp-labels border" [colspan]="2">{{
+                  'WAREHOUSE.INVENTORY_ADJUSTMENT.DATA.STOCK_CURRENT' | translate
+                }}</mat-grid-tile>
+                <mat-grid-tile class="tsp-font-size-default-content border" [colspan]="1">{{
+                  form.value.stockCurrent | number : '1.2-3'
+                }}</mat-grid-tile>
+              </mat-grid-list>
+            </div>
+          </div>
+          <div class="col-sm-4 col-4 col-md-4 col-lg-4 col-xl-4">
+            <div class="stockAndAdjustment">
+              <mat-grid-list cols="3" rowHeight="2:1">
+                <mat-grid-tile class="tsp-font-size-default-content tsp-labels border" [colspan]="2">{{
+                  'WAREHOUSE.INVENTORY_ADJUSTMENT.DATA.ADJUSTMENT' | translate
+                }}</mat-grid-tile>
+                <mat-grid-tile class="tsp-font-size-default-content border" [colspan]="1">{{
+                  form.value.adjustment
+                }}</mat-grid-tile>
+              </mat-grid-list>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12 col-12 col-md-12 col-lg-12 col-xl-12">
+          <table class="table">
+            <thead>
+              <tr>
+                <th class="tsp-font-size-default-content textCenter">
+                  {{ 'WAREHOUSE.INVENTORY_ADJUSTMENT.DATA.ITEM' | translate }}
+                </th>
+                <th class="tsp-font-size-default-content textCenter">
+                  {{ 'WAREHOUSE.INVENTORY_ADJUSTMENT.DATA.STOCK_CURRENT' | translate }}
+                </th>
+                <th class="tsp-font-size-default-content textCenter">
+                  {{ 'WAREHOUSE.INVENTORY_ADJUSTMENT.DATA.OBSERVATION' | translate }}
+                </th>
+                <th class="tsp-font-size-default-content textCenter">
+                  {{ 'WAREHOUSE.INVENTORY_ADJUSTMENT.DATA.OPTION' | translate }}
+                </th>
+              </tr>
+            </thead>
+            <tbody formArrayName="inventoryAdjustmentDetail">
+              <ng-container *ngFor="let item of inventoryAdjustmentDetail.controls; let i = index">
+                <tr *ngIf="inventoryAdjustmentDetail.controls" [formGroupName]="i">
+                  <td class="tsp-font-size-default-content">
+                    <span class="inputTable">{{ i + 1 }}</span>
+                  </td>
+                  <td class="tsp-font-size-default-content">
+                    <span class="inputTable">
+                      <input
+                        class="text-center"
+                        formControlName="stockCurrent"
+                        type="number"
+                        (change)="calcCurrentStock()"
+                        min="1"
+                        maxlength="10"
+                        step=".01"
+                        onchange="this.value=parseFloat(this.value).toFixed(2)"
+                    /></span>
+                  </td>
+                  <td class="tsp-font-size-default-content">
+                    <span class="inputTable"> <input class="text-center" formControlName="observation" /></span>
+                  </td>
+                  <td class="tsp-font-size-default-content">
+                    <span class="inputTable">
+                      <mat-checkbox
+                        formControlName="checked"
+                        (ngModelChange)="checked(i)"
+                        [checked]="item.value.checked"
+                      ></mat-checkbox>
+                    </span>
+                  </td>
+                </tr>
+              </ng-container>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-12 col-md-12 col-lg-12 col-xl-12 buttons-container">
+        <button mat-raised-button mat-dialog-close [disabled]="form.invalid" class="tsp-button-success" (click)="save()">
+          <mat-icon class="icons">save</mat-icon>{{ 'GENERAL.BUTTONS.SAVE' | translate }}
+        </button>
+        <button mat-raised-button color="warn" class="marging-buttons button-close" mat-dialog-close>
+          <mat-icon class="icons">close</mat-icon>{{ 'GENERAL.BUTTONS.CLOSE' | translate }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

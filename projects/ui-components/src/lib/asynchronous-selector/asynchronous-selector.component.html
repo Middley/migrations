@@ -1,0 +1,11 @@
+<mat-form-field appearance="outline" appearance="fill" class="generalMatForm" [formGroup]="form">
+    <mat-label class="tsp-font-size-default-content tsp-labels">{{label}}</mat-label>
+    <input matInput type="text" placeholder="Buscar..." [matAutocomplete]="autoItem" formControlName="concept"
+        class="tsp-font-size-default-content tsp-labels" />
+    <mat-autocomplete autoActiveFirstOption #autoItem="matAutocomplete" (optionSelected)="selectedConcept($event)"
+        [displayWith]="displayFn">
+        <mat-option *ngFor="let option of list" [value]="option" class="select-item">
+            {{option.identityDocument}} | {{ option.name }}
+        </mat-option>
+    </mat-autocomplete>
+</mat-form-field>

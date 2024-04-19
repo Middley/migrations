@@ -1,0 +1,5 @@
+<cad-informative-dialog *ngIf="!data.invalidate" [TitleModal]="Title" [Body]="data.message" [BtnOk]="BtnOk"
+    [BtnCancel]="BtnCancel"></cad-informative-dialog>
+
+<cad-unsuscribe-dialog *ngIf="data.invalidate" [TitleModal]="Title" [Question]="Question" [id]="data.orderID"
+    [BtnOk]="BtnYes" [BtnCancel]="BtnNo" (Unsuscribe)="invalidate($event)"></cad-unsuscribe-dialog>

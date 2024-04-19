@@ -1,0 +1,57 @@
+
+.sidebar-menu{
+    border-radius: 4px !important;
+    
+}
+.box-menu{
+    margin-bottom: 3px !important;
+    color: #bab1c1 !important;
+    background-color: #040e4a;
+    /* background-color: #162343; */
+    
+}
+::ng-deep .mat-nav-list .is-active {
+    background-color: #ba0a63!important;
+    
+  }
+  ::ng-deep .mat-expansion-indicator::after {
+    color: #bab1c1;
+  }
+.mat-expansion-panel:not(.mat-expanded):not([aria-disabled=true]) .mat-expansion-panel-header:hover{
+    background-color: #ba0a63 !important;
+}
+
+.box-header{
+    font-size: 14px;
+    padding: 2px 16px 0 12px !important;
+    height: 45px !important;
+}
+
+
+::ng-deep .mat-expansion-panel-body {
+    padding: 0 24px 2px 24px !important;
+  }
+
+.sidebar-icon{
+    margin-right: 6px;
+    font-size: 18px;
+    height: 18px !important;
+    color: #bab1c1 !important;
+}
+.box-list-item a, .box-list-item-expansion a{
+    color: #bab1c1 !important;
+    font-size: 14px;
+}
+mat-nav-list {
+    padding: 0 0 5px 0 !important;
+}
+.box-list-item:hover{
+    background-color: #ba0a63 !important;
+}
+.sidebar-icon:hover, .box-list-item-expansion a:hover{
+    color: #ffff !important;
+}
+a{
+    text-decoration: none;
+    color: #bab1c1;
+}

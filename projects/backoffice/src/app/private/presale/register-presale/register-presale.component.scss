@@ -1,0 +1,119 @@
+@import 'variables';
+
+.title {
+  display: flex;
+  text-align: center !important;
+  justify-content: center;
+  align-items: center;
+}
+
+.tsp-button-cancel {
+  background-color: $tspSigesStateLapsed;
+  color: $tspSigesWhite;
+  display: flex;
+  align-items: center;
+}
+
+.container-buttons {
+  display: flex;
+  align-items: center;
+}
+
+.button-actions {
+  margin-top: 5px;
+  background-color: $tspSigesBlue;
+  border: none;
+  border-radius: 4px;
+}
+
+.button-actions-delete {
+  margin-top: 5px;
+  background-color: $tspSigesError;
+  border: none;
+  border-radius: 4px;
+}
+
+.tsp-icons {
+  color: $tspSigesWhite;
+  margin-top: 0.4vh;
+}
+
+.headerComercialActor {
+  background-color: $tspSigesBlue;
+  color: $tspSigesWhite;
+  display: flex;
+  align-items: center;
+  height: 40px;
+}
+
+.textRight {
+  text-align: right;
+}
+
+.checkbox {
+  color: $tspSigesWhite;
+}
+
+.buttonSave {
+  display: flex;
+  justify-content: end;
+}
+
+.mat-mdc-card-content {
+  padding: 0;
+}
+
+.alignCenter {
+  display: flex;
+  align-items: center;
+}
+
+.cardContentPayAndBussinessActor {
+  max-height: 354px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-bottom: 5px;
+}
+
+.body {
+  display: flex;
+  flex-wrap: wrap;
+  // overflow-y: scroll;
+  overflow-x: hidden;
+  padding-bottom: 20px;
+}
+
+.buttonAddAnticipo {
+  display: flex;
+  justify-content: right;
+}
+
+@media screen and (min-width: 1645px) {
+  .body {
+    height: 716px;
+  }
+
+  .cardContentPayAndBussinessActor {
+    max-height: 655px;
+  }
+}
+
+.cancelAdvancePayment {
+  display: flex;
+  justify-content: end;
+}
+
+.ks-line {
+  width: 100%;
+  background-color: $tspSigesBlue;
+  color: $tspSigesWhite;
+  height: 1.5px;
+  position: relative;
+  opacity: 100%;
+  border-radius: 2px;
+  margin-top: 1px;
+}
+.igv-input-container {
+  display: flex;
+  justify-content: end;
+}

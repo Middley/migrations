@@ -1,0 +1,91 @@
+@import 'variables';
+
+::ng-deep .mat-dialog-container {
+  padding: 0px;
+  // max-width: 936px;
+  max-width: 1000px;
+}
+
+.buttons-container {
+  // display: flex;
+  justify-content: end;
+  margin-top: 11px;
+  margin-bottom: 11px;
+}
+
+// .tsp-button-success {
+//   margin-right: 10px;
+// }
+
+.generalMatForm {
+  width: 100%;
+}
+
+.container {
+  max-width: 1000px;
+}
+
+.textCenter {
+  text-align: center;
+}
+
+.onlyRead {
+  pointer-events: none;
+  border: none;
+  color: $tspSigesBlackLetters;
+  text-align: center;
+  background-color: $tspSigesWhiteLetters;
+}
+
+.inputTable {
+  width: 100%;
+  text-align: center;
+}
+
+.mdc-button {
+  min-width: 0;
+  line-height: 0;
+}
+
+.removeItem {
+  margin: auto;
+}
+
+.tdData {
+  text-align: center;
+  padding-top: 16px;
+  margin-top: -1px;
+}
+
+.rowData {
+  cursor: pointer;
+  // box-shadow: -0.5px -0.5px 2px 0 rgb(0 0 0 / 20%), 1px 1px 2px 0 rgb(0 0 0 / 20%), 2px 2px 3px 0 rgb(0 0 0 / 19%);
+}
+
+::ng-deep .table th,
+.table td {
+  vertical-align: middle;
+}
+
+.ajustmentPositive {
+  color: $tspSigesSuccessLow;
+}
+
+.ajustmentNegative {
+  color: $tspSigesStateLapsed;
+}
+
+.typeWarehouse {
+  text-align: center;
+  margin-top: -15px;
+}
+
+.tsp-button-success-temporal {
+  background-color: $tspSigesSuccessLow;
+  color: $tspSigesWhite;
+}
+
+.tsp-button-success {
+  background-color: $tspSigesBlue;
+  color: $tspSigesWhite;
+}

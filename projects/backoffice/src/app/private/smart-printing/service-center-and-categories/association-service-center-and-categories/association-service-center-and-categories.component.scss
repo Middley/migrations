@@ -1,0 +1,109 @@
+@import 'variables';
+.container-association {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.tsp-view-title-container {
+  background-color: $tspSigesBlue;
+  padding: 10px;
+  text-align: center;
+}
+
+.tsp-view-title {
+  text-align: center;
+  color: $tspSigesWhiteLetters;
+}
+
+.container-category {
+  border: 2px $tspSigesGray solid;
+  border-radius: 5px;
+}
+
+.margin-left {
+  margin-left: 20px;
+  margin-top: 5px;
+}
+.example-container {
+  max-width: 100%;
+  margin: 0 25px 25px 0;
+  vertical-align: top;
+}
+.service-center-container {
+  border: solid 1px #ccc;
+  min-height: 60px;
+  background: white;
+  border-radius: 4px;
+  overflow: hidden;
+  padding: 6px;
+}
+//dropDragStyles
+
+.basic-container {
+  padding: 30px;
+}
+
+.version-info {
+  font-size: 8pt;
+  float: right;
+}
+
+/**
+ * TREE DRAG AND DROP STYLING
+ */
+.tsp-node-parent {
+  background-color: $tspSigesBlueLight;
+  color: $tspSigesWhiteLetters;
+  user-select: none;
+  cursor: move;
+  border-radius: 5px;
+  margin: 5px;
+  font-weight: 600;
+  width: 30%;
+}
+.tsp-node {
+  background-color: $tspSigesBlueLight;
+  color: $tspSigesWhiteLetters;
+  user-select: none;
+  cursor: move;
+  border-radius: 5px;
+  margin: 5px;
+  font-weight: 600;
+  padding-left: 10px !important;
+}
+.tsp-node:hover {
+  background-color: $tspSigesMagenta;
+  cursor: pointer;
+}
+.tsp-node-text {
+  display: flex;
+  justify-content: center;
+  font-size: 11pt;
+}
+.tsp-node-container {
+  width: 60%;
+}
+.tsp-nodes-container {
+  display: flex;
+  justify-content: center;
+}
+
+.tsp-category-title {
+  text-align: center;
+  font-size: 12pt;
+  font-weight: 500;
+}
+
+.tsp-service-center-title {
+  text-align: center;
+  font-size: 12pt;
+  font-weight: 500;
+}
+
+.tsp-delete-categorie-button {
+  text-align: end;
+}
+.tsp-delete-categorie-button:hover {
+  cursor: pointer;
+}

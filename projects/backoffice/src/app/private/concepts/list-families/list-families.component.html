@@ -1,0 +1,31 @@
+<!-- titulo familia -->
+<cad-header-title [Title]="'COMPONENTS.LIST-FAMILIES.TITLE' | translate"></cad-header-title>
+
+<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 row">
+    <!-- Descarga -->
+    <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 tsp-generic-component-container-start">
+        <button class="tsp-buttons-actions tsp-font-size-buttons tsp-button-success  ">
+            <mat-icon class="tsp-button-success">archive icon</mat-icon>
+        </button>
+    </div>
+    <!-- Boton nueva familia -->
+    <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 tsp-generic-component-container-end">
+        <button id="button-register-family" mat-raised-button data-bs-toggle="modal" data-bs-target="#modalComponent"
+            class="tsp-buttons-actions tsp-font-size-buttons tsp-button-success" (click)="openRegister()">
+            <mat-icon>add</mat-icon>
+            {{'COMPONENTS.LIST-FAMILIES.BUTTON-NEW-FAMILY' | translate }}
+        </button>
+    </div>
+</div>
+<!-- tabla -->
+<div class="col-12 col-sm-12 col-md-4 col-lg-12 col-xl-12  tsp-generic-items-default">
+    <cad-table-filter class="table-background" [columns]="columns" [actions]="actions" [items]="data">
+    </cad-table-filter>
+</div>
+<!-- Boton abrir modal -->
+<!-- <div class="tsp-generic-spaceButton">
+      <button (click)="openConfirmModal()" class="tsp-buttons-actions tsp-font-size-buttons button-success"
+        mat-raised-button data-bs-toggle="modal" data-bs-target="#modalComponent">
+        <mat-icon>add</mat-icon>{{ 'GENERAL.BUTTONS.MODAL' | translate }}
+      </button>
+    </div> -->

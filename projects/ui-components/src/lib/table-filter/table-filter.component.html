@@ -1,0 +1,164 @@
+<!-- <div class="row mb-2">
+    <div class="col-12">
+        <div class="buttons-table-actions">
+            <button mat-raised-button class="tsp-button-success tsp-font-size-buttons export-excel-button"
+                (click)="exportExcel()"><mat-icon>assignment_returned</mat-icon>
+            </button>
+        </div>
+    </div>
+</div> -->
+<p-table #dt1 [value]="items" selectionMode="single" [(selection)]="selectedItem" dataKey="id"
+  styleClass="p-datatable-customers" [rows]="10" [paginator]="true" [columns]="columns" class="tsp-table-container"
+  [scrollable]="scrollable">
+  <ng-template pTemplate="header">
+    <tr>
+      <th class="column-options table-font-header">
+        {{ numberLabel }}
+      </th>
+      <th *ngFor="let column of columns" pSortableColumn="{{ column.field }}" class="column-options table-font-header">
+        {{ column.header }}
+      </th>
+      <th class="column-options table-font-header" *ngIf="showActions">
+        {{ optionsLabel }}
+      </th>
+    </tr>
+    <tr>
+      <th class="column-options"></th>
+      <th *ngFor="let column of columns">
+        <input pInputText type="text" (input)="dt1.filter($any($event.target)?.value, column.field, 'contains')"
+          [value]="$any(dt1).filters[column.field]?.value"
+          class="p-column-filter tsp-input-filter table-font-content" />
+      </th>
+      <th class="column-options" *ngIf="showActions"></th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-customer let-rowData let-columns="columns" let-rowIndex="rowIndex">
+    <tr [pSelectableRow]="customer">
+      <td class="tsp-font-size-default-content tsp-index">
+        {{ rowIndex + 1 }}
+      </td>
+      <td *ngFor="let col of columns; let i = index" class="column-options">
+    <tr class="data-columns tsp-font-size-default-content" *ngIf="col.field == 'registrationState'" [ngClass]="{
+            'status-lapsed': rowData.registrationState == 'DE BAJA',
+            'status-active': rowData.registrationState == 'ACTIVO',
+            'status-expire': rowData.registrationState == 'normal'
+          }">
+      {{
+      rowData['registrationState']
+      }}
+    </tr>
+    <tr class="data-columns tsp-font-size-default-content" *ngIf="col.field == 'priceState'"
+      [ngClass]="{ 'status-lapsed': rowData.priceState == 'Desfasado', 'status-active': rowData.priceState == 'Actual' }">
+      {{
+      rowData['priceState']
+      }}
+    </tr>
+    <tr class="data-columns tsp-font-size-default-content" *ngIf="col.field == 'stateString'" [ngClass]="{
+            'status-expire': rowData.stateString == 'Confirmado',
+            'status-registered': rowData.stateString == 'Registrado',
+            'status-active': rowData.stateString == 'Finalizado',
+            'status-lapsed': rowData.stateString == 'Invalidado'
+          }">
+      {{
+      rowData['stateString']
+      }}
+    </tr>
+
+    <tr class="data-columns tsp-font-size-default-content" *ngIf="col.field == 'dispachDate'">
+      {{
+      rowData['dispachDate'] | date : 'dd/MM/YYYY h:mm a'
+      }}
+    </tr>
+
+    <tr class="data-columns tsp-font-size-default-content" *ngIf="col.field == 'documentUrl'">
+      <a href="{{ rowData['documentUrl'] }}">
+        <mat-icon>description</mat-icon>
+      </a>
+    </tr>
+
+    <tr class="data-columns tsp-font-size-default-content" *ngIf="col.field == 'perceivedRange'" [ngClass]="{
+            'fuel-supply-consumption-status-unacceptable': rowData.state == 1,
+            'fuel-supply-consumption-status-acceptable': rowData.state == 0
+          }">
+      {{
+      rowData['perceivedRange'] | number : '1.0-3'
+      }}
+    </tr>
+    <tr *ngIf="
+            col.field != 'registrationState' &&
+            col.field != 'stateString' &&
+            col.field != 'perceivedRange' &&
+            col.field != 'dispachDate' &&
+            col.field != 'documentUrl' &&
+            col.field != 'priceState' &&
+            col.field != 'state'
+          " class="data-columns tsp-font-size-default-content">
+      {{
+      rowData[col.field]
+      }}
+    </tr>
+    <tr class="data-columns tsp-font-size-default-content" *ngIf="col.field == 'state'"
+      [ngClass]="{ 'status-lapsed': rowData.state == 'AVERIADO', 'status-active': rowData.state == 'OPERATIVO' }">
+      {{
+      rowData['state']
+      }}
+    </tr>
+    </td>
+    <td class=" " *ngIf="showActions">
+      <div class="buttons-container">
+
+        <span mat-raised-button class=" container-buttons" *ngIf="actions[0] == 1">
+          <button class="button-actions tsp-small-icon-button" (click)="searchAction(rowData['id'])"
+            *ngIf="rowData['id'] != null && rowData['fromDate'] == null">
+            <mat-icon class="tsp-icons">search</mat-icon>
+          </button>&nbsp;
+          <button class="button-actions tsp-small-icon-button"
+            (click)="searchActionDates(rowData['id'], rowData['fromDate'], rowData['toDate'])"
+            *ngIf="rowData['id'] != null && rowData['fromDate'] != null && rowData['toDate'] != null">
+            <mat-icon class="tsp-icons">search</mat-icon>
+          </button>
+          <!-- 
+                <button class="button-actions"
+                    (click)="seachActionShowFuelSupply(rowData['vehicleId'], rowData['dispachDate'])"
+                    *ngIf="rowData['vehicleId']!=null">
+                    <mat-icon class="tsp-icons">search</mat-icon>
+                </button> -->
+        </span>
+        <span mat-raised-button class=" container-buttons"
+          *ngIf="actions[1] == 1 && rowData.stateString == 'Registrado'">
+          <!-- <button class="button-actions" (click)="editAction(rowData['id'])">
+            <mat-icon class="tsp-icons">edit</mat-icon>
+          </button> -->
+          <button class="button-actions tsp-small-icon-button" (click)="editAction(rowData['id'])"
+            *ngIf="rowData['id'] != null && rowData['fromDate'] == null">
+            <mat-icon class="tsp-icons">edit</mat-icon>
+          </button>
+          &nbsp;
+        </span>
+        <span *ngIf="actions[2] == 1" mat-raised-button class=" container-buttons">
+          <button class="button-actions-delete" (click)="deleteAction(rowData['id'])"
+            (click)="deleteActionItemComplete(rowData['id'])">
+            <mat-icon class="tsp-icons">delete</mat-icon>
+          </button>&nbsp;
+        </span>
+        <span
+          *ngIf="actions[3] == 1 && rowData.stateString != 'Finalizado' && rowData.stateString != 'Invalidado' && rowData.outstanding!=0"
+          mat-raised-button class=" container-buttons">
+          <!-- <button mat-raised-button class="button_primary tsp-small-icon-button" (click)="advancePayment(rowData['id'])">
+          <i class="material-icons">payments</i>
+        </button> -->
+          <button class="button-actions tsp-small-icon-button" (click)="advancePayment(rowData['id'])"
+            *ngIf="rowData['id'] != null && rowData['fromDate'] == null">
+            <mat-icon class="tsp-icons">payments</mat-icon>
+          </button>
+        </span>
+      </div>
+    </td>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="emptymessage">
+    <tr>
+      <td colspan="4" class="tsp-font-size-default-content">{{ notFoundDataLabel }}</td>
+    </tr>
+  </ng-template>
+</p-table>

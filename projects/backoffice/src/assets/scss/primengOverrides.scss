@@ -1,0 +1,434 @@
+@import 'variables.scss';
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@1,300&display=swap');
+
+body {
+  font-family: 'Kanit', sans-serif !important;
+}
+
+.tsp-title {
+  font-family: 'Kanit', sans-serif !important;
+  text-transform: uppercase;
+  font-size: 1.325rem;
+  line-height: 30px;
+  font-weight: 600;
+  color: $tspSigesWhiteLetters;
+}
+
+.tsp-title-modals {
+  font-family: 'Kanit', sans-serif !important;
+  text-transform: uppercase;
+  font-size: 1.125rem;
+  line-height: 30px;
+  font-weight: 600;
+  color: $tspSigesWhiteLetters;
+  text-align: start !important;
+}
+
+.ks-line {
+  width: 98%;
+  background-color: $tspSigesBlue;
+  color: $tspSigesWhite;
+  height: 2px;
+  position: relative;
+  opacity: 100%;
+  border-radius: 2px;
+  margin-top: 1px;
+  margin-bottom: 6px;
+}
+
+.date-label {
+  color: $tspSigesInputColorLetters;
+}
+
+.filter-container {
+  border: 2px solid $tspSigesBlue;
+  // margin-top: 5px;
+  margin-right: 5px;
+  margin-left: 5px;
+  margin-right: 5px;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.tsp-secction-title {
+  color: $tspSigesBlue;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+//cabezeras formularios
+
+.view-title-container {
+  background-color: $tspSigesBlue;
+  padding: 10px;
+}
+
+//botones
+.tsp-button-clone {
+  background-color: $tspSigesButtonClone !important;
+  color: $tspSigesWhite !important;
+}
+
+.tsp-button-edit {
+  background-color: $tspSigesbuttonEdit !important;
+  color: $tspSigesWhite !important;
+}
+
+.tsp-button-delete {
+  background-color: $tspSigesError !important;
+  color: $tspSigesWhite !important;
+}
+
+.tsp-button-magenta {
+  background-color: $tspSigesMagenta !important;
+  color: $tspSigesWhite !important;
+}
+
+.tsp-button-success {
+  background-color: $tspSigesBlue !important;
+  color: $tspSigesWhite !important;
+}
+
+.tsp-button-tool {
+  background-color: $tspSigesButtonTools !important;
+  color: $tspSigesWhite !important;
+}
+
+.tsp-title-header-modal {
+  background-color: $tspSigesBlue;
+  color: $tspSigesWhite;
+  margin-left: -16px;
+  margin-right: -16px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  @extend .tsp-title-modals;
+}
+
+.mat-dialog-content {
+  margin: 0 0;
+  padding: 0 0;
+}
+
+//Manejo letras
+@media screen and (min-width: 0px) {
+  .table-font-header {
+    font-size: 1.5vh !important;
+    font-family: 'Kanit', sans-serif !important;
+  }
+
+  .tsp-font-size-default-content {
+    font-size: 1.8vh !important;
+    font-family: 'Kanit', sans-serif !important;
+    text-transform: uppercase;
+  }
+
+  .tsp-font-size-default-title {
+    font-size: 1.5vh !important;
+    font-family: 'Kanit', sans-serif !important;
+  }
+
+  .tsp-font-size-buttons {
+    font-size: 1.5vh !important;
+    font-family: 'Kanit', sans-serif !important;
+  }
+
+  .tsp-font-size-modal-titles {
+    font-size: 1.8vh;
+    font-family: 'Kanit', sans-serif !important;
+    text-transform: uppercase;
+    line-height: 30px;
+    font-weight: 600;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .table-font-header {
+    font-size: 1.5vh !important;
+    font-family: 'Kanit', sans-serif !important;
+  }
+
+  .tsp-font-size-default-content {
+    font-size: 1.5vh;
+    font-family: 'Kanit', sans-serif !important;
+  }
+
+  .tsp-font-size-default-title {
+    font-size: 1.5vh;
+    font-family: 'Kanit', sans-serif !important;
+  }
+
+  .tsp-font-size-buttons {
+    font-size: 1.5vh;
+    font-family: 'Kanit', sans-serif !important;
+  }
+
+  .tsp-font-size-modal-titles {
+    font-size: 1.8vh;
+    font-family: 'Kanit', sans-serif !important;
+    text-transform: uppercase;
+    line-height: 30px;
+    font-weight: 600;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .table-font-header {
+    font-size: 1.5vh !important;
+    font-family: 'Kanit', sans-serif !important;
+  }
+
+  .tsp-font-size-default-content {
+    font-size: 1.5vh;
+    font-family: 'Kanit', sans-serif !important;
+  }
+
+  .tsp-font-size-default-title {
+    font-size: 1.5vh;
+    font-family: 'Kanit', sans-serif !important;
+  }
+
+  .tsp-font-size-buttons {
+    font-size: 1.5vh;
+    font-family: 'Kanit', sans-serif !important;
+  }
+
+  .tsp-font-size-modal-titles {
+    font-size: 1.8vh;
+    font-family: 'Kanit', sans-serif !important;
+    text-transform: uppercase;
+    line-height: 30px;
+    font-weight: 600;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .table-font-header {
+    font-size: 1.5vh !important;
+    font-family: 'Kanit', sans-serif !important;
+  }
+
+  .tsp-font-size-default-content {
+    font-size: 1.5vh;
+    font-family: 'Kanit', sans-serif !important;
+  }
+
+  .tsp-font-size-default-title {
+    font-size: 1.5vh;
+    font-family: 'Kanit', sans-serif !important;
+  }
+
+  .tsp-font-size-buttons {
+    font-size: 1.5vh;
+    font-family: 'Kanit', sans-serif !important;
+  }
+
+  .tsp-font-size-modal-titles {
+    font-size: 1.6vh;
+    font-family: 'Kanit', sans-serif !important;
+    text-transform: uppercase;
+    line-height: 30px;
+    font-weight: 400;
+  }
+
+  .tsp-font-size-errors-messages {
+    font-size: 1.3vh;
+    font-family: 'Kanit', sans-serif !important;
+  }
+
+  .tsp-font-title-menu {
+    font-size: 1.5vh;
+    font-family: 'Kanit', sans-serif !important;
+  }
+
+  .tsp-font-sub-title-menu {
+    font-size: 1.4vh;
+    font-family: 'Kanit', sans-serif !important;
+  }
+
+  .tsp-font-headers-tables-xs {
+    font-size: 12px;
+    font-family: 'Kanit', sans-serif !important;
+    line-height: 10px;
+    text-align: center;
+    font-weight: 600;
+  }
+  .tsp-font-content-tables-xs {
+    font-size: 12px;
+    font-family: 'Kanit', sans-serif !important;
+    line-height: 10px;
+    text-align: center;
+  }
+}
+
+/* Estilos para motores Webkit y blink (Chrome, Safari, Opera... )*/
+
+.container::-webkit-scrollbar {
+  -webkit-appearance: none !important;
+}
+
+.container::-webkit-scrollbar:vertical {
+  width: 10px !important;
+}
+
+.container::-webkit-scrollbar-button:increment,
+.container::-webkit-scrollbar-button {
+  display: none !important;
+}
+
+.container::-webkit-scrollbar:horizontal {
+  height: 10px !important;
+}
+
+.container::-webkit-scrollbar-thumb {
+  background-color: #797979 !important;
+  border-radius: 20px !important;
+  border: 2px solid #f1f2f3 !important;
+}
+
+.container::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+
+//scroll
+
+.container {
+  padding-right: 10px !important;
+  overflow-x: hidden !important;
+}
+
+//STATES FLAGS
+.fuel-supply-consumption-status-acceptable {
+  background-color: $tspSigesStateActive;
+  color: $tspSigesWhiteLetters;
+  padding: 5%;
+  border-radius: 4px;
+  font-weight: 900;
+}
+
+.fuel-supply-consumption-status-unacceptable {
+  background-color: $tspSigesStateLapsed;
+  color: $tspSigesWhiteLetters;
+  padding: 5%;
+  border-radius: 4px;
+  font-weight: 900;
+}
+
+.pip-status-valid {
+  background-color: $tspSigesStateActive;
+  color: $tspSigesWhiteLetters;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.pip-status-expire {
+  background-color: $tspSigesStateExpire;
+  color: $tspSigesWhiteLetters;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.pip-status-lapsed {
+  background-color: $tspSigesStateLapsed;
+  color: $tspSigesWhiteLetters;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.flag-status-valid {
+  background-color: $tspSigesStateActive;
+  color: $tspSigesWhiteLetters;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.flag-status-expire {
+  background-color: $tspSigesStateExpire;
+  color: $tspSigesWhiteLetters;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.flag-status-lapsed {
+  background-color: $tspSigesStateLapsed;
+  color: $tspSigesWhiteLetters;
+  text-align: center;
+  border-radius: 5px;
+}
+
+//flags plan Maintenance
+.flag-status-registered {
+  background-color: $tspSigesPlanStateRegistered;
+  color: $tspSigesWhiteLetters;
+  text-align: center;
+  border-radius: 5px;
+  padding: 2px 10px 2px 10px;
+  max-width: 150px;
+}
+
+.flag-status-approved {
+  background-color: $tspSigesPlanStateApproved;
+  color: $tspSigesWhiteLetters;
+  text-align: center;
+  border-radius: 5px;
+  padding: 2px 10px 2px 10px;
+  max-width: 150px;
+}
+
+.flag-status-expired {
+  background-color: $tspSigesPlanStateExpire;
+  color: $tspSigesWhiteLetters;
+  text-align: center;
+  border-radius: 5px;
+  padding: 2px 10px 2px 10px;
+  max-width: 150px;
+}
+
+.p-datatable .p-datatable-tfoot > tr > td {
+  padding: 0 !important;
+}
+
+.tsp-labels {
+  font-weight: 600 !important;
+}
+
+/*-Buttons-*/
+.tsp-small-icon-button {
+  // width: 24px !important;
+  width: 27px !important;
+  height: 24px !important;
+  padding: 0px !important;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+
+  & > *[role='img'] {
+    width: 16px;
+    height: 16px;
+    font-size: 16px;
+
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  .mat-mdc-button-touch-target {
+    width: 24px !important;
+    height: 24px !important;
+  }
+}
+.small-button {
+  width: 36px;
+  height: 36px;
+  min-width: 38px !important;
+  padding: 0px !important;
+}
+
+.tsp-row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.txt-center {
+  text-align: center;
+}

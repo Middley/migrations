@@ -1,0 +1,90 @@
+<table class="mt-3">
+    <thead class="table-background">
+        <tr>
+            <th scope="col" class="table-viewer-cell tsp-font-size-default-header">Nº</th>
+            <th scope="col" class="table-viewer-cell tsp-font-size-default-header">CÓDIGO</th>
+            <th scope="col" class="table-viewer-cell tsp-font-size-default-header">DESCRIPCIÓN</th>
+            <th scope="col" class="table-viewer-cell tsp-font-size-default-header">CANTIDAD</th>
+            <th scope="col" class="table-viewer-cell tsp-font-size-default-header">P.U.</th>
+            <th scope="col" class="table-viewer-cell tsp-font-size-default-header">IMPORTE</th>
+        </tr>
+    </thead>
+    <tbody>
+        <ng-container *ngFor="let conceptDetail of operation.details; let i=index">
+            <tr>
+                <td class="table-viewer-cell tsp-font-size-default-content">{{i+1}}</td>
+                <td class="table-viewer-cell tsp-font-size-default-content">{{conceptDetail.code}}</td>
+                <td class="table-viewer-cell tsp-font-size-default-content">{{conceptDetail.concept}}</td>
+                <td class="table-viewer-cell tsp-font-size-default-content">{{conceptDetail.amount}}</td>
+                <td class="table-viewer-cell tsp-font-size-default-content">
+                    {{conceptDetail.unitImport.toFixed(decimalInAmountParameter)}}</td>
+                <td class="table-viewer-cell tsp-font-size-default-content align-only-text-end">
+                    {{conceptDetail.importTotal.toFixed(decimalInAmountParameter)}}</td>
+            </tr>
+        </ng-container>
+        <ng-container *ngFor="let advancePaymentDetail of operation.advancePaymentdetails; let i=index">
+            <tr>
+                <td class="table-viewer-cell  tsp-font-size-default-content ">{{operation.details.length+(i+1)}}</td>
+                <td class="table-viewer-cell  tsp-font-size-default-content ">{{advancePaymentDetail.code}}</td>
+                <td class="table-viewer-cell  tsp-font-size-default-content ">{{advancePaymentDetail.concept}}</td>
+                <td class="table-viewer-cell  tsp-font-size-default-content ">{{advancePaymentDetail.amount}}</td>
+                <td class="table-viewer-cell  tsp-font-size-default-content ">
+                    {{advancePaymentDetail.unitImport.toFixed(decimalInAmountParameter)}}</td>
+                <td class="table-viewer-cell  tsp-font-size-default-content  align-only-text-end">
+                    {{advancePaymentDetail.importTotal.toFixed(decimalInAmountParameter)}}</td>
+            </tr>
+        </ng-container>
+        <tr>
+            <td colspan="5" class="table-viewer-cell">IMPORTE TOTAL DETALLES</td>
+            <td colspan="1" class="table-viewer-cell align-only-text-end">
+                {{operation.importTotalDetails.toFixed(decimalInAmountParameter)}}</td>
+        </tr>
+        <tr>
+            <td colspan="5" class="table-viewer-cell">IMPORTE TOTAL ANTICIPOS</td>
+            <td colspan="1" class="table-viewer-cell align-only-text-end">
+                {{operation.importTotalAdvancePaymentDetails.toFixed(decimalInAmountParameter)}}</td>
+        </tr>
+        <tr>
+            <td colspan="6" class="table-viewer-cell table-background tsp-labels "> <span>SON:
+                </span>{{operation.importTotalString}}</td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="3"></td>
+            <td colspan="2" class="table-viewer-cell  tsp-font-size-default-content">Op. Gravadas S/</td>
+            <td class="table-viewer-cell align-only-text-end  tsp-font-size-default-content">
+                {{operationToCalculate.order.gravada.toFixed(decimalInAmountParameter)}}</td>
+        </tr>
+        <tr>
+            <td colspan="3"></td>
+            <td colspan="2" class="table-viewer-cell  tsp-font-size-default-content">Op. Inafectas S/</td>
+            <td class="table-viewer-cell align-only-text-end  tsp-font-size-default-content">
+                {{operationToCalculate.order.unaffect.toFixed(decimalInAmountParameter)}}</td>
+        </tr>
+        <tr>
+            <td colspan="3"></td>
+            <td colspan="2" class="table-viewer-cell  tsp-font-size-default-content">Op. Exoneradas S/</td>
+            <td class="table-viewer-cell align-only-text-end tsp-font-size-default-content">
+                {{operationToCalculate.order.exoneration.toFixed(decimalInAmountParameter)}}</td>
+        </tr>
+        <tr>
+            <td colspan="3"></td>
+            <td colspan="2" class="table-viewer-cell  tsp-font-size-default-content">IGV S/</td>
+            <td class="table-viewer-cell align-only-text-end  tsp-font-size-default-content">
+                {{operationToCalculate.order.igv.toFixed(decimalInAmountParameter)}}</td>
+        </tr>
+        <tr>
+            <td colspan="3"></td>
+            <td colspan="2" class="table-viewer-cell  tsp-font-size-default-content">ICBPER S/</td>
+            <td class="table-viewer-cell align-only-text-end  tsp-font-size-default-content">
+                {{operationToCalculate.order.isc.toFixed(decimalInAmountParameter)}}</td>
+        </tr>
+        <tr>
+            <td colspan="3"></td>
+            <td colspan="2" class="table-viewer-cell  tsp-font-size-default-content">Importe Total S/</td>
+            <td class="table-viewer-cell align-only-text-end  tsp-font-size-default-content">
+                {{operation.importTotal.toFixed(decimalInAmountParameter)}}</td>
+        </tr>
+    </tfoot>
+</table>

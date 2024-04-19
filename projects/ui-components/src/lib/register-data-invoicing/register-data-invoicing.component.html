@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mb-2" *ngIf="showComercialActorSelector">
+    <cad-commercial-actor-selector labelInputActor="CLIENTE" placeholderInputActor="00000000"
+      [lengthValidators]="lenghValidatorActorSelector" [errorMessage]="errorMessage"
+      (actorCommercialValidate)="seachActorCommercialF($event)" (createBusinessActor)="createBusinessActor($event)"
+      (searchBusinessActorRegisteredEvent)="searchBusinessActorRegisteredF($event)"
+      [itemsSearched]="listBusinessActorSearched"
+      [numberOfCharactersForSearchInBusinessActorSelector]="parameters.numberOfCharactersForSearchInBusinessActorSelector"
+      [waitTimeInSearchLargeQuantitySelectors]="parameters.waitTimeInSearchLargeQuantitySelectors"
+      (onSelectedItem)="selectBusinessActorF($event)" [itemShow]="actorCommercial"
+      [placeholderSearchBusinessActorRegistered]="placeholderSearchBusinessActorRegistered"
+      [labelInputBusinessActorRegistered]="placeholderSearchBusinessActorRegistered"
+      [disableClient]="disableClient"></cad-commercial-actor-selector>
+  </div>
+  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+    <cad-electronic-receipt-selector [listComprobant]="listComprobant"
+      [placeHolderElectronicReceipt]="placeHolderElectronicReceipt" [labelElectronicReceipt]="labelElectronicReceipt"
+      (selectedComprobantEvent)="selectedComprobantF($event)"></cad-electronic-receipt-selector>
+  </div>
+  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+    <mat-form-field class="generalMatForm">
+      <mat-label class="tsp-font-size-default-content tsp-labels">OBSERVACIONES</mat-label>
+      <textarea class="tsp-font-size-default-content " matInput [(ngModel)]="observation"
+        (input)="onInput()"></textarea>
+    </mat-form-field>
+  </div>
+</div>

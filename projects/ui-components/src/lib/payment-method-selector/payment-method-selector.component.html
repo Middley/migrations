@@ -1,0 +1,12 @@
+<div class="col-12 col-md-12 paymentMethods" *ngIf="paymentMethods">
+  <div
+    class="paymentMethod tsp-font-size-default-content"
+    [ngClass]="{
+      selectMethodPay: paymentMethod.id == idPaymentMethod
+    }"
+    *ngFor="let paymentMethod of paymentMethods"
+    (click)="selectPaymentMethod(paymentMethod.id)"
+  >
+    {{ paymentMethod.value }}
+  </div>
+</div>

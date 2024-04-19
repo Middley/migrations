@@ -1,0 +1,106 @@
+<table class="table tsp-font-size-default-content">
+  <thead>
+    <tr style="text-align: center">
+      <th scope="col" style="width: 5%">ITEM</th>
+      <th scope="col" style="width: 10%">CONCEPTO</th>
+      <th scope="col" style="width: 6%" *ngIf="conceptDetailParameters.showStock">STOCK</th>
+      <th scope="col" style="width: 15%">TARIFA</th>
+      <th scope="col" style="width: 8%">CANTIDAD</th>
+      <th scope="col" style="width: 8%">P.U</th>
+      <th scope="col" style="width: 7%">V. VENTA</th>
+      <th scope="col" style="width: 5%">I.G.V</th>
+      <th scope="col" style="width: 8%">IMPORTE</th>
+      <th scope="col" style="width: 7%">OPCIÓN</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let conceptDetail of conceptDetails; index as index" style="text-align: center">
+      <th scope="row">{{ index + 1 }}</th>
+      <!--concepto-->
+      <td>
+        <div
+          *ngIf="!conceptDetailParameters.allowRegistrationDetailsByConcepts; else allowRegistrationDetailsByConcepts">
+          {{ conceptDetail.businessConcept.detailName }}
+        </div>
+        <ng-template #allowRegistrationDetailsByConcepts>
+          {{ conceptDetail.businessConcept.detailName }} se debe de implementar el registro de detalles?
+        </ng-template>
+      </td>
+      <!-- stock -->
+      <td *ngIf="conceptDetailParameters.showStock">
+        {{
+        conceptDetailParameters.outputGoodsSubjectToAvailabilityStock && conceptDetail.businessConcept.isAsset &&
+        !conceptDetailParameters.isPresale
+        ? conceptDetail.businessConcept.stock
+        : 'n'
+        }}
+      </td>
+      <!--tarifa-->
+      <td>
+        <mat-form-field appearance="fill" class="inputInTable">
+          <mat-select [(ngModel)]="conceptDetail.tariffPrice" class="tsp-font-size-default-content"
+            (ngModelChange)="changeTariffConceptDetail(2, index)">
+            <mat-option *ngFor="let price of conceptDetail.businessConcept.prices" [value]="price"
+              class="tsp-font-size-default-content">
+              {{ price.tariff }} {{ price.valueString }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </td>
+      <!--cantidad-->
+      <td>
+        <ng-container *ngIf="!conceptDetailParameters.allowEnterAmount; else allowEnterAmount">
+          {{ conceptDetail.amount }}
+        </ng-container>
+        <ng-template #allowEnterAmount>
+          <mat-form-field class="tsp-font-size-default-content inputInTable">
+            <input [(ngModel)]="conceptDetail.amount" type="number" matInput value="1"
+              (ngModelChange)="changeAmountConceptDetail(1, index)" />
+          </mat-form-field>
+        </ng-template>
+      </td>
+      <!--precio unitario-->
+      <td>
+        <ng-container *ngIf="!conceptDetailParameters.allowEnterUnitPrice; else allowEnterUnitPrice">
+          {{ conceptDetail.unitPrice }}
+        </ng-container>
+        <ng-template #allowEnterUnitPrice>
+          <mat-form-field class="tsp-font-size-default-content inputInTable">
+            <input [(ngModel)]="conceptDetail.unitPrice" type="number" matInput value="1"
+              (ngModelChange)="changeUnitPriceConceptDetail(2, index)" />
+          </mat-form-field>
+        </ng-template>
+      </td>
+      <!--valor de venta-->
+      <td>
+        {{ (conceptDetail.import - conceptDetail.igv).toFixed(conceptDetailParameters.decimalNumberValues) }}
+      </td>
+      <!--igv-->
+      <td>
+        {{ conceptDetail.igv }}
+      </td>
+
+      <!--importe-->
+      <td>
+        <ng-container *ngIf="!conceptDetailParameters.allowEnterImport; else allowEnterImport">
+          {{ conceptDetail.import }}
+        </ng-container>
+
+        <ng-template #allowEnterImport>
+          <mat-form-field class="tsp-font-size-default-content inputInTable">
+            <input [(ngModel)]="conceptDetail.import" type="number" matInput value="1"
+              (ngModelChange)="changeImportConceptDetail(3, index)" />
+          </mat-form-field>
+        </ng-template>
+      </td>
+      <td>
+        <button class="button-actions-small-delete" (click)="deleteDetail(index)">
+          <div class="button-container">
+            <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="delete"
+              class="icon-small"></mat-icon>
+          </div>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

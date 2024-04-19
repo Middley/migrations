@@ -1,0 +1,276 @@
+// global
+
+* {
+  outline: none;
+  /* box-sizing: border-box; */
+}
+
+body {
+  font-family: $bodyfont;
+  margin: 0;
+  overflow-x: hidden;
+  color: $bodytext;
+  font-weight: 300;
+  /* background: $inverse; */
+}
+
+
+ html {
+  position: relative;
+  min-height: 100%;
+  background: $white;
+} 
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.mat-drawer-container {
+  background: $bodycolor;
+}
+
+html .page-wrapper {
+  height: calc(100vh - 64px);
+  .page-content {
+    padding: 15px 10px;
+    /* max-width: 1300px; */
+    margin: 0 auto;
+    overflow: hidden;
+  }
+}
+
+// a tag
+
+a:hover,
+a:focus,
+a {
+  text-decoration: none;
+}
+a.link {
+  color: $headingtext;
+  text-decoration: none;
+  &:hover,
+  &:focus {
+    color: $themecolor;
+  }
+}
+
+.img-responsive {
+  width: 100%;
+  height: auto;
+  display: inline-block;
+}
+
+hr {
+  border: 0px;
+  height: 1px;
+  background: $border;
+}
+
+html body .mdi:before,
+html body .mdi-set {
+  line-height: initial;
+}
+code {
+  padding: 0.2rem 0.4rem;
+  font-size: 90%;
+  color: $danger;
+  background-color: $light-danger;
+  border-radius: 0.25rem;
+}
+
+.box {
+  border-radius: $radius;
+  padding: 10px;
+}
+
+.list-inline {
+  margin-left: 0px;
+  padding: 0px;
+  li {
+    display: inline-block;
+    list-style: none;
+    margin-right: 10px;
+    &:last-child {
+      margin-right: 0px;
+    }
+  }
+}
+
+.button-row button {
+  margin-bottom: 5px;
+  margin-right: 5px;
+}
+
+html body {
+  .position-relative {
+    position: relative;
+  }
+
+  // list
+  .clear {
+    clear: both;
+  }
+  ol li {
+    margin: 5px 0;
+  }
+  // display
+  .dl {
+    display: inline-block;
+  }
+  .db {
+    display: block;
+  }
+  //   opacity
+  .op-5 {
+    opacity: 0.5;
+  }
+  .op-3 {
+    opacity: 0.3;
+  }
+
+  .rounded {
+    border-radius: $radius;
+  }
+
+  //   flex
+  .ml-auto {
+    margin-left: auto;
+  }
+
+  .d-flex {
+    display: flex;
+  }
+  .align-items-center {
+    align-items: center;
+  }
+  .no-shrink {
+    flex-shrink: 0;
+  }
+  .oh {
+    overflow: hidden;
+  }
+  .hide {
+    display: none;
+  }
+  .img-circle {
+    border-radius: 100%;
+  }
+  .radius {
+    border-radius: $radius;
+  }
+  .no-shadow {
+    box-shadow: none;
+  }
+
+  //   align vertical
+  .vt {
+    vertical-align: top;
+  }
+
+  .vm {
+    vertical-align: middle;
+  }
+
+  .vb {
+    vertical-align: bottom;
+  }
+
+  //   horizontal align
+  .text-center {
+    text-align: center;
+  }
+  .text-right {
+    text-align: right;
+  }
+  .text-left {
+    text-align: left;
+  }
+
+  //   border
+  .b-0 {
+    border: none;
+  }
+  .b-r {
+    border-right: 1px solid $border;
+  }
+  .b-l {
+    border-left: 1px solid $border;
+  }
+  .b-b {
+    border-bottom: 1px solid $border;
+  }
+  .b-t {
+    border-top: 1px solid $border;
+  }
+  .b-all {
+    border: 1px solid $border;
+  }
+}
+
+
+
+.border-decoration {
+  box-shadow: 4px 3px 8px rgb(189 200 213), 0 -3px 0 #0422D8;
+}
+
+
+.loading-text {
+  position: absolute;
+  color: #0422D8;
+  align-content: center;
+  overflow: hidden;
+  margin-top: 5px;
+  top: 50%;
+  left: calc(50% - 50px);
+}
+
+.loading-bar {
+  position: absolute;
+  width: 500px;
+  height: 6px;
+  background-color: white;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  top: calc(50% - 3px);
+  left: calc(50% - 250px);
+}
+
+.loading-bar::after {
+  content: '';
+  display: block;
+  width: 200px;
+  height: 100%;
+  background-color: #0422D8;
+  animation: progressbar-slide 1s infinite;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes progressbar-slide {
+  0% {
+    transform: translateX(-200px);
+  }
+
+  70%,
+  100% {
+    transform: translateX(500px);
+  }
+}
+
+/* .page-wrapper::-webkit-scrollbar {
+  width: 10px;
+  background: #021b79;
+}
+
+.page-wrapper::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255, .2);
+  border-radius: 10px;
+  border-right: 2px solid #021b79;
+} */

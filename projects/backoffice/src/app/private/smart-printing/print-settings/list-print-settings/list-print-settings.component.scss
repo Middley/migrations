@@ -1,0 +1,86 @@
+@import 'variables';
+
+.tsp-view-title {
+  text-align: center;
+  color: $tspSigesWhiteLetters;
+}
+
+.tsp-view-title-container {
+  background-color: $tspSigesBlue;
+  padding: 10px;
+  text-align: center;
+}
+
+.nameView {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.date {
+  align-items: center;
+  margin-left: 0px;
+  margin-top: 5px;
+  margin-left: 0px;
+}
+
+.dateContent {
+  margin-left: 4px;
+  margin-right: 6px;
+  margin-bottom: 7px;
+  border: 2px solid;
+  border-radius: 5px;
+  border-color: $tspSigesBlue;
+}
+
+.title {
+  color: $tspSigesBlue;
+  font-weight: 600;
+  margin-top: 3px;
+}
+
+.tsp-title {
+  color: $tspSigesBlueLetters;
+}
+
+.filters {
+  margin-bottom: 10px;
+}
+
+.generalMatForm {
+  width: 100%;
+}
+
+.btnSearch {
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: 10px;
+}
+
+.btnNewAndFilter {
+  margin-top: auto;
+  display: flex;
+  justify-content: end;
+  margin-left: -10px;
+}
+
+.contentBTNs {
+  display: flex;
+}
+
+.btnNew {
+  margin-right: 8px;
+  margin-left: 8px;
+}
+
+@media (max-width: 425px) {
+  .btnSearch {
+    text-align: center;
+    margin-bottom: 7px;
+    margin-top: 2px;
+  }
+
+  .contentBTNs {
+    display: flex;
+    justify-content: center;
+  }
+}

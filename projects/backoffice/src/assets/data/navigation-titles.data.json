@@ -1,0 +1,87 @@
+[
+  {
+    "text": "Restaurante",
+    "icon": "fastfood",
+    "roles": [],
+    "children": [
+      {
+        "text": "Insumos",
+        "icon": "panorama_fish_eye",
+        "routerLink": "/private/insumos"
+      },
+      {
+        "text": "Estimación - Producción",
+        "icon": "panorama_fish_eye",
+        "routerLink": "/private/insumos/production-estimate"
+      },
+      {
+        "text": "Inventario Insumo",
+        "icon": "panorama_fish_eye",
+        "routerLink": "/private/insumos/inventory-insumo/"
+      }
+    ]
+  },
+  {
+    "text": "Almacen",
+    "icon": "warehouse",
+    "roles": [],
+    "children": [
+      {
+        "text": "Ajuste de inventario",
+        "icon": "inventory",
+        "routerLink": "/private/warehouse/inventory-adjustment/"
+      }
+    ]
+  },
+  {
+    "text": "Impresión Inteligente",
+    "icon": "print",
+    "roles": [],
+    "children": [
+      {
+        "text": "Configuración de impresión",
+        "icon": "settings",
+        "routerLink": "/private/smartPrinting/print-settings/"
+      },
+      {
+        "text": "Asociación Centro de Atención - Categorias",
+        "icon": "settings",
+        "routerLink": "/private/smartPrinting/serviceCenter-and-categories/"
+      }
+    ]
+  },
+  {
+    "text": "Preventa",
+    "icon": "sell",
+    "roles": [],
+    "children": [
+      {
+        "text": "Ver Preventas",
+        "icon": "settings",
+        "routerLink": "/private/preSale/"
+      },
+      {
+        "text": "Reportes",
+        "icon": "settings",
+        "routerLink": "/private/preSale/report-pre-sale"
+      }
+    ]
+  },
+  {
+    "text": "Conceptos",
+    "icon": "inventory",
+    "roles": [],
+    "children": [
+      {
+        "text": "Nueva Familia",
+        "icon": "panorama_fish_eye",
+        "routerLink": "/private/concepts/register-family"
+      },
+      {
+        "text": "Ver Familias",
+        "icon": "panorama_fish_eye",
+        "routerLink": "/private/concepts/list-families"
+      }
+    ]
+  }
+]

@@ -1,0 +1,55 @@
+<div class="row" *ngIf="formActor != null && searchActorForm != null">
+  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+    <div class="section-input-container">
+      <form [formGroup]="formActor" (ngSubmit)="searchActor()"
+        [ngClass]="{'disabledClient': disableClient,'enableClient': !disableClient}">
+        <mat-form-field *ngIf="!showSearchActorBusiness; else searchRegistered" style="width: 100%;">
+          <mat-label class="tsp-font-size-default-content tsp-labels"> {{ labelInputActor }} </mat-label>
+          <input class="tsp-font-size-default-content" type="text" matInput placeholder="{{ placeholderInputActor }}"
+            required formControlName="IdentityDocument" />
+        </mat-form-field>
+      </form>
+
+      <div class="button-actor-container" *ngIf="!disableClient">
+        <ng-container>
+          <button (click)="redirectCreatBusinessActor()" class="button-actions-business-actor">
+            <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="add"></mat-icon>
+          </button>
+          <button (click)="showSearchActorBusinessInput()"
+            *ngIf="!showSearchActorBusiness; else closeSearchActorBusinessInput" [ngClass]="{
+              'button-actions-business-actor': !disableClient,'button-actions-business-actor-disabled': disableClient}"
+            [disabled]="disableClient">
+            <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="person_search"></mat-icon>
+          </button>
+          <ng-template #closeSearchActorBusinessInput>
+            <button (click)="showSearchActorBusinessInput()" class="button-actions-business-actor">
+              <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="close"></mat-icon>
+            </button>
+          </ng-template>
+        </ng-container>
+      </div>
+    </div>
+    <div class="label-legal-name-container">
+      <span *ngIf="itemShow != null" class="tsp-font-size-default-content">{{ itemShow.legalName }}</span>
+    </div>
+    <ng-template #searchRegistered>
+      <mat-form-field style="width: 100%;">
+        <mat-label class="tsp-font-size-default-content tsp-labels"> {{ labelInputBusinessActorRegistered }}
+        </mat-label>
+        <input class="tsp-font-size-default-content tsp-labels" type="text"
+          placeholder="{{ placeholderSearchBusinessActorRegistered }}" matInput [matAutocomplete]="auto"
+          (input)="onInputChange($event)" />
+        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" (optionSelected)="onItemSelected($event)">
+          <mat-option *ngFor="let item of itemsSearched" [value]="item.id"
+            class="tsp-font-size-default-content tsp-labels">
+            {{ item.legalNameString }}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </ng-template>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"></div>
+</div>

@@ -1,0 +1,124 @@
+{
+  "GENERAL": {
+    "COMPANY": "Company",
+    "COMPANY_NAME_PLACEHOLDER": "Company",
+    "USERNAME_PLACEHOLDER": "Account",
+    "CREATE": "Create",
+    "EDIT": "Edit",
+    "EDIT_ICON": "Edit icon",
+    "CHANGE_ICON": "Change icon",
+    "DELETE": "Delete",
+    "REMOVE": "Remove",
+    "SAVE": "Save",
+    "BACK": "Back",
+    "CANCEL": "Cancel",
+    "ACTIONS": "Actions",
+    "REQUIRED": "Required",
+    "SEARCH": "Search",
+    "TITLES": {
+      "SUCCESS": "Success",
+      "INFO": "Info",
+      "WARNING": "Warning",
+      "ERROR": "Error"
+    },
+    "QUIT": {
+      "HEADER": "Quit editing?",
+      "MESSAGE": "Are you sure you want to quit? All unsaved changes will be lost.",
+      "CONFIRM": "Quit"
+    },
+    "FORM": {
+      "DATE": {
+        "PLACEHOLDER": "Select a date"
+      }
+    }
+  },
+  "LOGIN": {
+    "TITLE": "Log in",
+    "EMAIL": "Email",
+    "SUBMIT_BUTTON": "Log in",
+    "PASSWORD": "Password",
+    "REMEMBER_ME": "Remember me",
+    "FORGOT_PASSWORD": "Forgot password?",
+    "EXAMPLE": "example@address.com",
+    "EMAIL_REQUIRED": "Please enter your email.",
+    "EMAIL_WRONG_FORMAT": "An email address must have the format 'example@address.com'.",
+    "EMAIL_TO_LONG": "The email surpasses the character limit. Please enter a shorter email.",
+    "PASSWORD_REQUIRED": "Please enter your password.",
+    "PASSWORD_TO_LONG": "The password surpasses the character limit. Please enter a shorter password.",
+    "TOAST": {
+      "INFO": {
+        "TITLE": "Invalid email/password",
+        "MESSAGE": "Please check the marked fields and try again."
+      },
+      "SUCCESS": {
+        "TITLE": "Welcome",
+        "MESSAGE": "login successful"
+      },
+      "ERROR": {
+        "TITLE": "Incorrect email/password",
+        "MESSAGE": "The email or password are incorrect. Please double-check and try again."
+      },
+      "SESSION_EXPIRED": {
+        "TITLE": "Session expired",
+        "MESSAGE": "Your session has expired. Please login."
+      }
+    },
+    "ERROR": {
+      "TITLE": "Error",
+      "MESSAGE": "Cannot connect to server"
+    },
+    "SESSION_EXPIRED": {
+      "TITLE": "Session expired",
+      "MESSAGE": "Re-Login"
+    },
+    "FOOTER": {
+      "COPYRIGHT": "© 2023 All rights reserved",
+      "DEVELOPMENT": "Designed by",
+      "COMPANY_ACRONYM": "Tech Solutions Perú"
+    }
+  },
+  "HEADER": {
+    "MENU": "Menu",
+    "GENERAL_SETTINGS": "General settings",
+    "SEARCH": "Search",
+    "RECENT": "Recent",
+    "TITLE": "Administrator"
+  },
+  "FOOTER": {
+    "COPYRIGHT": "® 2023 Company. All Rights Reserved.",
+    "GO_TO_PUBLIC": "Go to public site"
+  },
+  "ACCOUNT": {
+    "TITLE": "Account",
+    "PROFILE": "My profile",
+    "SETTINGS": "Settings",
+    "LOG_OUT": "Log out"
+  },
+  "HOME": {
+    "TITLE": "Welcome",
+    "SUBTITLE": "Home"
+  },
+  "RESTAURANTE": {
+    "ITEMS": {
+      "TITLE": "ITEM RESTAURANT",
+      "CODE": "CODE",
+      "ITEM": "ITEM",
+      "SEARCH": "Search"
+    },
+    "INSUMOS": {
+      "TITLE": "INSUMOS",
+      "CODE": "CODE",
+      "INSUMO": "INSUMO",
+      "SEARCH": "Search",
+      "NOTIFICATION": {
+        "TITLEWARNING": "WARNING",
+        "TITLEERROR": "ERROR",
+        "TITLESUCCESS": "SUCCESS",
+        "TITLEINFO": "INFO",
+        "REGITER_SUCCESSFULLY": "Successful registration",
+        "ITEMEXISTS": "The item already exists",
+        "CHOOSEINSUMO": "Choose or drag here your insumo"
+      }
+    }
+  }
+}

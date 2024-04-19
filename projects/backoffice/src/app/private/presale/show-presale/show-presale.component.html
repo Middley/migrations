@@ -1,0 +1,249 @@
+<div *ngIf="presale !=null && settingsShowPresale !=null">
+    <div class="tsp-container">
+        <div class="row tsp-row">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12  title">
+                <div class="col-11 col-sm-11 col-md-11 col-lg-11 col-xl-11 contentTitle d-flex">
+                    <span class="tsp-font-size-modal-titles ">{{'PRESALE.TITLES.TITLE_PRINCIPAL' | translate
+                        }}</span>&nbsp;
+                    <span class="tsp-font-size-modal-titles">{{presale.comprobantPresale}}</span>&nbsp;
+                    <div class="state" [ngClass]="{
+                    'stateConfirmed': presale.stateString == 'Confirmado',
+                    'stateRegistered': presale.stateString == 'Registrado',
+                    'stateFinaliced': presale.stateString == 'Finalizado',
+                    'stateInvalid': presale.stateString == 'Invalidado'
+                  }">
+                        <span class="tsp-font-size-modal-titles">{{presale.stateString}}</span>
+                    </div>
+                </div>
+                <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1">
+                    <button mat-icon-button color="warn" mat-dialog-close>
+                        <mat-icon>close</mat-icon>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Content of ShowPresale -->
+    <div class="row tsp-row mt-2" style="padding-right: 5px;padding-left: 5px;">
+        <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 ">
+            <div class="row">
+                <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                    <span class="tsp-font-size-default-content tsp-labels tsp-title">{{
+                        'PRESALE.TITLES.TITLE_PRINCIPAL' |
+                        translate }}</span>
+                </div>
+                <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 buttonsAlignEnd">
+                    <button mat-raised-button class="button_primary small-button"
+                        (click)="getComprobantRepresentationImpresedPresale()">
+                        <i class="material-icons">search</i>
+                    </button>
+                    &nbsp;
+                    <button mat-raised-button class="button_primary small-button" (click)="confirmPresaleManual()"
+                        *ngIf="presale.stateID ==settingsShowPresale.idStateRegistered">
+                        <i class="material-icons">check</i>
+                    </button>
+                    &nbsp;
+                    <button mat-flat-button class="tsp-font-size-modal-titles button_primary" (click)="finishPresale()"
+                        *ngIf="(presale.stateID != settingsShowPresale.idStateFinished && presale.stateID != settingsShowPresale.idStateInvalited && showFinishOptions)">{{
+                        'PRESALE.DATA.FINALICE' |
+                        translate }}</button>
+                </div>
+            </div>
+
+            <div class="row detailPresale">
+                <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 d-flex">
+                    <span class="tsp-font-size-default-content tsp-labels">{{ 'PRESALE.DATA.CLIENT' |
+                        translate }}:</span>&nbsp;
+                    <span class="tsp-font-size-default-content">{{presale.client}}</span>
+                </div>
+                <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 d-flex">
+                    <span class="tsp-font-size-default-content tsp-labels">{{ 'PRESALE.DATA.TOTAL_PRESALE' |
+                        translate }}:</span>&nbsp;
+                    <span class="tsp-font-size-default-content">s/{{presale.totalAmmount}}</span>
+                </div>
+                <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 d-flex">
+                    <span class="tsp-font-size-default-content tsp-labels">{{ 'PRESALE.DATA.EMITED' |
+                        translate }}:</span>&nbsp;
+                    <span class="tsp-font-size-default-content">{{presale.dateRegistered | date:'d/M/yy, h:mm
+                        a'}}</span>
+                </div>
+                <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 d-flex">
+                    <span class="tsp-font-size-default-content tsp-labels">{{ 'PRESALE.DATA.TOTAL_ANTICIPOS'
+                        | translate }}:</span>&nbsp;
+                    <span class="tsp-font-size-default-content">s/{{presale.totalAnticipos}}</span>
+                </div>
+                <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 d-flex">
+                    <span class="tsp-font-size-default-content tsp-labels">{{ 'PRESALE.DATA.COMPROBANT' |
+                        translate }}:</span>&nbsp;
+                    <span class="tsp-font-size-default-content">{{presale.comprobant}}</span>
+                </div>
+                <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 d-flex">
+                    <span class="tsp-font-size-default-content tsp-labels">{{ 'PRESALE.DATA.OUTSTANDING' |
+                        translate }}:</span>&nbsp;
+                    <span class="tsp-font-size-default-content">s/ {{presale.outstanding}}</span>
+                </div>
+            </div>
+
+
+            <div class="titleHistory row mb-1">
+                <div class="col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8">
+                    <span class="tsp-font-size-default-content tsp-labels tsp-title">{{
+                        'PRESALE.DATA.HISTORY_ANTICIPOS'
+                        | translate |uppercase}}</span>
+                </div>
+                <div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 buttonsAlignEnd">
+                    <button
+                        *ngIf="(presale.stateID != settingsShowPresale.idStateFinished && presale.stateID != settingsShowPresale.idStateInvalited && presale.outstanding>0)"
+                        mat-flat-button class="tsp-font-size-modal-titles button_primary"
+                        (click)="getAdvancePaymentByPresaleID()"><mat-icon>add</mat-icon>{{
+                        'GENERAL.BUTTONS.ADD'
+                        | translate }}</button>
+
+                </div>
+            </div>
+            <div class="row">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th class="tsp-font-size-default-content textCenter">
+                                N°
+                            </th>
+                            <th class="tsp-font-size-default-content textCenter">
+                                {{ 'PRESALE.DATA.COLUMN_HISTORY.DATE' | translate }}
+                            </th>
+                            <th class="tsp-font-size-default-content textCenter">
+                                {{ 'PRESALE.DATA.COLUMN_HISTORY.CLIENT' | translate }}
+                            </th>
+                            <th class="tsp-font-size-default-content textCenter">
+                                {{ 'PRESALE.DATA.COLUMN_HISTORY.COMPROBANT' | translate }}
+                            </th>
+                            <th class="tsp-font-size-default-content textCenter">
+                                {{ 'PRESALE.DATA.COLUMN_HISTORY.AMOUNT' | translate }}
+                            </th>
+                            <th class="tsp-font-size-default-content textCenter">
+                                {{ 'PRESALE.DATA.COLUMN_HISTORY.VALITY' | translate }}
+                            </th>
+                            <th class="tsp-font-size-default-content textCenter">
+                                {{ 'PRESALE.DATA.COLUMN_HISTORY.REFERENCE' | translate }}
+                            </th>
+                            <th class="tsp-font-size-default-content textCenter">
+                                {{ 'PRESALE.DATA.COLUMN_HISTORY.OPTION' | translate }}
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <ng-container *ngFor="let item of presale.anticipos; let i = index">
+                            <tr class="rowData">
+                                <td class="tsp-font-size-default-content tdData">{{ i + 1 }}</td>
+                                <td class="tsp-font-size-default-content tdData">
+                                    {{ item.dateRegistered | date:'d/M/yy, h:mma' }}
+                                </td>
+                                <td class="tsp-font-size-default-content tdData">
+                                    {{ item.client }}
+                                </td>
+                                <td class="tsp-font-size-default-content tdData">
+                                    {{ item.comprobant }}
+                                </td>
+                                <td class="tsp-font-size-default-content tdData">
+                                    {{ item.totalAmmount }}
+                                </td>
+                                <td class="tsp-font-size-default-content tdData">
+                                    {{ item.isValid?'si':'no' }}
+                                </td>
+                                <td class="tsp-font-size-default-content tdData">
+                                    {{ item.reference }}
+                                </td>
+                                <td class="tsp-font-size-default-content">
+                                    <button mat-raised-button class="button_primary small-button"
+                                        (click)="getComprobantImpresedAdvancePayment(item.id)">
+                                        <i class="material-icons">search</i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </ng-container>
+                    </tbody>
+                </table>
+            </div>
+            <div class="titleHistory row">
+                <span
+                    class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 tsp-font-size-default-content tsp-labels tsp-title">{{
+                    'PRESALE.DATA.SALE' |
+                    translate |uppercase }}</span>
+            </div>
+            <div class=" contentHistoryAnticipos row">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th class="tsp-font-size-default-content textCenter">
+                                N°
+                            </th>
+                            <th class="tsp-font-size-default-content textCenter">
+                                {{ 'PRESALE.DATA.COLUMN_HISTORY.DATE' | translate }}
+                            </th>
+                            <th class="tsp-font-size-default-content textCenter">
+                                {{ 'PRESALE.DATA.COLUMN_HISTORY.CLIENT' | translate }}
+                            </th>
+                            <th class="tsp-font-size-default-content textCenter">
+                                {{ 'PRESALE.DATA.COLUMN_HISTORY.COMPROBANT' | translate }}
+                            </th>
+                            <th class="tsp-font-size-default-content textCenter">
+                                {{ 'PRESALE.DATA.COLUMN_HISTORY.AMOUNT' | translate }}
+                            </th>
+                            <th class="tsp-font-size-default-content textCenter">
+                                {{ 'PRESALE.DATA.COLUMN_HISTORY.VALITY' | translate }}
+                            </th>
+                            <th class="tsp-font-size-default-content textCenter">
+                                {{ 'PRESALE.DATA.COLUMN_HISTORY.REFERENCE' | translate }}
+                            </th>
+                            <th class="tsp-font-size-default-content textCenter">
+                                {{ 'PRESALE.DATA.COLUMN_HISTORY.OPTION' | translate }}
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody *ngIf="presale.sale">
+                        <ng-container *ngFor="let item of presale.sale; let i = index">
+                            <tr class="rowData">
+                                <td class="tsp-font-size-default-content tdData">{{ i + 1 }}</td>
+                                <td class="tsp-font-size-default-content tdData">
+                                    {{ item.dateRegistered| date:'d/M/yy, h:mma' }}
+                                </td>
+                                <td class="tsp-font-size-default-content tdData">
+                                    {{ item.client }}
+                                </td>
+                                <td class="tsp-font-size-default-content tdData">
+                                    {{ item.comprobant }}
+                                </td>
+                                <td class="tsp-font-size-default-content tdData">
+                                    {{ item.totalAmmount }}
+                                </td>
+                                <td class="tsp-font-size-default-content tdData">
+                                    {{ item.isValid?'si':'no' }}
+                                </td>
+                                <td class="tsp-font-size-default-content tdData">
+                                    {{ item.reference }}
+                                </td>
+                                <td class="tsp-font-size-default-content">
+                                    <button mat-raised-button class="button_primary small-button"
+                                        (click)="getComprobantRepresentationImpresedSaleByPresale(item.id)">
+                                        <i class="material-icons">search</i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </ng-container>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+        <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6" style="overflow-x: auto;">
+            <cad-comprobant-viewer (changeFormatPrintEvent)="changeFormatPrintEvent($event)"
+                [representationPrintComprobant]="representationImpresedDocumentViewer" [fromatPrints]="formatPrints"
+                [selectedFormatPrint]="selectedFormatPrint" [printFormatA4Id]="settingsShowPresale.idPrintFormatA4"
+                [printFormat80mmId]="settingsShowPresale.idPrintFormat80mm"
+                [showInvalidationOptions]="showInvalidationOptions"
+                [transactionIdRepresentationImpresedDocument]="transactionIdRepresentationImpresedDocument"
+                (invalidateEvent)="showInvalitedDialog($event)"></cad-comprobant-viewer>
+        </div>
+    </div>
+</div>

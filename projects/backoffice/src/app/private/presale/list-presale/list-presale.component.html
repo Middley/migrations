@@ -1,0 +1,100 @@
+<cad-header-title [Title]="'PRESALE.TITLES.TITLE_PRINCIPAL' | translate"></cad-header-title>
+
+<div class="tsp-generic-margin-default row " [formGroup]="form" *ngIf="form">
+  <!-- columnas de fecha -->
+  <div class="col-12 col-sm-12 col-md-4 col-lg-5 col-xl-5 tsp-generic-items-default">
+    <div class="tsp-generic-border-items tsp-generic-marginItems tsp-generic-marginButton row">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 ">
+        <span class="tsp-generic-titleItems tsp-font-size-default-title">{{ 'PRESALE.FILTERS.DATE.TITLE' | translate
+          }}</span>
+      </div>
+      <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 fromDate">
+        <mat-form-field class="tsp-container" appearance="fill">
+          <mat-label class="tsp-font-size-default-content">{{ 'PRESALE.FILTERS.DATE.FROM_START' |
+            translate}}</mat-label>
+          <input id="input-fromDate-listPresale" matInput [matDatepicker]="picker1" formControlName="fromDate"
+            (dateChange)="clearEndDate()">
+          <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+          <mat-datepicker #picker1></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 toDate">
+        <mat-form-field class="tsp-container" appearance="fill">
+          <mat-label class="tsp-font-size-default-content">{{ 'PRESALE.FILTERS.DATE.TO_DATE' | translate}}</mat-label>
+          <input id="input-toDate-listPresale" matInput [matDatepicker]="picker" formControlName="toDate"
+            [matDatepickerFilter]="filterEndDate">
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+  <!-- columnas de estado -->
+  <div class="col-12 col-sm-12 col-md-5 col-lg-4 col-xl-4 tsp-generic-items-default tsp-generic-marginButton"
+    *ngIf="listStates">
+    <cad-chips-input id="input-state-listPresale" [items]="listStates"
+      [InputLabel]="'PRESALE.SELECT.FOR_STATE' | translate" [InputCheckLabel]="'GENERAL.FILTERS.ALL' | translate"
+      (selectedItems)="selectedStates($event)"></cad-chips-input>
+  </div>
+
+  <!-- columnas de cliente -->
+
+  <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 tsp-generic-items-default">
+    <div class="tsp-generic-border-items tsp-generic-marginItems tsp-generic-marginButton row">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 titleClient">
+        <span class="tsp-generic-titleItems tsp-font-size-default-title">{{ 'PRESALE.DATA.CLIENTS' | translate
+          }}</span>
+      </div>
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 ">
+        <cad-asynchronous-selector id="input-client-listPresale" [label]="labelFilterClient"
+          [parameters]="parameterSelectorClients" [list]="listClients" (searchItem)="searchClients($event)"
+          (selectItem)="selectedClient($event)"></cad-asynchronous-selector>
+        <span *ngIf="client" class="tsp-font-size-default-title">{{client.name}}</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- columna de boton nuevo -->
+
+<div class="row">
+  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 tsp-generic-component-container-end">
+    <div class="tsp-generic-spaceButton">
+      <!-- <button mat-mini-fab class="filtrar" aria-label="Example icon button with a menu icon" (click)="cleanFilter()">
+        <mat-icon>filter_alt_off</mat-icon>
+      </button> -->
+      <button id="button-filter-listPresale" mat-raised-button class="button_primary small-button"
+        (click)="cleanFilter()">
+        <i class="material-icons">filter_alt_off</i>
+      </button>
+    </div>
+    <div class="tsp-generic-spaceButton">
+      <button id="button-search-listPresale" mat-raised-button
+        class="tsp-buttons-actions tsp-font-size-buttons button-success" (click)="searchPresales()">
+        {{ 'GENERAL.BUTTONS.SEARCH' | translate }}
+      </button>
+    </div>
+    <div class="tsp-generic-spaceButton">
+      <button id="button-new-listPresale" mat-raised-button
+        class="tsp-buttons-actions tsp-font-size-buttons button-success" (click)="openRegister()">
+        <mat-icon>add</mat-icon>{{ 'GENERAL.BUTTONS.NEW' | translate }}
+      </button>
+    </div>
+    <!-- Boton abrir modal -->
+    <!-- <div class="tsp-generic-spaceButton">
+      <button (click)="openConfirmModal()" class="tsp-buttons-actions tsp-font-size-buttons button-success"
+        mat-raised-button data-bs-toggle="modal" data-bs-target="#modalComponent">
+        <mat-icon>add</mat-icon>{{ 'GENERAL.BUTTONS.MODAL' | translate }}
+      </button>
+    </div> -->
+  </div>
+</div>
+
+<!-- columnas de la tabla -->
+<div class="tsp-generic-size-table row">
+  <div id="table-listPresale" class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 tablaInterna row">
+    <cad-table-filter class="table" [columns]="columns" [actions]="actions" [items]="data"
+      (searchEvent)="openShow($event)" (advancePaymentEvent)="getAdvancePaymentByPresaleID($event)"
+      (editEvent)="openEdit($event)"></cad-table-filter>
+  </div>
+</div>

@@ -1,0 +1,132 @@
+<cad-header-title [Title]="'PRESALE.TITLES.TITLE_PRINCIPAL' | translate"></cad-header-title>
+<section class="options">
+    <mat-radio-group [(ngModel)]="optionSelected">
+        <mat-radio-button class="example-margin" [value]="1" checked
+            (change)="changeOption(1)">Preventa</mat-radio-button>
+        <mat-radio-button class="example-margin" [value]="2" (change)="changeOption(2)">ANTICIPOS</mat-radio-button>
+    </mat-radio-group>
+</section>
+<div class="tsp-generic-margin-default row filters">
+    <!-- columnas de fecha -->
+    <div class="col-12 col-sm-12 col-md-5 col-lg-5 col-xl-5 tsp-generic-items-default" [formGroup]="form" *ngIf="form">
+        <div class="tsp-generic-border-items tsp-generic-marginItems tsp-generic-marginButton row">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 ">
+                <span class="tsp-generic-titleItems tsp-font-size-default-title">{{ 'PRESALE.FILTERS.DATE.TITLE' |
+                    translate
+                    }}</span>
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 fromDate">
+                <mat-form-field class="tsp-container" appearance="fill">
+                    <mat-label class="tsp-font-size-default-content">{{ 'PRESALE.FILTERS.DATE.FROM_START' |
+                        translate}}</mat-label>
+                    <input id="input-fromDate-listPresale" matInput [matDatepicker]="picker1" formControlName="fromDate"
+                        (dateChange)="clearEndDate()">
+                    <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+                    <mat-datepicker #picker1></mat-datepicker>
+                </mat-form-field>
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 toDate">
+                <mat-form-field class="tsp-container" appearance="fill">
+                    <mat-label class="tsp-font-size-default-content">{{ 'PRESALE.FILTERS.DATE.TO_DATE' |
+                        translate}}</mat-label>
+                    <input id="input-toDate-listPresale" matInput [matDatepicker]="picker" formControlName="toDate"
+                        [matDatepickerFilter]="filterEndDate">
+                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+            </div>
+        </div>
+    </div>
+    <!-- Comprobant Type -->
+    <div class="col-12 col-sm-12 col-md-5 col-lg-3 col-xl-3 tsp-generic-items-default tsp-generic-marginButton"
+        *ngIf="listComprobant && optionSelected!=optionPresale">
+        <cad-chips-input id="input-state-listPresale" [items]="listComprobant" [InputLabel]="'TIPO COMPROBANTE' "
+            [InputCheckLabel]="'GENERAL.FILTERS.ALL' | translate"
+            (selectedItems)="selectedComprobant($event)"></cad-chips-input>
+    </div>
+
+    <!-- Point of Sale -->
+    <div class="col-12 col-sm-12 col-md-5 col-lg-2 col-xl-2 tsp-generic-items-default" *ngIf="listPointOfSale">
+        <cad-chips-input id="input-state-listPresale" [items]="listPointOfSale" [InputLabel]="'P. VENTA' | translate"
+            [InputCheckLabel]="'GENERAL.FILTERS.ALL' | translate"
+            (selectedItems)="selectedPointOfSale($event)"></cad-chips-input>
+    </div>
+
+    <!-- state -->
+    <div class="col-12 col-sm-12 col-md-5 col-lg-2 col-xl-2 tsp-generic-items-default" *ngIf="listStates">
+        <cad-chips-input id="input-state-listPresale" [items]="listStates" [InputLabel]="'ESTADO' | translate"
+            [InputCheckLabel]="'GENERAL.FILTERS.ALL' | translate"
+            (selectedItems)="selectedStates($event)"></cad-chips-input>
+    </div>
+</div>
+
+<!-- Advance Payment -->
+<section class="mt-1" *ngIf="optionSelected==optionAdvancePayment">
+    <mat-card class="border-top-card">
+        <mat-card-header>
+            <mat-card-title class="tsp-generic-titleItems tsp-font-size-default-title">ANTICIPOS</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <button class="tsp-generic-titleItems tsp-font-size-default-title tsp-button-success" mat-flat-button
+                (click)="openReportByAdvancePayment()">VER</button>
+        </mat-card-content>
+    </mat-card>
+</section>
+
+<section class="mt-2" *ngIf="optionSelected==optionPresale && listBasicConcept">
+    <mat-card class="border-top-card">
+        <mat-card-header>
+            <mat-card-title class="tsp-generic-titleItems tsp-font-size-default-title">PREVENTA POR
+                FAMILIA</mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="d-flex">
+            <span>
+                <cad-chips-input id="input-state-listPresale" [items]="listBasicConcept" [InputLabel]="'FAMILIA'"
+                    [InputCheckLabel]="'GENERAL.FILTERS.ALL' | translate"
+                    (selectedItems)="selectedBasicConcept($event)"></cad-chips-input>
+            </span>
+            <span class="sectionFamily">
+                <button class="tsp-generic-titleItems tsp-font-size-default-title tsp-button-success" mat-flat-button
+                    (click)="openReportByBasicConcept()">VER</button>
+            </span>
+        </mat-card-content>
+    </mat-card>
+</section>
+
+<section class="mt-2" *ngIf="optionSelected==optionPresale">
+    <mat-card class="border-top-card">
+        <mat-card-header>
+            <mat-card-title class="tsp-generic-titleItems tsp-font-size-default-title">PREVENTA POR
+                CONCEPTO</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <button class="tsp-generic-titleItems tsp-font-size-default-title tsp-button-success" mat-flat-button
+                (click)="openReportByConcept()">Ver</button>
+        </mat-card-content>
+    </mat-card>
+</section>
+
+<section class="mt-2" *ngIf="optionSelected==optionPresale">
+    <mat-card class="border-top-card">
+        <mat-card-header>
+            <mat-card-title class="tsp-generic-titleItems tsp-font-size-default-title">VENTAS POR
+                PREVENTAS</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <button class="tsp-generic-titleItems tsp-font-size-default-title tsp-button-success" mat-flat-button
+                (click)="openReportSaleByPresale()">Ver</button>
+        </mat-card-content>
+    </mat-card>
+</section>
+
+<section class="mt-2" *ngIf="optionSelected==optionAdvancePayment">
+    <mat-card class="border-top-card">
+        <mat-card-header>
+            <mat-card-title class="tsp-generic-titleItems tsp-font-size-default-title">MEDIOS DE PAGO</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <button class="tsp-generic-titleItems tsp-font-size-default-title tsp-button-success" mat-flat-button
+                (click)="openReportByPaymentMethods()">Ver</button>
+        </mat-card-content>
+    </mat-card>
+</section>

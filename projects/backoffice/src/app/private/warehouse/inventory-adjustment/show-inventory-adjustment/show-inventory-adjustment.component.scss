@@ -1,0 +1,167 @@
+@import 'variables';
+
+.tsp-view-title {
+  text-align: center;
+  color: $tspSigesWhiteLetters;
+}
+
+.mat-dialog-content {
+  margin: 0;
+  word-wrap: break-word;
+}
+
+.tsp-labels {
+  font-weight: 600;
+}
+
+::ng-deep .mat-mdc-dialog-container {
+  padding: 0px;
+  max-width: 936px;
+}
+
+.tsp-title {
+  color: $tspSigesBlueLetters;
+}
+
+.titleModal {
+  background-color: $tspSigesBlue;
+  color: $tspSigesWhite;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  margin-bottom: -10px;
+
+  .titleNameModal {
+    display: flex;
+    justify-content: left;
+  }
+}
+
+.stateSuccess {
+  border: 1px solid;
+  background: $tspSigesSuccess;
+  border-color: $tspSigesSuccess;
+}
+
+.stateWarning {
+  border: 1px solid;
+  background: $colorWarning;
+  border-color: $colorWarning;
+}
+
+.stateDanger {
+  border: 1px solid;
+  background: $tspSigesError;
+  border-color: $tspSigesError;
+}
+
+.leftSectionTitleModal {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.optionModal {
+  display: flex;
+  justify-content: end;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-right: -15px;
+}
+
+.contentAtribute {
+  margin-bottom: 11px;
+
+  // padding-left: 20px;
+  .title {
+    font-weight: bold;
+    color: $tspSigesBlack;
+  }
+}
+
+// ::ng-deep .mdc-dialog .mdc-dialog__content {
+//   padding-top: 5px;
+// }
+
+.CloseModal {
+  display: flex;
+  justify-content: end;
+  margin-top: 14px;
+}
+
+.stateAdjustment {
+  margin-left: 16px;
+  display: flex;
+  align-items: center;
+}
+
+.mat-raised-button {
+  padding: 0 2px 0px 2px;
+  min-width: 0;
+  width: 40px;
+  margin-left: 10px;
+  margin-top: 6px;
+  margin-bottom: 6px;
+}
+
+@media (max-width: 884px) and (min-width: 0px) {
+  .title {
+    text-align: center;
+  }
+
+  .optionsModal {
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+
+  .mat-dialog-content {
+    max-height: 360px;
+  }
+}
+
+@media (max-width: 664px) {
+  .optionModal {
+    display: none;
+  }
+
+  .mat-dialog-content {
+    max-height: 360px;
+  }
+}
+
+.seccion-container {
+  margin: 5px;
+}
+
+.button-close {
+  background-color: $tspSigesError;
+  color: $tspSigesWhite;
+}
+
+.buttons-container {
+  display: flex;
+  justify-content: end;
+}
+
+.marging-buttons {
+  margin-left: 5px;
+}
+
+.colorDanger {
+  color: $tspSigesStateLapsed;
+}
+
+.colorSuccess {
+  color: $tspSigesStateActive;
+}
+
+.btnConfirm {
+  margin-right: 10px;
+}
+
+.centerIcon {
+  margin-left: 5px;
+}
+
+.tsp-button-success {
+  background-color: $tspSigesSuccessLow;
+  color: $tspSigesWhite;
+}

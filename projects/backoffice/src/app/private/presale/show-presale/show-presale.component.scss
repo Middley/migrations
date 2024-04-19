@@ -1,0 +1,141 @@
+@import 'variables';
+@import 'global-styles';
+
+.mat-dialog-content {
+  margin: 0;
+  word-wrap: break-word;
+}
+
+.stateFinaliced {
+  @extend .borderdState;
+  border: 1px solid;
+  background: $tspSigesSuccess;
+  border-color: $tspSigesSuccess;
+}
+
+.stateConfirmed {
+  @extend .borderdState;
+  border: 1px solid;
+  background: $colorWarning;
+  border-color: $colorWarning;
+}
+
+.borderdState {
+  border-radius: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-left: 10px;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+.stateRegistered {
+  @extend .borderdState;
+  border: 1px solid;
+  background: $tspSigesBlue;
+  border-color: $tspSigesBlue;
+  box-shadow: 1px 2px 9px;
+}
+
+.stateInvalid {
+  @extend .borderdState;
+  border: 1px solid;
+  background: $tspSigesError;
+  border-color: $tspSigesError;
+}
+
+.title {
+  margin-top: auto;
+  margin-bottom: auto;
+  background-color: $tspSigesBlue;
+  margin-left: 0px;
+  display: flex;
+  flex-wrap: wrap;
+  .contentTitle {
+    text-align: center;
+    // justify-content: center;
+    align-items: center;
+  }
+}
+
+.optionModal {
+  display: flex;
+  justify-content: end;
+}
+
+.tsp-font-size-modal-titles {
+  color: $tspSigesWhite;
+}
+
+// .subTitle {
+//   align-items: center;
+// }
+
+.tdData {
+  text-align: center;
+  padding-top: 16px;
+  margin-top: -1px;
+}
+
+.titleHistory {
+  align-items: center;
+}
+
+.tsp-title {
+  color: $tspSigesBlueLetters;
+}
+
+.actionsPrintPdfMail {
+  padding: 0;
+}
+
+.button_primary {
+  // spacing between lines
+  line-height: 14px;
+
+  background-color: $tspSigesBlueLetters;
+  color: $tspSigesWhite;
+}
+
+.button_warning {
+  // spacing between lines
+  line-height: 1.3px;
+
+  background-color: $tspSigesWarning;
+  color: $tspSigesWhite;
+}
+
+// ::ng-deep .mdc-dialog .mdc-dialog__content {
+//   padding: 10px 0 20px 0;
+// }
+
+.selectedformat {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+
+.inputAngularMaterial {
+  width: 100%;
+  margin-bottom: -20px;
+}
+
+.preview_comprobant {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.buttonsAlignEnd {
+  display: flex;
+  justify-content: end;
+}
+
+.mat-mdc-button.mat-mdc-button-base,
+.mat-mdc-raised-button.mat-mdc-button-base,
+.mat-mdc-unelevated-button.mat-mdc-button-base,
+.mat-mdc-outlined-button.mat-mdc-button-base {
+  height: 30px;
+}

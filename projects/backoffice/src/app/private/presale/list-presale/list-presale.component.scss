@@ -1,0 +1,15 @@
+@import 'variables';
+@import 'global-styles';
+
+.button-success {
+  background-color: $tspSigesBlue !important;
+  color: $tspSigesWhite !important;
+}
+.button_primary {
+  // spacing between lines
+  line-height: 1.3;
+  background-color: $tspSigesBlueLetters !important;
+  color: $tspSigesWhite !important;
+}
+
+

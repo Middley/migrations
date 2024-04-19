@@ -1,0 +1,37 @@
+@import 'variables';
+
+.button-actor-container {
+  margin-left: 15px;
+}
+
+.button-actions-business-actor {
+  background-color: $tspSigesBlue;
+  color: $tspSigesWhite;
+  margin-right: 5px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+.button-actions-business-actor-disabled {
+  background-color: $tspSigesGray;
+  color: $tspSigesWhite;
+  margin-right: 5px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+.label-legal-name-container {
+  margin-top: -18px;
+}
+.section-input-container {
+  display: flex;
+  align-items: center;
+}
+
+.disabledClient {
+  width: 100%;
+}
+.enableClient {
+  width: 60%;
+}

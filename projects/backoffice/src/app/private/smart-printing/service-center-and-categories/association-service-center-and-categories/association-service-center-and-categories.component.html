@@ -1,0 +1,150 @@
+<cad-header-title [Title]="'SMART_PRINT.SERVICE_CENTER_AND_CATEGORIES.DATA.TITLE' | translate"></cad-header-title>
+<div class="row" [formGroup]="form">
+  <div class="col-sm-6 col-6 col-md-6 col-lg-6 col-xl-6">
+    <mat-form-field appearance="fill" class="general-input">
+      <mat-label class="tsp-font-size-default-content">{{
+        'SMART_PRINT.PRINT_SETTINGS.DATA.ESTABLISHMENT' | translate
+      }}</mat-label>
+      <mat-select
+        (ngModelChange)="selectedEstablishment($event)"
+        formControlName="establishment"
+        class="tsp-font-size-default-content"
+      >
+        <mat-option *ngFor="let establishment of establishments" [value]="establishment.id" class="tsp-font-size-default-content">
+          {{ establishment.name }}
+        </mat-option>
+      </mat-select>
+      <mat-error
+        class="tsp-font-size-errors-messages"
+        *ngIf="form.controls.establishment.errors?.required && form.controls.establishment.touched"
+      >
+        {{ 'GENERAL.ERRORS.REQUIRED' | translate }}</mat-error
+      >
+    </mat-form-field>
+  </div>
+</div>
+<div class="row mb-2">
+  <div class="col-5 tsp-category-title">
+    <span>{{ 'SMART_PRINT.SERVICE_CENTER_AND_CATEGORIES.DATA.CATEGORIES' | translate }}</span>
+  </div>
+  <div class="col-6 tsp-service-center-title">
+    <span>{{ 'SMART_PRINT.SERVICE_CENTER_AND_CATEGORIES.DATA.SERVICE_CENTER' | translate }}</span>
+  </div>
+</div>
+<div class="row">
+  <div class="col-5 tsp-nodes-container">
+    <mat-tree
+      class="tsp-node-container"
+      [dataSource]="dataSource"
+      [treeControl]="treeControl"
+      cdkDropList
+      (cdkDropListDropped)="drop($event, 0)"
+      #categoriesDrop1="cdkDropList"
+      [cdkDropListData]="dataSource"
+      [cdkDropListConnectedTo]="LIST_IDS"
+    >
+      <mat-tree-node
+        class="tsp-node"
+        *matTreeNodeDef="let node"
+        matTreeNodeToggle
+        matTreeNodePadding
+        cdkDrag
+        [cdkDragData]="node"
+        (mouseenter)="dragHover(node)"
+        (mouseleave)="dragHoverEnd()"
+        (cdkDragStarted)="dragStart()"
+        (cdkDragReleased)="dragEnd()"
+        [ngStyle]="{ 'margin-left': 'calc(' + node.level + ' * 20px)' }"
+      >
+        <button mat-icon-button disabled *ngIf="treeControl.isExpanded(node)"></button>
+        <span>{{ node.filename }}</span>
+      </mat-tree-node>
+
+      <mat-tree-node
+        class="tsp-node"
+        *matTreeNodeDef="let node; when: hasChild"
+        matTreeNodePadding
+        cdkDrag
+        [cdkDragData]="node"
+        (mouseenter)="dragHover(node)"
+        (mouseleave)="dragHoverEnd()"
+        (cdkDragStarted)="dragStart()"
+        (cdkDragReleased)="dragEnd()"
+        [ngStyle]="{ 'margin-left': 'calc(' + node.level + ' * 20px)' }"
+      >
+        <button
+          mat-icon-button
+          matTreeNodeToggle
+          (click)="expansionModel.toggle(node.id)"
+          [attr.aria-label]="'toggle ' + node.filename"
+        >
+          <mat-icon class="mat-icon-rtl-mirror">
+            {{ treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right' }}
+          </mat-icon>
+        </button>
+        {{ node.filename }}
+      </mat-tree-node>
+    </mat-tree>
+  </div>
+  <div class="col-6">
+    <div class="service-centers-container" *ngFor="let serviceCenter of serviceCenters; index as i" class="example-container">
+      <div>{{ serviceCenter.name }}</div>
+      <mat-tree
+        id="{{ serviceCenter.id }}"
+        [dataSource]="serviceCenter.dataSource"
+        [treeControl]="treeControl"
+        cdkDropList
+        (cdkDropListDropped)="drop($event, serviceCenter.id)"
+        [cdkDropListData]="serviceCenter.dataSource"
+        [cdkDropListConnectedTo]="[categoriesDrop1]"
+        class="service-center-container"
+      >
+        <mat-tree-node
+          class="tsp-node"
+          *matTreeNodeDef="let node"
+          matTreeNodeToggle
+          matTreeNodePadding
+          cdkDrag
+          [cdkDragData]="node"
+          (mouseenter)="dragHover(node)"
+          (mouseleave)="dragHoverEnd()"
+          (cdkDragStarted)="dragStart()"
+          (cdkDragReleased)="dragEnd()"
+          [ngStyle]="{ 'margin-left': 'calc(' + node.level + ' * 20px)' }"
+        >
+          <button mat-icon-button disabled *ngIf="treeControl.isExpanded(node)"></button>
+          <span>{{ node.filename }}</span>
+
+          <div class="tsp-delete-categorie-button" (click)="deleteCategorie(node.id, serviceCenter.id)">
+            <mat-icon>delete</mat-icon>
+          </div>
+        </mat-tree-node>
+
+        <mat-tree-node
+          class="tsp-node"
+          *matTreeNodeDef="let node; when: hasChild"
+          matTreeNodePadding
+          cdkDrag
+          [cdkDragData]="node"
+          (mouseenter)="dragHover(node)"
+          (mouseleave)="dragHoverEnd()"
+          (cdkDragStarted)="dragStart()"
+          (cdkDragReleased)="dragEnd()"
+          [ngStyle]="{ 'margin-left': 'calc(' + node.level + ' * 20px)' }"
+        >
+          <button
+            mat-icon-button
+            matTreeNodeToggle
+            (click)="expansionModel.toggle(node.id)"
+            [attr.aria-label]="'toggle ' + node.filename"
+          >
+            <mat-icon class="mat-icon-rtl-mirror">
+              {{ treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right' }}
+            </mat-icon>
+          </button>
+          {{ node.filename }}
+        </mat-tree-node>
+      </mat-tree>
+    </div>
+  </div>
+</div>

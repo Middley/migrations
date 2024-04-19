@@ -1,0 +1,42 @@
+<div class="row" [formGroup]="form" *ngIf="parameters">
+  <!-- BUSQUEDA POR CÓDIGO -->
+  <div class="col-sm-6 col-6 col-md-6 col-lg-6 col-xl-6">
+    <mat-form-field appearance="outline" appearance="fill" class="generalMatForm">
+      <mat-label class="tsp-font-size-default-content tsp-labels">BUSCAR POR CÓDIGO</mat-label>
+      <input matInput type="text" autocomplete="off" formControlName="code" placeholder="Buscar...."
+        (keyup.enter)="searchConceptByCod()" class="tsp-font-size-default-content tsp-labels" />
+    </mat-form-field>
+  </div>
+  <!-- BUSQUEDA POR CONCEPTO CARGA ASINCRONA DE LOS DATOS -->
+  <div class="col-sm-6 col-6 col-md-6 col-lg-6 col-xl-6"
+    *ngIf="parameters.businessConceptSelectionMode == businessConceptSelectionModeAsync">
+    <cad-asynchronous-selector [parameters]="parameters" [list]="listConcept" [disableSelector]="disableSelector"
+      [label]="labelSearchConcept" (searchItem)="searchConceptByName($event)"
+      (selectItem)="selectedConcept($event)"></cad-asynchronous-selector>
+  </div>
+  <!-- BUSQUEDA POR CONCEPTO CARGA ANSIOSA DE LOS DATOS-->
+  <div class="col-sm-6 col-6 col-md-6 col-lg-6 col-xl-6"
+    *ngIf="parameters.businessConceptSelectionMode == businessConceptSelectionModeEager">
+    <mat-form-field appearance="fill" class="generalMatForm">
+      <mat-label class="tsp-font-size-default-content tsp-labels">CONCEPTOS</mat-label>
+      <input matInput type="text" placeholder="Buscar..." [matAutocomplete]="autoItem2" formControlName="concept"
+        (ngModelChange)="searchMatches()" class="tsp-font-size-default-content tsp-labels inputSearchConcept" />
+      <mat-autocomplete autoActiveFirstOption #autoItem2="matAutocomplete" (optionSelected)="returnIdConcept()"
+        [displayWith]="displayFn">
+        <!-- <mat-option>None</mat-option> -->
+        <mat-option *ngFor="let concept of listConceptFiltered" [value]="concept.id"
+          class="tsp-font-size-default-content">{{
+          (concept.barcode ?? '') + ' | ' + concept.name + ' | STOCK' + concept.stock + ' | PUB:' + concept.salePrice
+          }}</mat-option>
+      </mat-autocomplete>
+      <div class="buttonsRefreshAndAdd">
+        <button mat-icon-button color="primary" (click)="OpenCreateConceptWindow()">
+          <mat-icon>add</mat-icon>
+        </button>
+        <button mat-icon-button color="primary" (click)="refresh()">
+          <mat-icon>refresh</mat-icon>
+        </button>
+      </div>
+    </mat-form-field>
+  </div>
+</div>

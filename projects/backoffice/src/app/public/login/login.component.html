@@ -1,0 +1,68 @@
+<div class="fondo-login">
+  <section class="login-content">
+    <mat-card class="login-box">
+      <div class="login-head">
+        <img src="../../../assets/images/logos/logo-login.png" alt="" class="center-block" style="max-width: 60%" />
+      </div>
+      <div class="header">
+        <h2>{{ 'LOGIN.TITLE' | translate | uppercase }}</h2>
+      </div>
+
+      <mat-card-content class="login-content-form">
+        <form [formGroup]="authForm" (ngSubmit)="login()" class="form-login-card">
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>{{ 'LOGIN.EMAIL' | translate }}</mat-label>
+            <input
+              (blur)="onBlur('email')"
+              formControlName="email"
+              placeholder="{{ 'LOGIN.EXAMPLE' | translate }}"
+              matInput
+              autocomplete="off"
+            />
+            <mat-icon matSuffix>mail</mat-icon>
+          </mat-form-field>
+          <mat-error *ngIf="emailCtrl?.invalid && (emailCtrl?.dirty || emailCtrl?.touched)">
+            <em *ngIf="emailCtrl?.hasError('required')">{{ 'LOGIN.EMAIL_REQUIRED' | translate }}</em>
+            <em *ngIf="emailCtrl?.hasError('email')">{{ 'LOGIN.EMAIL_WRONG_FORMAT' | translate }}</em>
+            <em *ngIf="emailCtrl?.hasError('maxlength')">{{ 'LOGIN.EMAIL_TO_LONG' | translate }}</em>
+          </mat-error>
+
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>{{ 'LOGIN.PASSWORD' | translate }}</mat-label>
+            <input
+              [type]="ocultarPassword ? 'password' : 'text'"
+              (blur)="onBlur('password')"
+              formControlName="password"
+              placeholder="{{ 'LOGIN.PASSWORD' | translate }}"
+              matInput
+              autocomplete="off"
+            />
+
+            <button
+              mat-icon-button
+              matSuffix
+              (click)="ocultarPassword = !ocultarPassword"
+              matTooltip="{{ ocultarPassword ? 'Mostrar Password' : 'Ocultar Password' }}"
+              type="button"
+            >
+              <mat-icon matSuffix>{{ ocultarPassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+            </button>
+          </mat-form-field>
+          <mat-error *ngIf="passCtrl?.invalid && (passCtrl?.dirty || passCtrl?.touched)">
+            <em *ngIf="passCtrl?.hasError('required')">{{ 'LOGIN.PASSWORD_REQUIRED' | translate }}</em>
+            <em *ngIf="passCtrl?.hasError('maxlength')">{{ 'LOGIN.PASSWORD_TO_LONG' | translate }}</em>
+          </mat-error>
+
+          <button class="full-width buton-save" mat-raised-button color="primary" type="submit" [disabled]="authForm.invalid">
+            Ingresar
+            <mat-icon matSuffix>login</mat-icon>
+          </button>
+        </form>
+      </mat-card-content>
+      <mat-card-footer>
+        <mat-progress-bar mode="indeterminate" *ngIf="mostrarLoading"></mat-progress-bar>
+      </mat-card-footer>
+    </mat-card>
+    <cad-footer-public></cad-footer-public>
+  </section>
+</div>

@@ -1,0 +1,18 @@
+<div>
+    <span class="title-filter tsp-font-size-default-content tsp-font-size-default-title">RESUMEN</span>
+    <span>
+        <cad-table-by-group [columns]="columnSummary" [items]="itemsConfirm"
+            [totalAmount]="totalAmountItemsConfirm"></cad-table-by-group>
+    </span>
+    <span>
+        <cad-table-by-group [columns]="columnSummary" [items]="itemsInvalid"
+            [totalAmount]="totalAmountItemsInvalid"></cad-table-by-group>
+    </span>
+</div>
+<div>
+    <span class="title-filter tsp-font-size-default-content tsp-font-size-default-title">DETALLE</span>
+    <span>
+        <cad-table-detail [columns]="columnDetail" [items]="itemsDetail"
+            [totalAmount]="totalAmountDetail"></cad-table-detail>
+    </span>
+</div>

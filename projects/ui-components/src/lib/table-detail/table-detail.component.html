@@ -1,0 +1,36 @@
+<table class="table table-bordered ">
+    <thead>
+        <tr>
+            <th scope="col" class="column-options table-font-header txt-center">N</th>
+            <th *ngFor="let column of columns" class="column-options table-font-header txt-center">{{
+                column.header }}</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let row of items; let i=index">
+            <th scope="row" class="tsp-font-size-default-content tsp-index txt-center">{{i+1}}</th>
+            <ng-container *ngFor="let column of columns; let indexCol=index">
+                <ng-container *ngIf="activeRowsSpan && columnRowSpan">
+                    <td [attr.rowspan]="row.span" *ngIf="row.span && column.field==columnRowSpan[indexCol]"
+                        class="tsp-font-size-default-content txt-center">{{
+                        row[column.field] }}</td>
+                    <td *ngIf="column.field!=columnRowSpan[indexCol]" class="tsp-font-size-default-content txt-center">
+                        {{
+                        row[column.field] }}</td>
+                </ng-container>
+                <ng-container *ngIf="!activeRowsSpan">
+                    <td class="tsp-font-size-default-content txt-center">{{
+                        row[column.field] }}</td>
+                </ng-container>
+            </ng-container>
+
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td [attr.colspan]="columns.length" class="tsp-font-size-default-content table-font-header txt-center">
+                Total</td>
+            <td class="tsp-font-size-default-content txt-center">{{totalAmount}}</td>
+        </tr>
+    </tfoot>
+</table>

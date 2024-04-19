@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="tsp-title-header-modal row">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+      <mat-label class="tsp-font-size-modal-titles">{{ TitleModal }}</mat-label>
+    </div>
+  </div>
+  <form [formGroup]="unsuscribeForm">
+    <div class="row">
+      <div class="question col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+        <mat-label class="tsp-font-size-default-content unsuscribe-label">{{ Question }}</mat-label>
+      </div>
+      <div class="detail col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+        <div class="labelDetail">
+          <mat-label class="tsp-font-size-default-content unsuscribe-label">{{ SubTitleLabel }} </mat-label>
+        </div>
+        <div>
+          <mat-form-field class="generalMatForm" appearance="fill">
+            <textarea
+              rows="3"
+              matInput
+              class="detailTextArea tsp-font-size-default-content"
+              formControlName="Observation"
+            ></textarea>
+            <mat-error *ngIf="unsuscribeForm.controls.Observation.errors?.required" class="tsp-font-size-default-content">
+              {{ MessageError }}</mat-error
+            >
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+  </form>
+  <div class="btns">
+    <div class="btnOk">
+      <button
+        mat-flat-button
+        mat-button
+        mat-dialog-close
+        (click)="Ok()"
+        [disabled]="!this.unsuscribeForm.valid"
+        class="tsp-font-size-buttons tsp-button-success"
+      >
+        {{ BtnOk }}
+      </button>
+    </div>
+    <div class="btnCancel">
+      <button mat-flat-button mat-button mat-dialog-close class="tsp-font-size-buttons tsp-button-delete">
+        {{ BtnCancel }}
+      </button>
+    </div>
+  </div>
+</div>

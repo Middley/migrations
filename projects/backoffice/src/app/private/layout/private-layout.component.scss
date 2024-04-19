@@ -1,0 +1,273 @@
+@import 'variables';
+
+.ks-main {
+  background-color: $tspSigesCream;
+  width: 100%;
+  height: 100%;
+}
+
+.ks-line {
+  width: 100%;
+  background-color: $tspSigesBlue;
+  color: $tspSigesWhite;
+  height: 5px;
+  position: relative;
+  opacity: 100%;
+  border-radius: 2px;
+  margin-top: 1px;
+}
+
+/*---------------SIDENAV-------------------*/
+.ks-mat-sidenav {
+  width: 220px;
+  border-right: none;
+  background-color: $tspSigesDark;
+  color: $tspSigesWhite;
+  text-align: center;
+  padding: 15px 8px 15px 8px;
+}
+
+mat-sidenav-content {
+  background-color: $tspSigesCream;
+}
+
+mat-sidenav-container {
+  height: 100vh;
+}
+
+.menu-button {
+  color: $tspSigesWhite;
+  margin-right: 10px;
+}
+
+.sub-menu {
+  display: flex;
+  margin-left: 30px;
+}
+
+.expansion-container {
+  background-color: $tspSigesDark;
+}
+
+.menu-button-active {
+  background-color: $tspSigesMagenta;
+}
+
+.menu-button.mat-icon {
+  margin-top: none;
+}
+
+.name {
+  margin-top: 8px;
+  font-weight: normal;
+}
+
+.designation {
+  margin-top: 2px;
+  font-size: 0.7rem;
+  color: $tspSigesLightGray;
+}
+
+mat-divider {
+  margin-top: 16px;
+  margin-bottom: 16px;
+  background-color: $tspSigesWhite;
+}
+
+.content {
+  padding-right: 16px;
+  padding-left: 16px;
+}
+
+.ks-content {
+  margin: 16px;
+  margin-top: 10px;
+  background-color: $tspSigesWhite;
+  border-radius: 2px;
+}
+
+.ks-spacer {
+  flex: 0.04 0.1 auto;
+}
+
+.ks-example-spacer-toolbar-options {
+  flex: 1 1 auto;
+}
+
+.avatar {
+  width: 160px;
+  height: 50px;
+  display: block;
+  margin-left: 20px;
+}
+
+.ks-avatar-container {
+  height: 40px;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.nav-option-active {
+  background-color: $tspSigesMagenta;
+}
+
+button:hover {
+  background-color: $tspSigesMagenta;
+  opacity: 80%;
+}
+
+/*---------------TOOLBAR-------------------*/
+mat-toolbar {
+  background-color: $tspSigesCream;
+  color: $tspSigesWhite;
+  height: 60px;
+}
+
+.ks-container-toolbar {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.ks-button-toggle-toolbar {
+  width: 100%;
+  font-size: 1rem;
+  cursor: pointer;
+  color: $tspSigesGray;
+}
+
+.ks-toolbarTitle {
+  color: $tspSigesBlack;
+  text-transform: capitalize;
+  font-size: 1.125rem;
+  line-height: 30px;
+  font-weight: 300;
+  padding-right: 0px;
+  margin-right: 0px;
+}
+
+.ks-toolbarOptions {
+  clear: both;
+  color: $tspSigesGray;
+  cursor: pointer;
+}
+
+/*Media querys*/
+@media (max-width: 801px) and (min-width: 0px) {
+  mat-toolbar {
+    padding: 2px auto;
+  }
+
+  .ks-title-toobar {
+    font-size: 15px;
+    margin-top: 11px;
+  }
+
+  .example-spacer {
+    flex: 0 0 auto;
+  }
+}
+
+@media (max-width: 1500px) and (min-width: 701px) {
+  .ks-title-toobar {
+    font-size: 23.5px;
+    margin-top: 11px;
+  }
+}
+
+@media (max-width: 1500px) and (min-width: 175px) {
+  mat-toolbar .avatar {
+    visibility: hidden;
+  }
+}
+
+//DROPDOW----------------------------------
+:host ::ng-deep .headerDropdown {
+  top: 45px !important;
+  right: 20px !important;
+  min-width: 200px;
+  margin-top: 0;
+  text-align: left;
+  box-shadow: 1px 1px 2px 0 rgb(0 0 0 / 20%), 2px 2px 3px 0 rgb(0 0 0 / 19%);
+  position: absolute;
+  z-index: 100;
+
+  &::before,
+  &::after {
+    display: none;
+  }
+
+  .p-overlaypanel-content {
+    padding: 0;
+  }
+}
+
+.ks-list-dropdown {
+  top: 100%;
+  min-width: 15rem;
+  margin: 0.125rem 0 0;
+  font-size: 1rem;
+  font-weight: 300;
+  color: $tspSigesGray;
+  list-style: none;
+  background-color: #fff;
+  background-clip: padding-box;
+  border-radius: 0.25rem;
+}
+
+.ks-list-item-dropdown {
+  display: flex;
+  flex-flow: wrap;
+  align-items: center;
+  cursor: pointer;
+}
+
+.ks-list-dropdown-icon {
+  height: 20px;
+  width: 20px;
+  margin-right: 15px;
+}
+
+//side nav----------------------------------
+
+::ng-deep .mat-expansion-panel-header {
+  padding: 0 16px !important;
+}
+
+::ng-deep .mat-nav-list .mat-icon {
+  margin-right: 10px;
+}
+
+::ng-deep .mat-expansion-panel-body {
+  padding: 0 !important;
+}
+
+::ng-deep .mat-expansion-panel-header {
+  height: 48px !important;
+}
+
+::ng-deep .mat-expansion-panel .mat-list-item {
+  padding-left: 8px !important;
+}
+
+::ng-deep .mat-nav-list .is-active {
+  background-color: $tspSigesMagenta !important;
+  border-left: 8px solid $tspSigesMagentaDark;
+  width: calc(100% - 8px) !important;
+}
+
+::ng-deep .mat-list-base {
+  padding-top: 0 !important;
+}
+
+::ng-deep .mat-nav-list .mat-list-item.is-active .mat-list-item-content {
+  padding-left: 8px !important;
+}
+
+::ng-deep .mat-expansion-indicator::after {
+  color: $tspSigesWhite;
+}
+
+.tsp-submenu {
+  margin-right: -10px;
+}

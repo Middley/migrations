@@ -1,0 +1,8 @@
+<cad-report-viewer *ngIf="columSummary && paginated" [columnSummary]="columSummary" [columns]="columnDetail"
+    [itemsConfirm]="itemsConfirmed" [itemsInvalid]="itemsInvalid" [paginated]="paginated"
+    [length]="paginated.totalItems" [pageSize]="filters.pageSize" [pageIndex]="filters.pageIndex"
+    [titleReport]="titleReport" [pageSizeOptions]="pageSizeOptions" [reportType]="reportType"
+    [totalAmountConfirmed]="totalAmountItemsConfirm" [totalAmountInvalid]="totalAmountItemsInvalid"
+    [totalAmount]="totalDetails" (paginatedEvent)="setPaginated($event)" [logo]="logo" [filters]="filters.filters"
+    [User]="data.user" [ReportDate]="data.currentDate"></cad-report-viewer>
+<!-- <span>Hola</span> -->

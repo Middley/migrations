@@ -1,0 +1,41 @@
+@import 'variables';
+.chipsSelectContainer {
+  width: 100%;
+  margin-bottom: -10px;
+}
+
+.contentSearch {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 7px;
+  .inputSearch {
+    width: 95%;
+  }
+}
+
+.check-box {
+  margin-left: 5px;
+  width: 30%;
+}
+.filter-container {
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 2%;
+}
+
+.title-filter {
+  color: $tspSigesBlue;
+  font-weight: 600;
+  margin-top: 3px;
+}
+
+.header {
+  display: flex;
+  .all {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+  }
+}

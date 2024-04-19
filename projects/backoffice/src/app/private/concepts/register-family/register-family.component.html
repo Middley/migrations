@@ -1,0 +1,115 @@
+<cad-header-title [Title]="'COMPONENTS.REGISTER-FAMILY.TITLE' | translate"></cad-header-title>
+<!-- Datos generales -->
+<div class="tsp-generic-border-items tsp-generic-marginItems tsp-generic-marginButton">
+    <mat-label
+        class="tsp-font-size-default-content tsp-generic-titleItems tsp-generic-marginItems">{{'COMPONENTS.REGISTER-FAMILY.GENERALS.TITLE-GENERALS'
+        |translate}}
+    </mat-label>
+    <hr>
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 row">
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+            <section class="tsp-generic-component-container-start">
+                <label class="example-margin">{{'COMPONENTS.REGISTER-FAMILY.GENERALS.GUY'
+                    |translate}}</label>
+                <mat-radio-group [(ngModel)]="labelPosition">
+                    <mat-radio-button class="example-margin" value="after">
+                        {{'COMPONENTS.REGISTER-FAMILY.GENERALS.CHECK-ITEMS.GOOD'
+                        |translate}}</mat-radio-button>
+                    <mat-radio-button class="example-margin" value="before">
+                        {{'COMPONENTS.REGISTER-FAMILY.GENERALS.CHECK-ITEMS.SERVICE'
+                        |translate}}</mat-radio-button>
+                </mat-radio-group>
+            </section>
+        </div>
+        <div>
+            <section class="example-section">
+                <mat-checkbox class="example-margin" [(ngModel)]="checked">
+                    {{'COMPONENTS.REGISTER-FAMILY.GENERALS.CHECK-ITEMS.IGV'
+                    |translate}}</mat-checkbox>
+            </section>
+        </div>
+    </div>
+
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 row">
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+            <mat-form-field class="example-full-width">
+                <mat-label>{{'COMPONENTS.REGISTER-FAMILY.GENERALS.IMPUTS.NAME'
+                    |translate}}</mat-label>
+                <input matInput placeholder="Ex. Pizza" value="">
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field class="example-full-width">
+                <mat-label>{{'COMPONENTS.REGISTER-FAMILY.GENERALS.IMPUTS.CATEGORY'
+                    |translate}}</mat-label>
+                <input matInput placeholder="Ex. Pizza" value="">
+            </mat-form-field>
+        </div>
+    </div>
+</div>
+<!-- Caracteristicas -->
+<div class="tsp-generic-border-items tsp-generic-marginItems tsp-generic-marginButton">
+    <mat-label class="tsp-font-size-default-content tsp-generic-titleItems tsp-generic-marginItems">
+        {{'COMPONENTS.REGISTER-FAMILY.CHARACTERISTICS.TITLE-CHARACTERISTICS'
+        |translate}}
+    </mat-label>
+    <hr>
+
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 row">
+        <div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 tsp-generic-component-container-start">
+            <button id="button-register-family" mat-raised-button
+                class="tsp-buttons-actions tsp-font-size-buttons tsp-button-success  " (click)=null>
+                <mat-icon>add</mat-icon>{{ 'COMPONENTS.REGISTER-FAMILY.CHARACTERISTICS.BUTTON-ADD' | translate }}
+            </button>
+        </div>
+
+        <div class="col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8">
+            <p>CARACTERISTICAS COMUNES</p>
+            <div class="row">
+                <div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                    <section class="example-section">
+                        <mat-checkbox class="example-margin" [(ngModel)]="checked">
+                            {{'COMPONENTS.REGISTER-FAMILY.CHARACTERISTICS.CHECK-GROUP.MEAT'
+                            |translate}}</mat-checkbox>
+                    </section>
+                    <section class="example-section">
+                        <mat-checkbox class="example-margin" [(ngModel)]="checked">
+                            {{'COMPONENTS.REGISTER-FAMILY.CHARACTERISTICS.CHECK-GROUP.CHILDREN-CAPACITY'
+                            |translate}}</mat-checkbox>
+                    </section>
+
+                </div>
+                <div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                    <section class="example-section">
+                        <mat-checkbox class="example-margin" [(ngModel)]="checked">
+                            {{'COMPONENTS.REGISTER-FAMILY.CHARACTERISTICS.CHECK-GROUP.CREAMS'
+                            |translate}}</mat-checkbox>
+                    </section>
+                    <section class="example-section">
+                        <mat-checkbox class="example-margin" [(ngModel)]="checked">
+                            {{'COMPONENTS.REGISTER-FAMILY.CHARACTERISTICS.CHECK-GROUP.ADULT-CAPACITY'
+                            |translate}}</mat-checkbox>
+                    </section>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Botones Guardar y cancelar -->
+<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 tsp-generic-component-container-end">
+    <div class="tsp-generic-marginItems tsp-generic-marginButton">
+        <button id="button-register-family" mat-raised-button
+            class="tsp-buttons-actions tsp-font-size-buttons tsp-button-success  " (click)=null>
+            <mat-icon>save</mat-icon>
+            {{ 'COMPONENTS.REGISTER-FAMILY.BUTTON-SAVE' | translate }}
+        </button>
+    </div>
+    <div class="tsp-generic-marginButton">
+        <button id="button-register-family" mat-raised-button
+            class="tsp-buttons-actions tsp-font-size-buttons tsp-button-magenta  " (click)=null>
+            <mat-icon>close</mat-icon>
+            {{ 'COMPONENTS.REGISTER-FAMILY.BUTTON-CLOSE' | translate }}
+        </button>
+    </div>
+</div>

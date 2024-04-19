@@ -1,0 +1,63 @@
+@import 'variables';
+
+::ng-deep .mat-dialog-container {
+  padding: 0px;
+  max-width: 936px;
+}
+
+.container {
+  max-width: 936px;
+}
+
+.buttons-container {
+  display: flex;
+  justify-content: end;
+  margin-top: 11px;
+  margin-bottom: 11px;
+}
+
+.stockAndAdjustment {
+  align-items: center;
+  text-align: center;
+}
+
+.border {
+  border: 1.5px solid;
+}
+
+.table {
+  margin-top: 8px;
+}
+
+.tsp-button-success {
+  margin-right: 10px;
+}
+
+.inputTable {
+  width: 100%;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.tdData {
+  text-align: center;
+  width: 100%;
+  //   padding-top: 16px;
+  flex-wrap: wrap;
+  margin-top: -1px;
+}
+
+::ng-deep .table th,
+.table td {
+  vertical-align: middle;
+}
+
+.valuesStockAndAdjustment {
+  margin-bottom: 10px;
+}
+
+.tsp-font-size-default-content {
+  color: black;
+}

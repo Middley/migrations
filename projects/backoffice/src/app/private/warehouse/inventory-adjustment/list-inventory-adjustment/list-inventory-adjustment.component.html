@@ -1,0 +1,99 @@
+<cad-header-title [Title]="'WAREHOUSE.INVENTORY_ADJUSTMENT.DATA.TITLE' | translate"></cad-header-title>
+
+<div class="tsp-generic-margin-default row filters" [formGroup]="form" *ngIf="form">
+  <span class="col-12 col-sm-12 col-md-5 col-lg-5 col-xl-5 tsp-generic-items-default">
+    <div class="tsp-generic-border-items tsp-generic-marginItems tsp-generic-marginButton row">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+        <span class="title tsp-font-size-default-title">{{ 'WAREHOUSE.INVENTORY_ADJUSTMENT.DATA.DATE' | translate
+          }}</span>
+      </div>
+      <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 dateStart">
+        <mat-form-field appearance="fill" class="generalMatForm">
+          <mat-label class="tsp-font-size-default-content">{{ 'WAREHOUSE.INVENTORY_ADJUSTMENT.DATA.FROM_DATE' |
+            translate }}
+          </mat-label>
+          <input (dateChange)="clearEndDate()" class="tsp-font-size-default-content" matInput [matDatepicker]="picker1"
+            formControlName="IssueDate" />
+          <mat-datepicker-toggle matSuffix [for]="picker1" class="tsp-font-size-default-content">
+          </mat-datepicker-toggle>
+          <mat-datepicker #picker1></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 dateEnd">
+        <mat-form-field appearance="fill" class="generalMatForm">
+          <mat-label class="tsp-font-size-default-content">{{ 'WAREHOUSE.INVENTORY_ADJUSTMENT.DATA.TO_DATE' | translate
+            }}
+          </mat-label>
+          <input [matDatepickerFilter]="filterEndDate" class="tsp-font-size-default-content" matInput
+            [matDatepicker]="picker" formControlName="ToDate" />
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+    </div>
+  </span>
+
+  <!-- filter Establishment -->
+  <span class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 tsp-generic-items-default "
+    *ngIf="listEstablishment != null">
+    <cad-chips-input [items]="listEstablishment"
+      [InputLabel]="'WAREHOUSE.INVENTORY_ADJUSTMENT.DATA.ESTABLISHMENT' | translate"
+      [InputCheckLabel]="'WAREHOUSE.INVENTORY_ADJUSTMENT.DATA.SELECTED_ALL' | translate"
+      (selectedItems)="selectedEstablisment($event)">
+    </cad-chips-input>
+  </span>
+  <!-- Warehouse Type -->
+  <span class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 tsp-generic-items-default ">
+    <span class="WarehouseType tsp-row generalMatForm">
+      <span class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+        <span class="title tsp-font-size-default-title">{{
+          'WAREHOUSE.INVENTORY_ADJUSTMENT.DATA.WAREHOUSE_TYPE' | translate
+          }}</span>
+      </span>
+      <span>
+        <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
+          *ngIf="typeWareHouses != null" formControlName="WarehouseTypeId" (change)="changeTypeWarehouse()">
+          <mat-radio-button class="example-radio-button" *ngFor="let item of typeWareHouses" [value]="item.id">
+            {{ item.name }}
+          </mat-radio-button>
+        </mat-radio-group>
+      </span>
+    </span>
+  </span>
+  <!-- Warehouse -->
+  <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 tsp-generic-items-default" *ngIf="listWarehouse != null">
+    <cad-chips-input [items]="listWarehouse" [InputLabel]="'WAREHOUSE.INVENTORY_ADJUSTMENT.DATA.WAREHOUSE' | translate"
+      [InputCheckLabel]="'WAREHOUSE.INVENTORY_ADJUSTMENT.DATA.SELECTED_ALL' | translate"
+      (selectedItems)="selectedWarehouse($event)">
+    </cad-chips-input>
+  </div>
+
+  <!-- buttons new and filter -->
+  <div class="col-12 col-sm-12 md-8 col-lg-8 col-xl-8 btnNewAndFilter ">
+    <div class="btnCancelFilter">
+      <button mat-raised-button class="tsp-buttons-actions tsp-font-size-buttons button-success"
+        (click)="clearFilters()">
+        <mat-icon>filter_alt_off</mat-icon>
+      </button>
+    </div>
+    <div class="btnSearch">
+      <button mat-raised-button class="tsp-buttons-actions tsp-font-size-buttons button-success"
+        (click)="SearchByFilter()">
+        {{ 'GENERAL.BUTTONS.SEARCH' | translate }}
+      </button>
+    </div>
+    <div class="btnNew">
+      <button mat-raised-button class="tsp-buttons-actions tsp-font-size-buttons button-success"
+        (click)="openRegister()">
+        <mat-icon>add</mat-icon>{{ 'GENERAL.BUTTONS.NEW' | translate }}
+      </button>
+    </div>
+  </div>
+</div>
+<!-- table list vehicle inspections -->
+<div class="row">
+  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+    <cad-table-filter [items]="data" [columns]="columns" [actions]="actions"
+      (searchEvent)="openShow($event)"></cad-table-filter>
+  </div>
+</div>

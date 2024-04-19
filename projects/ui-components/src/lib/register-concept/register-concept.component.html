@@ -1,0 +1,17 @@
+<div class="mt-2">
+  <div class="row">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+      <cad-search-by-criterion [parameters]="parametersSelectorConcept" [listConcept]="listConcept"
+        (selectConcept)="selectConceptSelector($event)" (searchConceptByCode)="searchConceptByCod($event)"
+        (refreshConcept)="refreshConcept($event)"></cad-search-by-criterion>
+    </div>
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 table">
+      <cad-concept-detail [conceptDetails]="conceptDetails" [conceptDetailParameters]="parametersConceptDetail"
+        (changeAmountConceptDetailEvent)="changeAmountConceptDetail($event)"
+        (changeUnitPriceConceptDetailEvent)="changeUnitPriceConceptDetail($event)"
+        (changeImportConceptDetailEvent)="changeImportConceptDetail($event)"
+        (changeTariffConceptDetailEvent)="changeTariffConceptDetail($event)"
+        (deleteConceptDetailEvent)="deleteConceptDetail($event)"></cad-concept-detail>
+    </div>
+  </div>
+</div>

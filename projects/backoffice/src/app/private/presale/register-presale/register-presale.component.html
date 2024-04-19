@@ -1,0 +1,150 @@
+<div *ngIf="parameters != null && saleParameter != null">
+  <div class="tsp-title-header-modal title">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+      <span class="tsp-font-size-modal-titles">{{ 'PRESALE.TITLES.REGISTER' | translate }}</span>
+    </div>
+  </div>
+  <div>
+    <div class="row">
+      <div class="col-8 col-sm-12 col-md-9 col-lg-9 col-xl-9" *ngIf="listConcept">
+        <div class="container">
+          <cad-register-concept id="searchByCode" (searchConceptByCode)="searchConceptByCode($event)"
+            (searchConceptInSelectorEvent)="searchConceptInSelector($event)" [conceptDetailData]="conceptDetailData"
+            [conceptDetails]="order.details" [parametersSelectorConcept]="parametersSelectorConcept"
+            [parametersConceptDetail]="parametersConceptDetail" [listConcept]="listConcept"
+            (changeAmountConceptDetailEvent)="changeAmountConceptDetail($event)"
+            (changeUnitPriceConceptDetailEvent)="changeUnitPriceConceptDetail($event)"
+            (changeImportConceptDetailEvent)="changeImportConceptDetail($event)"
+            (changeTariffConceptDetailEvent)="changeTariffConceptDetail($event)"
+            (deleteConceptDetailEvent)="deleteConceptDetail($event)" (refreshSelector)="refreshSelector($event)">
+          </cad-register-concept>
+        </div>
+
+        <div *ngIf="preSale.order.details.length > 0">
+          <cad-concept-detail-resume [operationSubTotal]="order.subTotal" [operationIgv]="order.igv"
+            [operationIcbper]="order.icbper" [operationTotal]="order.total">
+          </cad-concept-detail-resume>
+        </div>
+
+      </div>
+
+      <div class="col-2 col-sm-12 col-md-3 col-lg-3 col-xl-3 containerPayAndBussinessActorPresale mt-2">
+        <mat-card class="container">
+          <div class="row">
+            <div class="headerComercialActor col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+              <div class="col-12 col-sm-12 col-md-7 col-lg-7 col-xl-7">
+                <!-- <mat-checkbox [(ngModel)]="preSale.order.applyIGVWhenItIsAmazonia"><span
+                    class="tsp-font-size-default-content tsp-labels checkbox">{{ 'PRESALE.DATA.WITH_IGV' | translate
+                    }}</span></mat-checkbox> -->
+              </div>
+              <div class="col-12 col-sm-12 col-md-5 col-lg-5 col-xl-5 textRight">
+                <span class="tsp-font-size-default-content tsp-labels">S/ {{order.total??0|number}}</span>
+              </div>
+            </div>
+          </div>
+          <div mat-card-content style="padding-bottom: 15px;">
+            <div class="row">
+              <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <div>
+                  <div class="row">
+                    <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                      <span class="tsp-font-size-default-content tsp-labels">{{ 'PRESALE.DATA.PRE_VENTA' | translate
+                        }}</span>
+                    </div>
+                    <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6" *ngIf="parameters.applyAmazonLaw">
+                      <div class="igv-input-container">
+                        <span class="tsp-font-size-default-content tsp-labels">{{ 'PRESALE.DATA.WITH_IGV' | translate
+                          }}</span>
+                        <input style="margin-left: 2px;" type="checkbox" [(ngModel)]="preSale.order.presaleApplyIgv"
+                          (ngModelChange)="changeApplyIgvPresale()" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mt-2">
+                <cad-register-data-invoicing id="actorValidator"
+                  [lenghValidatorActorSelector]="lenghValidatorActorSelector"
+                  [listBusinessActorSearched]="listBusinessActorSearched" [parameters]="parameters"
+                  [actorCommercial]="actorCommercial" [disableClient]="false"
+                  [placeholderSearchBusinessActorRegistered]="placeholderSearchBusinessActorRegistered"
+                  [listComprobant]="listComprobant" [showComercialActorSelector]="true"
+                  (selectedComprobant)="selectedComprobantForPresale($event)"
+                  (selectBusinessActor)="selectBusinessActor($event,comprobantTypePresale)"
+                  (seachActorCommercial)="seachActorCommercial($event,comprobantTypePresale)"
+                  (sendObservation)="writeObservationPresale($event)"
+                  (searchBusinessActorRegistered)="searchBusinessActorRegistered($event,comprobantTypePresale)"
+                  [observation]="preSale.order.observationPresale"></cad-register-data-invoicing>
+              </div>
+              <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mb-2 buttonAddAnticipo"
+                *ngIf="!isThereAnticipo">
+                <button mat-raised-button color="primary"
+                  class="tsp-font-size-default-content tsp-labels tsp-button-success mt-2" (click)="activeAnticipo()">
+                  <mat-icon>add</mat-icon> {{ 'PRESALE.BUTTONS.ADD_ADVANCE_PAYMENT' | translate}}
+                </button>
+
+              </div>
+              <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12" *ngIf="isThereAnticipo">
+                <div class="ks-line" c></div>
+                <div class="advance-payment-title-container">
+                  <div class="row">
+                    <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                      <span class="tsp-font-size-default-content tsp-labels">{{ 'PRESALE.DATA.ACTICIPO' | translate
+                        }}</span>
+                    </div>
+                    <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 cancelAdvancePayment">
+                      <!-- <span mat-raised-button class="container-buttons">
+                        <button class="tsp-button-delete button-actions tsp-small-icon-button"
+                          (click)="desactiveAnticipo()">
+                          <mat-icon class="tsp-icons">close_small</mat-icon>
+                        </button>
+                      </span> -->
+
+                      <span mat-raised-button class=" container-buttons">
+                        <button class="button-actions tsp-small-icon-button button-actions-delete"
+                          (click)="desactiveAnticipo()">
+                          <mat-icon class="tsp-icons">close_small</mat-icon>
+                        </button>
+                      </span>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+              <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mb-2" *ngIf="isThereAnticipo">
+                <cad-register-data-invoicing id="parameter" [parameters]="parameters"
+                  [lenghValidatorActorSelector]="lenghValidatorActorSelector" [showComercialActorSelector]="true"
+                  [listBusinessActorSearched]="listBusinessActorSearchedAnticipo"
+                  [actorCommercial]="actorCommercialAnticipo"
+                  [placeholderSearchBusinessActorRegistered]="placeholderSearchBusinessActorRegistered"
+                  [listComprobant]="listComprobantAnticipo" (selectedComprobant)="selectedComprobantForAnticipo($event)"
+                  (selectBusinessActor)="selectBusinessActor($event,comprobantTypeAnticipo)"
+                  (seachActorCommercial)="seachActorCommercial($event,comprobantTypeAnticipo)"
+                  (searchBusinessActorRegistered)="searchBusinessActorRegistered($event,comprobantTypeAnticipo)"
+                  (sendObservation)="writeObservationAnticipo($event)"
+                  [observation]="preSale.order.observationAnticipo"></cad-register-data-invoicing>
+              </div>
+              <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 " *ngIf="isThereAnticipo"
+                style="margin-top: -30px;">
+                <cad-multipay-register id="parameterPay" [parameterPaymentMode]="parameterForPaymentMode"
+                  [AllowPaymentToCredit]="false" [paymentMethods]="paymentMethods"
+                  [parameterPaymentMethod]="parameterPaymentMethods" [bankAccounts]="bankAccounts"
+                  [ammountTotal]="order.total" [cards]="cards" [financialEntities]="financialEntities"
+                  (multipay)="setPayData($event)"></cad-multipay-register>
+              </div>
+            </div>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 buttonSave mt-2" style="padding-bottom: 10px;">
+    <button mat-raised-button (click)="back()" class="tsp-button-success">
+      {{ 'GENERAL.BUTTONS.BACK' | translate |uppercase}}
+    </button>&nbsp;
+    <button mat-raised-button id="buttonSave" [ngClass]="{'tsp-button-success':preSale.isvalid}"
+      [disabled]="!preSale.isvalid" (click)="save()">
+      <mat-icon>save</mat-icon>{{ 'PRESALE.BUTTONS.SAVE' | translate }}
+    </button>
+  </div>
+</div>

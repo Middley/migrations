@@ -1,0 +1,43 @@
+<div class="summary">
+  <div class="col-12 col-md-12">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col" class="tsp-font-headers-tables-xs titleSummary">TIPO PAGO</th>
+          <th scope="col" class="tsp-font-headers-tables-xs titleSummary">MONTO</th>
+          <th scope="col" class="tsp-font-headers-tables-xs titleSummary">OPCIONES</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let multipay of multipayResumenArray">
+        <tr>
+          <td class="itemsTables">
+            <span class="tsp-font-content-tables-xs">{{ multipay.name }}</span>
+          </td>
+          <td class="itemsTables">
+            <span class="tsp-font-content-tables-xs">{{ multipay.value }}</span>
+          </td>
+          <td class="d-flex itemsTables">
+            <button class="button-actions-edit mr-1 tsp-small-icon-button " (click)="editMultipayment(multipay.id)">
+              <mat-icon class="tsp-icons">edit</mat-icon>
+            </button>
+            <button class="button-actions-delete tsp-small-icon-button" (click)="deleteMethodPayment(multipay.id)">
+              <mat-icon class="tsp-icons">close</mat-icon>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-12 col-md-12 contentSummary" *ngIf="multipayResumenArray.length > 0">
+    <div class="col-12 col-md-12">
+      <label class="titleSummary tsp-font-headers-tables-xs">RESUMEN</label>
+    </div>
+    <div class="col-6 col-md-6 itemsSummary tsp-font-headers-tables-xs">TOTAL</div>
+    <div class="col-6 col-md-6 itemsSummary tsp-font-content-tables-xs">{{ ammountTotal | number }}</div>
+    <div class="col-6 col-md-6 itemsSummary tsp-font-headers-tables-xs">PAGO</div>
+    <div class="col-6 col-md-6 itemsSummary tsp-font-content-tables-xs">{{ ammountPay | number }}</div>
+    <div class="col-6 col-md-6 itemsSummary tsp-font-headers-tables-xs  ">SALDO</div>
+    <div class="col-6 col-md-6 itemsSummary tsp-font-content-tables-xs">{{ ammountTotal - ammountPay | number }}
+    </div>
+  </div>
+</div>

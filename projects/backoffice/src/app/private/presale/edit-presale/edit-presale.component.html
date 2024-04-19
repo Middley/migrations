@@ -1,0 +1,81 @@
+<div *ngIf="parameters != null && presaleBD!=null">
+    <div class="tsp-title-header-modal title">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <span class="tsp-font-size-modal-titles">{{ 'PRESALE.TITLES.REGISTER' | translate }}</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-8 col-sm-12 col-md-9 col-lg-9 col-xl-9" *ngIf="listConcept">
+            <div class="container">
+                <cad-register-concept id="searchByCode" (searchConceptByCode)="searchConceptByCode($event)"
+                    (searchConceptInSelectorEvent)="searchConceptInSelector($event)"
+                    [conceptDetailData]="conceptDetailData" [conceptDetails]="order.details"
+                    [parametersSelectorConcept]="parametersSelectorConcept"
+                    [parametersConceptDetail]="parametersConceptDetail" [listConcept]="listConcept"
+                    (changeAmountConceptDetailEvent)="changeAmountConceptDetail($event)"
+                    (changeUnitPriceConceptDetailEvent)="changeUnitPriceConceptDetail($event)"
+                    (changeImportConceptDetailEvent)="changeImportConceptDetail($event)"
+                    (changeTariffConceptDetailEvent)="changeTariffConceptDetail($event)"
+                    (deleteConceptDetailEvent)="deleteConceptDetail($event)">
+                </cad-register-concept>
+            </div>
+
+            <div *ngIf="preSale.order.details.length > 0">
+                <cad-concept-detail-resume [operationSubTotal]="order.subTotal" [operationIgv]="order.igv"
+                    [operationIcbper]="order.icbper" [operationTotal]="order.total">
+                </cad-concept-detail-resume>
+            </div>
+        </div>
+        <div class="col-2 col-sm-12 col-md-3 col-lg-3 col-xl-3 containerPayAndBussinessActorPresale mt-2">
+            <mat-card class="container">
+                <div class="row">
+                    <div class="headerComercialActor col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                        <div class="col-12 col-sm-12 col-md-7 col-lg-7 col-xl-7">
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-5 col-lg-5 col-xl-5 textRight">
+                            <span class="tsp-font-size-default-content tsp-labels">S/ {{order.total??0|number}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div mat-card-content style="padding-bottom: 15px;">
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                            <div>
+                                <div class="row">
+                                    <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                                        <span class="tsp-font-size-default-content tsp-labels">{{
+                                            'PRESALE.DATA.PRE_VENTA' | translate
+                                            }}</span>
+                                    </div>
+                                    <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                                        <div class="igv-input-container">
+                                            <span class="tsp-font-size-default-content tsp-labels">{{
+                                                'PRESALE.DATA.WITH_IGV' | translate
+                                                }}</span>
+                                            <input style="margin-left: 2px;" type="checkbox"
+                                                [(ngModel)]="preSale.order.presaleApplyIgv"
+                                                (ngModelChange)="changeApplyIgvPresale()" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mt-2" *ngIf="presaleBD">
+                            <cad-register-invoicing [comprobantTypeID]="0"
+                                [parameterComprobantType]="presaleBD.typeComprobantPresale"
+                                [actorCommercial]="actorCommercial" [observation]="presaleBD.observation"
+                                (sendActorComercial)="setActorComercial($event)"
+                                (sendComprobant)="setComprobant($event)"></cad-register-invoicing>
+                        </div>
+                    </div>
+                </div>
+            </mat-card>
+        </div>
+    </div>
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 buttonSave mt-2" style="padding-bottom: 10px;">
+        <button mat-raised-button id="buttonSave" [ngClass]="{'tsp-button-success':preSale.isvalid}"
+            [disabled]="!preSale.isvalid" (click)="save()">
+            <mat-icon>save</mat-icon>{{ 'PRESALE.BUTTONS.SAVE' | translate }}
+        </button>
+    </div>
+</div>

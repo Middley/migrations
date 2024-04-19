@@ -1,0 +1,84 @@
+@import 'variables';
+
+.logoCompany {
+  width: 165px;
+  height: 90px;
+  display: block;
+  margin-left: 20px;
+}
+
+.containerLogoCompany {
+  position: absolute;
+  left: 0;
+}
+
+.logoTSOL {
+  width: 50px;
+  height: 20px;
+  display: block;
+  margin-left: 10px;
+}
+
+.logoSIGES {
+  width: 80px;
+  height: 25px;
+  display: block;
+  margin-left: 10px;
+}
+
+.logoFooter {
+  display: flex;
+  align-items: center;
+}
+
+.descriptionFooter {
+  text-align: left;
+}
+
+.userFooter {
+  text-align: end;
+}
+
+.title {
+  align-items: end;
+  text-align: left;
+  justify-content: center;
+  min-height: 80px;
+}
+
+.pointOfSale {
+  justify-content: center;
+}
+
+.filters {
+  justify-content: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.line {
+  border: 1px solid blue;
+}
+
+.title-filter {
+  font-weight: bold;
+  //   font-size: 10px;
+}
+
+.general {
+  width: 1013px;
+}
+
+.button_primary {
+  // spacing between lines
+  line-height: 14px;
+
+  background-color: $tspSigesBlueLetters !important;
+  color: $tspSigesWhite !important;
+}
+
+.buttonsExport {
+  display: flex;
+  align-items: center;
+  margin-bottom: 7px;
+}

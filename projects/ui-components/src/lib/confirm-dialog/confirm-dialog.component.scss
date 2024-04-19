@@ -1,0 +1,17 @@
+.confirm-dialog-title{
+    text-align: center;
+    background-color: blue;
+    color:white;
+    display: block;
+    margin-top: 0;
+    position: relative;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    margin: 0 0 1px;
+    padding: 5px 15px;
+    font-size: 16px;
+}
+.confirm-dialog-content{
+    text-align: center;
+    font-family: "Kanit", sans-serif !important;
+}

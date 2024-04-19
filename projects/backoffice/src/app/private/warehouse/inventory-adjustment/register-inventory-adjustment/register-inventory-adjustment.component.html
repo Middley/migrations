@@ -1,0 +1,144 @@
+<div class="container">
+  <div [formGroup]="form" *ngIf="form">
+    <div class="tsp-title-header-modal">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+        <mat-label class="tsp-font-size-modal-titles">{{
+          'WAREHOUSE.INVENTORY_ADJUSTMENT.DATA.REGISTER_TITLE' | translate
+          }}</mat-label>
+      </div>
+    </div>
+
+    <div mat-dialog-content class="container">
+      <div class="row">
+        <div class="col-sm-12 col-12 col-md-12 col-lg-12 col-xl-12 typeWarehouse">
+          <mat-radio-group aria-label="Select an option" formControlName="typeWarehouseId">
+            <mat-radio-button *ngFor="let item of typeWareHouses" value="{{ item.id }}"
+              [checked]="item.id == typeWareHouses[0].id" (change)="changeTypeWareHouse()">{{ item.name }}
+            </mat-radio-button>
+          </mat-radio-group>
+        </div>
+        <div class="col-sm-6 col-6 col-md-6 col-lg-6 col-xl-6">
+          <mat-form-field appearance="fill" class="generalMatForm">
+            <mat-label class="tsp-font-size-default-content tsp-labels">{{
+              'WAREHOUSE.INVENTORY_ADJUSTMENT.DATA.ESTABLISHMENT' | translate | uppercase
+              }}</mat-label>
+            <mat-select formControlName="establishmentId" (selectionChange)="getAllWarehouseByEstablismentId()">
+              <mat-option *ngFor="let item of listEstablishment" [value]="item.id">{{ item.name }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col-sm-6 col-6 col-md-6 col-lg-6 col-xl-6">
+          <mat-form-field appearance="fill" class="generalMatForm">
+            <mat-label class="tsp-font-size-default-content tsp-labels">{{
+              'WAREHOUSE.INVENTORY_ADJUSTMENT.DATA.WAREHOUSE' | translate | uppercase
+              }}</mat-label>
+            <mat-select formControlName="warehouseId" (selectionChange)="changeWarehouse()">
+              <mat-option *ngFor="let item of listWareHouse" [value]="item.id">{{ item.name }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col-sm-12 col-12 col-md-12 col-lg-12 col-xl-12">
+          <cad-search-by-criterion [parameters]="parametersConcept"
+            [disableSelector]=" form.controls.disabledSelector.value" [listConcept]="listConcept"
+            (searchConceptByNames)="GetConceptsByName($event)" (searchConceptByCode)="searchConceptByCode($event)"
+            (selectConcept)="addConceptTable($event)"></cad-search-by-criterion>
+        </div>
+        <div class="col-sm-12 col-12 col-md-12 col-lg-12 col-xl-12">
+          <mat-form-field class="example-full-width" class="generalMatForm">
+            <mat-label class="tsp-font-size-default-content tsp-labels">{{
+              'WAREHOUSE.INVENTORY_ADJUSTMENT.DATA.OBSERVATION' | translate | uppercase
+              }}</mat-label>
+            <textarea matInput formControlName="observation"
+              placeholder="{{ 'WAREHOUSE.INVENTORY_ADJUSTMENT.DATA.DEFAULT_VALUE' | translate | uppercase }}"
+              class="tsp-font-size-default-content tsp-labels"></textarea>
+          </mat-form-field>
+        </div>
+        <div class="col-sm-12 col-12 col-md-12 col-lg-12 col-xl-12">
+          <table class="table">
+            <thead>
+              <tr>
+                <th class="tsp-font-size-default-content textCenter">
+                  {{ 'WAREHOUSE.INVENTORY_ADJUSTMENT.DATA.ITEM' | translate }}
+                </th>
+                <th class="tsp-font-size-default-content textCenter">
+                  {{ 'WAREHOUSE.INVENTORY_ADJUSTMENT.DATA.CONCEPT' | translate }}
+                </th>
+                <th class="tsp-font-size-default-content textCenter">
+                  {{ 'WAREHOUSE.INVENTORY_ADJUSTMENT.DATA.STOCK_SYSTEM' | translate }}
+                </th>
+                <th class="tsp-font-size-default-content textCenter">
+                  {{ 'WAREHOUSE.INVENTORY_ADJUSTMENT.DATA.STOCK_CURRENT' | translate }}
+                </th>
+                <th class="tsp-font-size-default-content textCenter">
+                  {{ 'WAREHOUSE.INVENTORY_ADJUSTMENT.DATA.ADJUSTMENT' | translate }}
+                </th>
+                <th class="tsp-font-size-default-content textCenter">
+                  {{ 'WAREHOUSE.INVENTORY_ADJUSTMENT.DATA.UNIT_COST' | translate }}
+                </th>
+                <th class="tsp-font-size-default-content textCenter">
+                  {{ 'WAREHOUSE.INVENTORY_ADJUSTMENT.DATA.OBSERVATION' | translate }}
+                </th>
+                <th class="tsp-font-size-default-content textCenter">
+                  {{ 'WAREHOUSE.INVENTORY_ADJUSTMENT.DATA.OPTION' | translate }}
+                </th>
+              </tr>
+            </thead>
+            <tbody formArrayName="inventoryAdjustmentDetail">
+              <ng-container *ngFor="let item of inventoryAdjustmentDetail.controls; let i = index">
+                <tr *ngIf="inventoryAdjustmentDetail.controls" [formGroupName]="i" class="rowData">
+                  <td class="tsp-font-size-default-content tdData" (click)="addCurrentStock(i)">{{ i + 1 }}</td>
+                  <td class="tsp-font-size-default-content tdData" (click)="addCurrentStock(i)">
+                    {{ item.value.conceptName }}
+                  </td>
+                  <td class="tsp-font-size-default-content tdData" (click)="addCurrentStock(i)">
+                    {{ item.value.stockSystem }}
+                  </td>
+                  <td class="tsp-font-size-default-content tdData">
+                    <input formControlName="stockCurrent" class="inputTable" type="number" min="1" maxlength="10"
+                      step=".01" onchange="this.value=parseFloat(this.value).toFixed(2)" (change)="calcAdjustment(i)" />
+                  </td>
+                  <td class="tsp-font-size-default-content tdData" (click)="addCurrentStock(i)" [ngClass]="{
+                      ajustmentPositive: item.value.adjustment > 0,
+                      ajustmentNegative: item.value.adjustment < 0
+                    }">
+                    <span>{{ item.value.adjustment }}</span>
+                  </td>
+                  <td class="tsp-font-size-default-content tdData">
+                    <input formControlName="unitCost" class="inputTable" type="number" min="0.0001" maxlength="10"
+                      step=".01" onchange="this.value=parseFloat(this.value).toFixed(2)" />
+                  </td>
+                  <td class="tsp-font-size-default-content tdData">
+                    <input formControlName="observation" class="inputTable" />
+                  </td>
+                  <td class="tsp-font-size-default-content">
+                    <button mat-flat-button type="button" color="warn" class="removeItem"
+                      (click)="removeDataConcept(i)">
+                      <mat-icon class="removeItem">close</mat-icon>
+                    </button>
+                  </td>
+                </tr>
+              </ng-container>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-12 col-12 col-md-12 col-lg-12 col-xl-12 buttons-container row">
+        <button mat-raised-button [disabled]="form.invalid || verifyAdjustmentDetail" class="mr-2" (click)="save()"
+          [ngClass]="{ 'tsp-button-success-temporal': form.valid == true && verifyAdjustmentDetail == false }">
+          <mat-icon class="icons">save</mat-icon>{{ 'WAREHOUSE.INVENTORY_ADJUSTMENT.BUTTONS.SAVE_DRAFT' | translate }}
+        </button>
+        <button mat-raised-button [disabled]="form.invalid || verifyAdjustmentDetail" class="mr-2"
+          [ngClass]="{ 'tsp-button-success': form.valid == true && verifyAdjustmentDetail == false }"
+          (click)="confirmedAdjustment()">
+          <mat-icon class="icons">save</mat-icon>{{ 'WAREHOUSE.INVENTORY_ADJUSTMENT.BUTTONS.CONFIRM' | translate }}
+        </button>
+        <button mat-raised-button color="warn" class="marging-buttons button-close" mat-dialog-close>
+          <mat-icon class="icons">close</mat-icon>{{ 'GENERAL.BUTTONS.CLOSE' | translate }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,177 @@
+<cad-header-title [Title]="'ESTIMACIÓN DE PRODUCCIÓN'"></cad-header-title>
+
+<div class="row">
+  <div class="col-sm-6 col-6 col-md-6 col-lg-6 col-xl-6">
+    <mat-card [class.mat-elevation-z4]="true" class="card-insumo">
+      <mat-card-header class="row">
+        <div class="col-sm-6 col-6 col-md-6 col-lg-6 col-xl-6">
+          <mat-card-title class="title tsp-font-size-default-title">{{ 'RESTAURANTE.ITEMS.TITLE' | translate }}</mat-card-title>
+        </div>
+        <div class="col-sm-6 col-6 col-md-6 col-lg-6 col-xl-6 selectWarehouse row" *ngIf="wareHouses">
+          <div class="col-sm-4 col-4 col-md-4 col-lg-4 col-xl-4 verticalCenter">
+            <label class="title tsp-font-size-default-title">{{ 'RESTAURANTE.ESTIMATE_PRODUCTION.WAREHOUSE' | translate }}</label>
+          </div>
+          <div class="col-sm-8 col-8 col-md-8 col-lg-8 col-xl-8 verticalCenter">
+            <select class="select2 form-control" [(ngModel)]="idWarehouse" (ngModelChange)="GetItemsByInsumoId(idInsumo)">
+              <optgroup *ngFor="let establishment of establishments" label="{{ establishment }}">
+                <ng-container *ngFor="let warehouse of wareHouses">
+                  <option *ngIf="warehouse.establishmentName === establishment" value="{{ warehouse.id }}">
+                    {{ warehouse.wareHouseName }}
+                  </option>
+                </ng-container>
+              </optgroup>
+            </select>
+          </div>
+        </div>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="container-item">
+          <div class="row">
+            <mat-form-field appearance="outline" class="col-md-6">
+              <mat-label class="tsp-font-size-default-content">{{
+                'RESTAURANTE.ESTIMATE_PRODUCTION.SEARCH_BY_CODE' | translate
+              }}</mat-label>
+              <input
+                matInput
+                type="text"
+                autocomplete="off"
+                placeholder="{{ 'RESTAURANTE.ESTIMATE_PRODUCTION.PLACEHOLDER.SEARCH_BY_CODE' | translate }}..."
+                class="tsp-font-size-default-content"
+                [(ngModel)]="inputCodeSearch"
+                (keyup.enter)="searchConceptByCode()"
+              />
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="col-md-6">
+              <mat-label class="tsp-font-size-default-content">{{
+                'RESTAURANTE.ESTIMATE_PRODUCTION.SEARCH_BY_NAME' | translate
+              }}</mat-label>
+              <input
+                matInput
+                type="text"
+                placeholder="{{ 'RESTAURANTE.ESTIMATE_PRODUCTION.PLACEHOLDER.SEARCH_BY_NAME' | translate }}..."
+                class="tsp-font-size-default-content"
+                [matAutocomplete]="autoItem"
+                [(ngModel)]="inputNameSearch"
+                (ngModelChange)="searchConceptByName()"
+              />
+
+              <mat-autocomplete
+                autoActiveFirstOption
+                #autoItem="matAutocomplete"
+                (optionSelected)="selectedConceptByName($event)"
+                [displayWith]="displayFn"
+              >
+                <mat-option *ngFor="let option of listItemsForSearch" [value]="option" class="select-item">
+                  {{ option.nombre }}
+                </mat-option>
+              </mat-autocomplete>
+            </mat-form-field>
+          </div>
+
+          <div class="element-item">
+            <div *ngIf="mostrarLoading" class="display-spinner">
+              <cad-display-spinner></cad-display-spinner>
+            </div>
+            <div class="element-container">
+              <div class="list-insumo">
+                <div class="center-line">
+                  <span><em class="fas fa-caret-up"></em></span>
+                </div>
+                <div *ngFor="let item of itemsCategory">
+                  <div class="container-insumo">
+                    <div class="circle-time-line"></div>
+                    <div class="details">
+                      <span class="title">{{ item.nombre }}</span>
+                    </div>
+                    <div class="element-container">
+                      <span
+                        class="list-item"
+                        *ngFor="let concept of item.conceptoNegocio"
+                        [ngClass]="{
+                          selectedInsumo: concept.id == idInsumo
+                        }"
+                        (click)="GetItemsByInsumoId(concept.id)"
+                      >
+                        {{ concept.nombre }}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div class="col-sm-6 col-6 col-md-6 col-lg-6 col-xl-6">
+    <mat-card [class.mat-elevation-z4]="true" class="border-decoration">
+      <mat-card-header class="row">
+        <div class="col-sm-6 col-6 col-md-6 col-lg-6 col-xl-6" *ngIf="itemsByInsumo">
+          <label class="title tsp-font-size-default-title">{{ itemsByInsumo.namePrincipalConcept }}</label>
+        </div>
+        <div class="col-sm-6 col-6 col-md-6 col-lg-6 col-xl-6" *ngIf="itemsByInsumo">
+          <div class="stateProduction tsp-font-size-default-content stateDanger">
+            {{ itemsByInsumo.available }} {{ 'RESTAURANTE.ESTIMATE_PRODUCTION.AVAILABLE' | translate }}
+          </div>
+        </div>
+        <div *ngIf="!itemsByInsumo && !idInsumo" class="col-sm-12 col-12 col-md-12 col-lg-12 col-xl-12 warningMessagesSelect">
+          <p class="verticalCenter">
+            {{ 'RESTAURANTE.ESTIMATE_PRODUCTION.MESSSAGES.SELECTED_PRINCIPAL' | translate | uppercase }}
+          </p>
+        </div>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="items-insumo">
+          <div>
+            <table class="table" *ngIf="itemsByInsumo">
+              <thead>
+                <tr>
+                  <th class="tsp-font-size-default-content textCenter">
+                    {{ 'RESTAURANTE.ESTIMATE_PRODUCTION.TABLE.NAME' | translate }}
+                  </th>
+                  <th class="tsp-font-size-default-content textCenter">
+                    {{ 'RESTAURANTE.ESTIMATE_PRODUCTION.TABLE.CURRENT_AMOUNT' | translate }}
+                  </th>
+                  <th class="tsp-font-size-default-content textCenter">
+                    {{ 'RESTAURANTE.ESTIMATE_PRODUCTION.TABLE.AMOUNT_FOR_ONE' | translate }}
+                  </th>
+                  <th class="tsp-font-size-default-content textCenter">
+                    {{ 'RESTAURANTE.ESTIMATE_PRODUCTION.TABLE.AMOUNT_MAX_PRODUCTION' | translate }}
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of itemsByInsumo.items">
+                  <td class="items-table tsp-font-size-default-content">{{ item.itemName }}</td>
+                  <td class="items-table tsp-font-size-default-content">
+                    {{ item.currentStock + ' ' + item.unitOfMeasurement }}
+                  </td>
+                  <td class="items-table tsp-font-size-default-content">
+                    {{ item.quantityRequiredForOneUnit + ' ' + item.unitOfMeasurement }}
+                  </td>
+                  <td class="items-table tsp-font-size-default-content">
+                    <div
+                      class="stateProduction tsp-font-size-default-content"
+                      [ngClass]="{
+                        stateDanger: item.quantityMaxProducction == itemsByInsumo.available,
+                        stateSuccess: item.quantityMaxProducction != itemsByInsumo.available
+                      }"
+                    >
+                      {{ item.quantityMaxProducction + ' ' + item.unitOfMeasurement }}
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <div *ngIf="!itemsByInsumo && idInsumo && idWarehouse" class="warningMessages">
+              <mat-icon class="verticalCenter">warning</mat-icon>
+              <p class="verticalCenter">{{ 'RESTAURANTE.ESTIMATE_PRODUCTION.ERROR_MESSAGES.ITEM_NOT_REGISTER' | translate }}</p>
+            </div>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

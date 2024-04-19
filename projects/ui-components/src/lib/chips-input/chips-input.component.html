@@ -1,0 +1,39 @@
+<div class="filter-container ">
+  <span class="header">
+    <span class="col-12 col-sm-12 col-md-7 col-lg-7 col-xl-7">
+      <label class="title-filter tsp-font-size-default-title">{{ InputLabel
+        }}</label>
+    </span>
+    <!-- <mat-checkbox class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 check-box" (change)="OnChange($event)" [checked]="allSelected"
+      class="tsp-font-size-default-content">{{
+      InputCheckLabel
+      }}</mat-checkbox> -->
+    <span class="col-12 col-sm-12 col-md-5 col-lg-5 col-xl-5 all">
+      <input class="check-box" type="checkbox" (change)="OnChange($event)" (ngModelChange)="OnChange($event)"
+        [checked]="allSelected" />
+      <span class="tsp-font-size-default-content">{{ InputCheckLabel}}</span>
+    </span>
+  </span>
+  <mat-form-field class="chipsSelectContainer">
+    <mat-label class="tsp-font-size-default-content">{{ InputLabel }}</mat-label>
+    <mat-select [formControl]="itemsControl" multiple>
+      <mat-select-trigger>
+        <mat-chip-listbox>
+          <mat-chip-option *ngFor="let item of itemsControl.value" [removable]="true" (removed)="onItemRemoved(item)"
+            class="tsp-font-size-default-content">
+            {{ item.name }}
+            <mat-icon matChipRemove>cancel</mat-icon>
+          </mat-chip-option>
+        </mat-chip-listbox>
+      </mat-select-trigger>
+      <div class="contentSearch">
+        <input class="inputSearch" type="text" (ngModelChange)="searchByName($event)" [(ngModel)]="inputSearch">
+      </div>
+      <mat-option *ngFor="let item of itemsTemporal" [value]="item" (click)="add()"
+        class="tsp-font-size-default-content">{{
+        item.name
+        }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+</div>

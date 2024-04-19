@@ -1,0 +1,56 @@
+<div class="tsp-container mb-2">
+    <div class="row">
+        <div class="col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8 ">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12" *ngIf="showInvalidationOptions">
+                <span
+                    class="tsp-font-size-default-content tsp-labels tsp-title tsp-fonts-primary-color">ACCIONES:</span>
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 d-flex" *ngIf="showInvalidationOptions">
+                <button mat-flat-button class="tsp-font-size-modal-titles tsp-button-warning "
+                    (click)="invalidate(true)">Invalidar</button>&nbsp;
+                <!-- <button mat-flat-button class="tsp-font-size-modal-titles tsp-button-success">Nota
+                    de
+                    credito</button>&nbsp;
+                <button mat-flat-button class="tsp-font-size-modal-titles tsp-button-success">Nota
+                    de
+                    debito</button> -->
+            </div>
+        </div>
+        <div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <span
+                    class="tsp-font-size-default-content tsp-labels tsp-title tsp-fonts-primary-color">ACCIONES:</span>
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 actionsPrintPdfMail">
+                <button mat-raised-button class="tsp-button-success small-button" (click)="printDocumentImpresed()">
+                    <i class="material-icons">print</i>
+                </button>&nbsp;
+                <!-- <button mat-raised-button class="tsp-button-success small-button">
+                    <i class="material-icons">picture_as_pdf</i>
+                </button>&nbsp;
+                <button mat-raised-button class="tsp-button-success small-button">
+                    <i class="material-icons">mail</i>
+                </button> -->
+            </div>
+        </div>
+    </div>
+
+    <div class="row tsp-generic-component-container-center mt-2">
+        <mat-form-field appearance="fill" class="inputAngularMaterial">
+            <mat-label class="tsp-font-size-default-content tsp-labels">Formato</mat-label>
+            <mat-select [(ngModel)]="selectedFormatPrint" (ngModelChange)="changeFormatPrint($event)">
+                <mat-option *ngFor="let item of fromatPrints" [value]="item.id">
+                    {{item.name}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div class="row">
+        <div [ngClass]="{comprobant80mm: selectedFormatPrint===printFormat80mmId, comprobantA4: selectedFormatPrint === printFormatA4Id}"
+            *ngIf="representationPrintComprobant!=null"
+            style="border:solid; border-width: thin; margin:auto; margin-top:10px">
+            <div id="representationPrintComprobant">
+            </div>
+        </div>
+    </div>
+</div>

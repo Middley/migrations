@@ -1,0 +1,16 @@
+<div>
+    <span class="title-filter tsp-font-size-default-content tsp-font-size-default-title">RESUMEN</span>
+    <span>
+        <span>
+            <cad-table-detail [columns]="columnSummary" [items]="itemsSummary"
+                [totalAmount]="totalAmountSummary"></cad-table-detail>
+        </span>
+    </span>
+</div>
+<div>
+    <span class="title-filter tsp-font-size-default-content tsp-font-size-default-title">DETALLE</span>
+    <span>
+        <cad-table-by-group [columns]="columnDetail" [items]="itemsDetail"
+            [totalAmount]="totalAmountDetail"></cad-table-by-group>
+    </span>
+</div>

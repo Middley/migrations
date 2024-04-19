@@ -1,0 +1,33 @@
+@import 'variables';
+
+.title {
+  margin-top: auto;
+  margin-bottom: auto;
+  background-color: $tspSigesBlue;
+  margin-left: 0px;
+  display: flex;
+  flex-wrap: wrap;
+  .contentTitle {
+    text-align: center;
+    align-items: center;
+  }
+}
+
+.tsp-font-size-modal-titles {
+  color: $tspSigesWhite;
+}
+
+.alignCenter {
+  display: flex;
+  justify-content: center;
+}
+
+.alignEnd {
+  display: flex;
+  justify-content: end;
+}
+
+.dialog {
+  width: 80vh;
+  overflow-x: hidden;
+}

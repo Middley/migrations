@@ -1,0 +1,79 @@
+<mat-sidenav-container>
+  <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8" class="ks-mat-sidenav" mode="side">
+    <div class="ks-avatar-container">
+      <img class="avatar" src="../../../../assets/images/logos/LogoSIGES.png" />
+    </div>
+    <mat-divider></mat-divider>
+    <mat-nav-list class="side-navnar">
+      <ng-container *ngFor="let menu of menuList | async; index as i">
+        <ng-container>
+          <ng-container [ngTemplateOutlet]="menu.children ? childMenu : parentMenu" [ngTemplateOutletContext]="{ menu: menu }">
+          </ng-container>
+        </ng-container>
+      </ng-container>
+    </mat-nav-list>
+
+    <ng-template #parentMenu let-menu="menu">
+      <mat-list-item [routerLink]="menu.routerLink" routerLinkActive="is-active" [routerLinkActiveOptions]="{ exact: true }">
+        <mat-icon class="menu-button">{{ menu.icon }}</mat-icon>
+        <div class="menu-button tsp-font-title-menu">{{ menu.text }}</div>
+      </mat-list-item>
+    </ng-template>
+
+    <ng-template #childMenu let-menu="menu">
+      <mat-expansion-panel [class.mat-elevation-z0]="true" class="expansion-container">
+        <mat-expansion-panel-header>
+          <mat-icon mat-list-icon class="menu-button">{{ menu.icon }}</mat-icon>
+          <div class="menu-button tsp-font-title-menu">{{ menu.text }}</div>
+        </mat-expansion-panel-header>
+        <mat-nav-list>
+          <ng-container *ngFor="let submenu of menu.children">
+            <mat-list-item
+              [routerLink]="submenu.routerLink"
+              routerLinkActive="is-active"
+              [routerLinkActiveOptions]="{ exact: true }"
+              *ngIf="hasPermission(submenu)"
+              ><div class="sub-menu">
+                <mat-icon class="menu-button">{{ submenu.icon }}</mat-icon>
+                <div class="menu-button tsp-font-sub-title-menu tsp-submenu">{{ submenu.text }}</div>
+              </div>
+            </mat-list-item>
+          </ng-container>
+        </mat-nav-list>
+      </mat-expansion-panel>
+    </ng-template>
+  </mat-sidenav>
+  <div class="ks-main">
+    <mat-toolbar>
+      <mat-toolbar-row>
+        <div>
+          <div mat-icon-buttton *ngIf="sidenav.mode === 'side'" (click)="sidenav.toggle()" class="ks-button-toggle-toolbar">
+            <mat-icon *ngIf="!sidenav.opened">menu</mat-icon>
+            <mat-icon *ngIf="sidenav.opened">close</mat-icon>
+          </div>
+        </div>
+        <span class="ks-spacer"></span>
+        <span class="ks-example-spacer-toolbar-options"></span>
+        <p class="ks-toolbarOptions me-3">
+          <mat-icon #profileMenuItem (click)="headerProfileDropdown.toggle($event)">person</mat-icon>
+        </p>
+      </mat-toolbar-row>
+      <p-overlayPanel #headerProfileDropdown [appendTo]="profileMenuItem" [styleClass]="'headerDropdown'">
+        <ul class="ks-list-dropdown">
+          <li class="ks-list-item-dropdown" *ngIf="userNameActive">
+            <mat-icon class="ks-list-dropdown-icon">person</mat-icon><span>{{ username }}</span>
+          </li>
+          <li class="ks-list-item-dropdown" (click)="logout()">
+            <mat-icon class="ks-list-dropdown-icon">logout</mat-icon> <span>Cerrar Sesión</span>
+          </li>
+        </ul>
+      </p-overlayPanel>
+    </mat-toolbar>
+    <div class="ks-content">
+      <div class="content">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+    <!-- <cad-footer-private></cad-footer-private> -->
+  </div>
+</mat-sidenav-container>

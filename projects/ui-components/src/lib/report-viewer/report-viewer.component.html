@@ -1,0 +1,101 @@
+<span class="tsp-row">
+    <span class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 buttonsExport">
+        <!-- <button (click)="exportAllToPDF()">Export to PDF</button> -->
+        <button mat-raised-button class="button_primary small-button" (click)="exportAllToPDF()">
+            <i class="material-icons">picture_as_pdf</i>
+        </button>&nbsp;
+        <button mat-raised-button class="button_primary " (click)="exportTableDetailExcel()">
+            Excel
+        </button>
+        <!-- <button (click)="exportTableDetailExcel()">Export to Excel</button> -->
+    </span>
+    <span class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+        <mat-paginator #paginator class="demo-paginator" (page)="handlePageEvent($event)" [length]="length"
+            [pageSize]="pageSize" [showFirstLastButtons]="showFirstLastButtons"
+            [pageSizeOptions]="showPageSizeOptions ? pageSizeOptions : []" [pageIndex]="pageIndex"
+            aria-label="Select page">
+        </mat-paginator>
+    </span>
+</span>
+<span id="theContent" class="general ">
+    <header class="tsp-row">
+        <!-- title -->
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 tsp-row title mb-1">
+            <span class="containerLogoCompany" *ngIf="logo">
+                <!-- <img class="logoCompany" src="../../../../assets/images/logos/logo_tsol.png"> -->
+                <img class="logoCompany" [src]="transform()">
+            </span>
+            <span class="containerTitle">
+                <div class="tsp-font-size-default-content tsp-font-size-default-title">TECH SOLUTION PERU E.I.R.L</div>
+                <div class="title-filter tsp-font-size-default-content tsp-font-size-default-title">{{titleReport}}
+                </div>
+            </span>
+        </div>
+
+        <span class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12  line"></span>
+        <!-- section filter -->
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 tsp-row filters" *ngIf="filters">
+            <ng-container *ngFor="let item of filters">
+                <ng-container *ngIf="item.value.length>0">
+                    <span
+                        class="title-filter tsp-font-size-default-content tsp-font-size-default-title">{{item.name}}:</span>
+                    <span class="tsp-font-size-default-content">
+                        {{item.value}}</span>&nbsp;&nbsp;&nbsp;
+                </ng-container>
+            </ng-container>
+            <br>
+        </div>
+    </header>
+
+    <body class="tsp-row">
+        <!-- report by concept -->
+        <span id="table-detail" class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 tsp-row">
+            <!-- report By Group -->
+            <section class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12" *ngIf="reportType==reportTypeByGroup">
+                <cad-table-by-group [columns]="columns" [items]="paginated.items"
+                    [totalAmount]="totalAmount"></cad-table-by-group>
+            </section>
+            <!-- report Confirm Invalidation and Detail -->
+            <section class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"
+                *ngIf="reportType==reportTypeConfirmInvalidDetail">
+                <cad-table-confirm-invalid-detail [itemsConfirm]="itemsConfirm" [itemsInvalid]="itemsInvalid"
+                    [columnSummary]="columnSummary" [columnDetail]="columns" [itemsDetail]="paginated.items"
+                    [totalAmountItemsConfirm]="totalAmountConfirmed" [totalAmountItemsInvalid]="totalAmountInvalid"
+                    [totalAmountDetail]="totalAmount"></cad-table-confirm-invalid-detail>
+            </section>
+            <!-- report summary and detail -->
+            <section class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"
+                *ngIf="reportType==reportTypeSummaryAndDetail">
+                <cad-table-summary-and-detail [itemsSummary]="itemsSummary" [columnSummary]="columnSummary"
+                    [itemsSummary]="itemsSummary" [itemsDetail]="paginated.items" [columnDetail]="columns"
+                    [itemsDetail]="paginated.items" [totalAmountSummary]="totalAmountSummary"
+                    [totalAmountDetail]="totalAmount"></cad-table-summary-and-detail>
+            </section>
+            <!-- report detail -->
+            <section class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12" *ngIf="reportType==reportTypeDetail">
+                <cad-table-detail [items]="paginated.items" [columns]="columns" [columnRowSpan]="columnRowSpan"
+                    [activeRowsSpan]="activeRowsSpan" [totalAmount]="totalAmount"></cad-table-detail>
+            </section>
+        </span>
+    </body>
+
+    <footer class="tsp-row">
+        <span class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12  line"></span>
+        <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2 logoFooter">
+            <img class="logoTSOL" src="../../../../assets/images/logos/logo_tsol.png">
+            <img class="logoSIGES" src="../../../../assets/images/logos/Logo_SIGES_1.jpeg">
+
+        </div>
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 descriptionFooter">
+            <div class="tsp-font-size-default-content"> SIGES-Sistema de Gestión Comercial</div>
+            <div class="tsp-font-size-default-content"><a href="www.siges.tsolperu.com">www.siges.tsolperu.com</a></div>
+
+        </div>
+        <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 userFooter">
+            <div class="tsp-font-size-default-content">usuario: {{User}}</div>
+            <div class="tsp-font-size-default-content">{{ReportDate | date:'dd-MM-YYYY'}}</div>
+        </div>
+
+    </footer>
+
+</span>

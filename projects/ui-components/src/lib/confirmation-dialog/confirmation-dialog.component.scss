@@ -1,0 +1,18 @@
+@import 'variables';
+
+.btn_confirm_success {
+  background-color: $tspSigesBlue;
+  color: $tspSigesWhite;
+  display: flex;
+  margin-right: 6px;
+}
+
+.btn_cancel {
+  background-color: $tspSigesStateLapsed;
+  color: $tspSigesWhite;
+}
+
+.modalFoot {
+  display: flex;
+  justify-content: end;
+}

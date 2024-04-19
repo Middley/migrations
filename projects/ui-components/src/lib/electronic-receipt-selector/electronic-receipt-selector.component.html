@@ -1,0 +1,15 @@
+<form [formGroup]="formElectronicReceipt" class="example-form">
+  <mat-form-field class="generalMatForm" appearance="fill">
+    <mat-label class="tsp-font-size-default-content tsp-labels">{{ labelElectronicReceipt }}</mat-label>
+    <input class="tsp-font-size-default-content " type="text" placeholder="{{ placeHolderElectronicReceipt }}"
+      aria-label="Number" matInput formControlName="electronicReceipt" [matAutocomplete]="auto" />
+    <mat-autocomplete class="tsp-font-size-default-content" [displayWith]="getNameComprobant.bind(this)"
+      autoActiveFirstOption #auto="matAutocomplete" autoActiveFirstOption="true"
+      (optionSelected)="selectComprobant($event)">
+      <mat-option *ngFor="let comprobant of listComprobant" [value]="comprobant.typeComprobant.id"
+        class="tsp-font-size-default-content">
+        {{ comprobant.typeComprobant.name }}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</form>

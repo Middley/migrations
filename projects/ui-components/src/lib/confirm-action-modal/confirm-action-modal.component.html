@@ -1,0 +1,31 @@
+<div class="container tsp-generic-size-modal">
+    <div class="tsp-title-header-modal row">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <mat-label class="tsp-font-size-modal-titles tsp-title tsp-generic-component-container-center">{{ titleModal
+                }}</mat-label>
+        </div>
+    </div>
+
+    <form>
+        <mat-label class="tsp-generic-component-container-start tsp-generic-TabText">{{ subTitleModal }}</mat-label>
+        <mat-form-field class="tsp-row" appearance="fill">
+            <mat-label>{{messageInputModal}}</mat-label>
+            <textarea matInput placeholder={{exampleInputModal}}></textarea>
+        </mat-form-field>
+    </form>
+    <div class="question col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 tsp-generic-component-container-center">
+        <mat-label class="tsp-font-size-default-content">{{ question }}</mat-label>
+    </div>
+    <div class="tsp-generic-component-container-center row">
+        <div class="tsp-generic-marginButton tsp-generic-marginItems">
+            <button mat-flat-button mat-button mat-dialog-close class="tsp-font-size-buttons tsp-button-success">
+                {{ buttonAccept }}
+            </button>
+        </div>
+        <div class="tsp-generic-marginButton tsp-generic-marginItems">
+            <button mat-flat-button mat-button mat-dialog-close class="tsp-font-size-buttons tsp-button-delete">
+                {{ buttonDeny }}
+            </button>
+        </div>
+    </div>
+</div>

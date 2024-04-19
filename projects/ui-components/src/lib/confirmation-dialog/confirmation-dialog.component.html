@@ -1,0 +1,14 @@
+<div class="modalContent">
+  <p *ngIf="data.itemName" class="marginTop_0 colorTextLight">
+    <i *ngIf="data.itemIcon" class="{{ 'mdi ' + data.itemIcon }} "></i> {{ data.itemName }}
+  </p>
+  <p class="marginTop_0 marginBottom_2">{{ data.body }}</p>
+</div>
+<div class="modalFoot">
+  <button mat-raised-button class="{{ data.colorConfirmButton }}" (click)="close(true)">
+    <mat-icon *ngIf="data.confirmButtonIcon">{{ data.confirmButtonIcon }}</mat-icon> {{ data.yesLabel }}
+  </button>
+  <button mat-raised-button class="{{ data.colorCancelButton }}" (click)="close(false)">
+    <mat-icon *ngIf="data.cancelButtonIcon"></mat-icon> {{ data.noLabel }}
+  </button>
+</div>

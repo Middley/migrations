@@ -1,0 +1,121 @@
+@import 'variables.scss';
+
+.button-actions {
+  margin-top: 5px;
+  background-color: $tspSigesBlue;
+  border: none;
+  border-radius: 4px;
+}
+
+.button-actions-delete {
+  margin-top: 5px;
+  background-color: $tspSigesError;
+  border: none;
+  border-radius: 4px;
+}
+
+.export-excel-button {
+  background-color: $tspSigesStateActive !important;
+}
+
+.buttons-table-actions {
+  display: flex;
+  justify-content: end;
+  align-items: end;
+}
+
+.container-buttons {
+  display: flex;
+  align-items: center;
+}
+
+.tsp-index {
+  text-align: center !important;
+}
+
+.container-buttons:hover {
+  transform: translateY(0) scale(1.01);
+}
+
+.column-options {
+  text-align: center !important;
+}
+
+.tsp-icons {
+  color: $tspSigesWhite;
+  margin-top: 0.4vh;
+}
+
+.mat-raised-button {
+  min-width: none;
+}
+
+.status-lapsed {
+  color: $tspSigesWhite;
+  text-align: center;
+  font-weight: 600;
+  background-color: $tspSigesStateLapsed;
+  border-radius: 6px;
+}
+
+.status-active {
+  color: $tspSigesWhite;
+  text-align: center;
+  font-weight: 600;
+  background-color: $tspSigesStateActive;
+  border-radius: 6px;
+}
+
+.status-registered {
+  color: $tspSigesWhite;
+  text-align: center;
+  font-weight: 600;
+  background-color: $tspSigesStateRegistered;
+  border-radius: 6px;
+}
+
+.status-expire {
+  color: $tspSigesWhite;
+  text-align: center;
+  font-weight: 600;
+  background-color: $tspSigesStateExpire;
+  border-radius: 6px;
+}
+
+.data-columns {
+  display: flex;
+  justify-content: center;
+}
+
+.tsp-input-filter {
+  width: 100%;
+}
+
+.tsp-table-container {
+  font-size: 1px;
+}
+
+.buttons-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+::ng-deep .p-datatable .p-datatable-thead > tr > th {
+  text-align: center;
+  justify-content: center;
+  font-weight: bold;
+  vertical-align: middle !important;
+}
+
+::ng-deep .p-datatable .p-datatable-tbody > tr > td {
+  text-align: center;
+  justify-content: center;
+  padding: 0px;
+  vertical-align: middle !important;
+}
+
+.button_primary {
+  background-color: $tspSigesBlueLetters;
+  color: $tspSigesWhite;
+}

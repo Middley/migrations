@@ -1,0 +1,122 @@
+.full-width{
+
+  width:80%;
+  
+}
+.mat-mdc-form-field{
+  margin: 10px 0 -24px 0 !important;
+}
+.buton-save{
+  margin: 10px 0 10px 0 !important;
+}
+h2{
+  margin: 10px 0 10px 0;
+  font-weight: bold !important;
+  line-height: 1.2 !important;
+}
+
+
+@keyframes slideleft {
+  from {
+      background-position: 0%;
+  }
+
+  to {
+      background-position: 90000%;
+  }
+}
+@-webkit-keyframes slideleft {
+  from {
+      background-position: 0%;
+  }
+
+  to {
+      background-position: 90000%;
+  }
+}
+.fondo-login{
+  background-image: url(../../../assets/images/logos/fondo-login.png);
+  background-repeat: repeat-x;
+  animation: slideleft 90000s infinite linear;
+  -webkit-animation: slideleft 90000s infinite linear;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-attachment: fixed;
+  position: relative;
+  min-height: 100vh;
+}
+
+.login-content {
+  
+  background: rgb(4 34 216 / 74%);
+    min-height: 100vh;
+}
+.header{
+  color: #Fff;
+  margin: 15px 0px 5px 0;
+
+}
+.login-content .logo {
+  margin-bottom: 40px;
+  font-family: "Niconne";
+  color: #fff;
+}
+
+.login-content .logo h1 {
+  font-size: 52px;
+  font-weight: 400;
+}
+.form-login-card{
+  margin-bottom: 5px !important;
+}
+
+/*  .login-content .login-box {
+    max-width: 328px !important;
+    margin:4em auto;
+  background: rgb(255 255 255 / 50%);
+  padding: auto 2px;
+  border-radius: 20px;
+  position: absolute;
+  text-align:center;
+  top: 0;
+  right: 0;
+  left: 0;
+  box-shadow: -1px 4px 28px 0px rgb(0 0 0 / 75%);
+}  */
+
+.login-content .login-box {
+  /* max-width: 328px !important; */
+  width: 25%;
+  margin: 3% auto;
+  background: rgba(255, 255, 255, 0.5);
+  padding: 10px 10px;
+  border-radius: 20px;
+  position: absolute;
+  text-align: center;
+  top: 0;
+  right: 0;
+  left: 0;
+  box-shadow: -1px 4px 28px 0px rgba(0, 0, 0, 0.75);
+}
+
+
+.login-content .login-box .login-head {
+  margin-top: 15px;
+  margin-bottom: -4px;
+  text-align: center;
+}
+
+.login-content .login-box label {
+  color: #666;
+  font-weight: 700;
+}
+
+/* ::ng-deep .mat-mdc-card-content{
+  padding: 0 !important;
+} */
+
+.login-content-form{
+  padding-bottom: 10px !important;
+  padding: 0 !important;
+}

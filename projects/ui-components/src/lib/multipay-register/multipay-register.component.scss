@@ -1,0 +1,36 @@
+@import 'variables';
+
+.payMode {
+  width: 100%;
+  display: flex;
+}
+.text-radio-button{
+  margin-left: -10px;
+}
+
+.radio-button-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.titlePayMode {
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.optionPayMode {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+
+.containerPaymentMethods {
+  justify-content: center;
+}
+
+.detailsPaymentMethod {
+  justify-content: center;
+}

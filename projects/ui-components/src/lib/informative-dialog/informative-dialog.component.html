@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="tsp-title-header-modal row">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <mat-label class="tsp-font-size-modal-titles">{{ TitleModal }}</mat-label>
+        </div>
+    </div>
+    <div mat-dialog-content class="row">
+        <div class="question col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <mat-label class="tsp-font-size-default-content unsuscribe-label">{{ Body }}</mat-label>
+        </div>
+    </div>
+    <div class="btns" mat-dialog-actions>
+        <div class="btnOk">
+            <button mat-flat-button mat-button mat-dialog-close (click)="Ok(true)"
+                class="tsp-font-size-buttons tsp-button-success">
+                {{ BtnOk }}
+            </button>
+        </div>
+        <div class="btnCancel" *ngIf="BtnCancel">
+            <button mat-flat-button mat-button mat-dialog-close class="tsp-font-size-buttons tsp-button-delete">
+                {{ BtnCancel }}
+            </button>
+        </div>
+    </div>
+</div>

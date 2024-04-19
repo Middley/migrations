@@ -1,0 +1,156 @@
+/* ////////////////////////////// SASS Variables ////////////////////////////// */
+
+/*////////// Colors //////////*/
+
+/*///// General /////*/
+$tspSigesDark: #162343;
+$tspSigesMagenta: #ff0071;
+$tspSigesMagentaDark: #cd005b;
+$tspSigesBlue: #0422d8;
+$tspSigesBlueDark: #004e86;
+$tspSigesBlueLight: #2f48e9;
+$tspSigesGrey: #6767678a;
+
+$tspSigesWhite: #fff;
+$tspSigesCream: #eeeeee;
+$tspSigesLightGray: lightgray;
+$tspSigesGray: #343a40;
+$tspSigesGrayTable: #c3c5c7;
+$tspSigesBlack: black;
+$tspSigesLightBlue: #669bc9;
+$tspSigesError: #b3261e;
+$tspSigesErrorLow: #aa4d49;
+$tspSigesSuccess: #2e7d32;
+$tspSigesSuccessLow: #3f9b43;
+
+$tspSigesWarning: #ffb300;
+/*Buttons*/
+$tspSigesbuttonEdit: #ffb300;
+$tspSigesButtonTools: #5e35b1;
+$tspSigesButtonClone: #0277bd;
+
+/*///// Letras /////*/
+$tspSigesWhiteLetters: #fff;
+$tspSigesDarkLetters: #162343;
+$tspSigesMagentaLetters: #ff0071;
+$tspSigesMagentaDarkLetters: #cd005b;
+$tspSigesBlueLetters: #0422d8;
+$tspSigesCreamLetters: #eeeeee;
+$tspSigesLightGrayLetters: lightgray;
+$tspSigesGrayLetters: #343a40;
+$tspSigesBlackLetters: black;
+$tspSigesInputColorLetters: rgba(0, 0, 0, 0.6);
+
+/*///// EstadosLetras (Activo-Vigente)-Expirar-(Caducado-de baja) /////*/
+
+$tspSigesStateActive: green;
+$tspSigesStateExpire: #cca300;
+$tspSigesStateLapsed: red;
+$tspSigesStateRegistered: #0422d8;
+
+$tspSigesPlanStateRegistered: #cca300;
+$tspSigesPlanStateRegisteredLow: #f2e8be;
+$tspSigesPlanStateApproved: #2e7d32;
+$tspSigesPlanStateApprovedLow: #b2fcb6;
+$tspSigesPlanStateGenerate: #2e7d32;
+$tspSigesPlanStateExpire: #b3261e;
+$tspSigesPlanStateExpireLow: #d6918d;
+
+/*/ Main /*/
+$colorMain: #031640;
+$colorMain_light: #336699;
+$colorMain_dark: #030f29;
+$colorMain_shadow: rgba(3, 22, 64, 50%);
+
+/*/ Main alt /*/
+$colorMainAlt: #336699;
+$colorMainAlt_light: #96cbff;
+$colorMainAlt_dark: #031640;
+$colorMainAlt_shadow: rgba(51, 102, 153, 50%);
+
+/*/ Success /*/
+$colorSuccess: #009567;
+$colorSuccess_light: #00b97f;
+$colorSuccess_dark: #00744f;
+$colorSuccess_shadow: rgba(0, 149, 103, 50%);
+$colorSuccess_altBkg: #dbffc7;
+$colorSuccess_altText: #417e20;
+
+/*/ Info /*/
+$colorInfo_altBkg: #e8edff;
+$colorInfo_altText: #33405d;
+
+/*/ Warning /*/
+$colorWarning: #febd40;
+$colorWarning_light: #ffcb67;
+$colorWarning_dark: #eaa41e;
+$colorWarning_shadow: rgba(254, 189, 64, 50%);
+$colorWarning_altBkg: #fff5e8;
+$colorWarning_altText: #895e0b;
+
+/*/ Danger /*/
+$colorDanger: #ff074c;
+$colorDanger_light: #ff9696;
+$colorDanger_dark: #cf003b;
+$colorDanger_shadow: rgba(255, 7, 76, 50%);
+$colorDanger_altBkg: #ffe8e8;
+$colorDanger_altText: #a52929;
+
+/*/ Text /*/
+$colorText: #333333;
+$colorTextLight: #676767;
+$colorTextLight_shadow: rgba(123, 123, 123, 50%);
+$colorTextInverse: white;
+
+/*/ Other /*/
+$colorOutline: #d9dce2;
+$colorBkg: #eaf2fa;
+$colorBkgLight: #f8f8fa;
+$colorGrey_shadow: rgba(0, 0, 0, 25%);
+$colorDisabled: #c8c8c8;
+
+/*///// Header /////*/
+
+$colorHeaderBkg: #031640;
+$colorHeaderText: #eaf2fa;
+$colorHeaderTextLight: #7b7b7b;
+$colorHeaderHover: #cbe5ff;
+$colorHeaderBtn: rgba(255, 255, 255, 10%);
+$colorHeaderBtnHover: rgba(255, 255, 255, 5%);
+$colorHeaderSearchBkg: #f1f1f1;
+$colorHeaderOutline: rgba(255, 255, 255, 25%);
+
+/*////////// Colors Dark mode DM //////////*/
+
+/*/ General /*/
+
+$colorText_dm: white;
+$colorTextLight_dm: rgba(255, 255, 255, 75%);
+$colorTextInverse_dm: white;
+$colorOutline_dm: rgba(255, 255, 255, 25%);
+$colorBkg_dm: #16213a;
+$colorDanger_dm: #ff5656;
+
+/*/ Header dark /*/
+
+$colorHeaderBkg_dm: #33405d;
+$colorHeaderText_dm: white;
+$colorHeaderTextLight_dm: rgba(255, 255, 255, 75%);
+$colorHeaderHover_dm: rgba(255, 255, 255, 10%);
+$colorHeaderSearchBkg_dm: rgba(0, 0, 0, 20%);
+$colorHeaderOutline_dm: rgba(255, 255, 255, 25%);
+
+/*////////// Measurements //////////*/
+
+$containerWidthS: 100%;
+$containerWidthM: 632px;
+$containerWidthL: 1232px;
+
+$containerGutter: 1rem;
+
+/*////////// Media Queries //////////*/
+/* Media queries should always be used with max-width. */
+
+$mediaqueryS: 767px;
+$mediaqueryM: 991px;
+$mediaqueryL: 1199px;

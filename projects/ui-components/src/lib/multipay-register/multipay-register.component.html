@@ -1,0 +1,54 @@
+<!-- <mat-card class="multi_pay"> -->
+<!-- <mat-card-header class="pt-0"> -->
+<div class="payMode">
+  <div class="col-2 col-md-2 titlePayMode">
+    <span class="tsp-font-size-default-content tsp-labels">PAGO</span>
+  </div>
+  <div class="col-10 col-md-10 optionPayMode">
+    <mat-radio-group class="d-flex">
+      <div class="radio-button-container">
+        <mat-radio-button value="{{ parameterPaymentMode.cashPaymentMode }}" checked
+          (click)="selectedpaymentMode(parameterPaymentMode.cashPaymentMode)"></mat-radio-button>
+        <span class="tsp-font-size-default-content text-radio-button">CO</span>
+      </div>
+      <div class="radio-button-container" *ngIf="AllowPaymentToCredit">
+        <mat-radio-button value="{{ parameterPaymentMode.fastCreditPaymentMode }}"
+          (click)="selectedpaymentMode(parameterPaymentMode.fastCreditPaymentMode)"></mat-radio-button>
+        <span class="tsp-font-size-default-content text-radio-button">CR</span>
+      </div>
+      <div class="radio-button-container" *ngIf="AllowPaymentToCreditConfigured">
+        <mat-radio-button value="{{ parameterPaymentMode.paymentCreditConfiguredMode }}"
+          (click)="selectedpaymentMode(parameterPaymentMode.paymentCreditConfiguredMode)"></mat-radio-button>
+        <span class="tsp-font-size-default-content text-radio-button">CC</span>
+      </div>
+    </mat-radio-group>
+  </div>
+</div>
+<!-- </mat-card-header -->
+<div class="container">
+  <div class="row">
+    <!-- OPCIONES DE METODOS DE PAGO -->
+    <div class="col-12 col-md-12 containerPaymentMethods">
+      <cad-payment-method-selector *ngIf="paymentMethods" [paymentMethods]="paymentMethods"
+        [idPaymentMethod]="paymentMethods[paymentMethods.length - 1].id"
+        (paymentMethodSelector)="paymentMethodSelector($event)"></cad-payment-method-selector>
+    </div>
+    <!-- DETALLES DE METODOS DE PAGO -->
+    <div class="col-12 col-md-12 detailsPaymentMethod">
+      <cad-payment-trace-editor [parameterPaymentMethod]="parameterPaymentMethod" [paymentMethod]="paymentMethod"
+        [financialEntities]="financialEntities" [ammountTotal]="ammountTotal" [cards]="cards"
+        [bankAccounts]="bankAccounts" [importAPay]="importAPay" [traza]="trazaTemporal" [activeError]="activeErrorTraza"
+        [messageError]="messageError" (paymentTraceEditor)="addTrace($event)"></cad-payment-trace-editor>
+    </div>
+
+    <!-- RESUMEN DE PAGOS -->
+    <div class="col-12 col-md-12 containerSummary">
+      <cad-multipay-resume [ammountTotal]="ammountTotal" [ammountPay]="ammountPay"
+        [multipayResumenArray]="multipayResumenArray" *ngIf="multipayResumenArray.length > 0"
+        (removePaymentMethod)="removeMultipaytMethod($event)"
+        (editMultipayResumen)="editMultipayResumen($event)"></cad-multipay-resume>
+    </div>
+  </div>
+  <!-- </mat-card-content> -->
+  <!-- </mat-card> -->
+</div>

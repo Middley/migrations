@@ -1,0 +1,31 @@
+<cad-header-title [Title]="'SMART_PRINT.PRINT_SETTINGS.DATA.TITLE' | translate"></cad-header-title>
+
+<div class="row filters">
+  <div class="col-12 col-sm-12 md-12 col-lg-12 col-xl-12 btnNewAndFilter">
+    <div class="btnNew">
+      <button mat-raised-button class="tsp-buttons-actions tsp-font-size-buttons tsp-button-success" (click)="openRegister()">
+        <mat-icon>add</mat-icon>{{ 'GENERAL.BUTTONS.NEW' | translate }}
+      </button>
+
+      <button
+        mat-raised-button
+        class="tsp-buttons-actions tsp-font-size-buttons tsp-button-success"
+        (click)="callPrinterServicceHub()"
+      >
+        <mat-icon>add</mat-icon>{{ 'GENERAL.BUTTONS.NEW' | translate }}
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+    <cad-table-filter
+      [items]="data"
+      [columns]="columns"
+      [actions]="actions"
+      (editEvent)="openEdit($event)"
+      (deleteEvent)="openUnsuscribe($event)"
+    ></cad-table-filter>
+  </div>
+</div>

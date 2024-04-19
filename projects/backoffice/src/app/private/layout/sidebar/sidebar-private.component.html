@@ -1,0 +1,39 @@
+<!-- ============================================================== -->
+<!-- sidebar -->
+<!-- ============================================================== -->
+
+<mat-nav-list appAccordion>
+    <ng-container *ngFor="let menu of menuList | async; index as i;">
+        <ng-container>
+            <ng-container [ngTemplateOutlet]="menu.children ?  childMenu : parentMenu"
+                [ngTemplateOutletContext]="{menu:menu}">
+            </ng-container>
+        </ng-container>
+    </ng-container>
+</mat-nav-list>
+
+<ng-template #parentMenu let-menu="menu">
+    <mat-list-item class="box-list-item" [routerLink]="menu.routerLink" routerLinkActive="is-active"
+        [routerLinkActiveOptions]="{exact:true}">
+        <mat-icon class="sidebar-icon">{{menu.icon}}</mat-icon>
+        <a>{{menu.text}}</a>
+    </mat-list-item>
+</ng-template>
+
+<ng-template #childMenu let-menu="menu">
+    <mat-expansion-panel [class.mat-elevation-z0]="true" class="box-menu">
+        <mat-expansion-panel-header class="box-header">
+            <mat-icon mat-list-icon class="sidebar-icon">{{menu.icon}}</mat-icon>
+            <a>{{menu.text}}</a>
+        </mat-expansion-panel-header>
+        <mat-nav-list>
+            <ng-container *ngFor="let submenu of menu.children">
+                <mat-list-item class="box-list-item-expansion" [routerLink]="submenu.routerLink"
+                    routerLinkActive="is-active" [routerLinkActiveOptions]="{exact:true}">
+                    <mat-icon class="sidebar-icon">{{submenu.icon}}</mat-icon>
+                    <a>{{submenu.text}}</a>
+                </mat-list-item>
+            </ng-container>
+        </mat-nav-list>
+    </mat-expansion-panel>
+</ng-template>

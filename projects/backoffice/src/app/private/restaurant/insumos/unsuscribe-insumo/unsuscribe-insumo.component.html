@@ -1,0 +1,24 @@
+<!-- <h1 mat-dialog-title>Delete Insumo</h1>
+<div mat-dialog-content>
+    Are you sure to delete the Insumo?
+</div>
+<div mat-dialog-actions>
+    <button mat-button mat-dialog-close>No</button>
+    <button mat-button mat-dialog-close cdkFocusInitial>Ok</button>
+</div> -->
+
+
+<div fxLayout="row" fxLayoutAlign="start center" class="mat-dialog__title">
+    <h4 class="headline m-0 text-xl text-accent" fxFlex="auto">
+        <p>Delete Insumo</p>
+    </h4>
+</div>
+<mat-dialog-content class="dialog-form-content">
+    <div fxLayout="row" fxLayoutGap="16px">
+        Are you sure to delete the Insumo?
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close type="button">CANCELAR</button>
+    <button mat-button color="purple" mat-dialog-close type="button">CONFIRMAR</button>
+</mat-dialog-actions>

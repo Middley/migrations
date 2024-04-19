@@ -1,0 +1,125 @@
+@import 'variables';
+
+.contentFilter {
+  margin-left: 4px;
+  // margin-right: 6px;
+  margin-bottom: 7px;
+  border: 2px solid;
+  border-radius: 5px;
+  border-color: $tspSigesBlue;
+}
+
+.tsp-view-title {
+  text-align: center;
+  color: $tspSigesWhiteLetters;
+}
+
+.tsp-view-title-container {
+  background-color: $tspSigesBlue;
+  padding: 10px;
+  text-align: center;
+}
+
+.title {
+  color: $tspSigesBlue;
+  font-weight: 600;
+  margin-top: 3px;
+}
+
+.generalMatForm {
+  width: 100%;
+}
+
+.filterDate {
+  align-items: center;
+  margin-left: 0px;
+  margin-top: 5px;
+}
+
+.filterWarehouse {
+  // display: flex;
+  // align-items: center;
+  margin-top: 5px;
+}
+
+.mat-mdc-card-content {
+  display: flex;
+}
+
+.cmbbox {
+  width: 100%;
+  margin-bottom: 12px;
+}
+
+.alingItemEnd {
+  display: flex;
+  justify-content: end;
+}
+
+.btnSearch {
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: 10px;
+}
+
+.button-success {
+  background-color: $tspSigesBlue !important;
+  color: $tspSigesWhite !important;
+}
+
+// .filterItem {
+//   display: flex;
+//   padding-right: 73px;
+// }
+
+.summaryTable {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.titleInsumo {
+  background-color: $tspSigesBlue;
+  margin-right: 14px;
+  margin-left: -2px;
+  color: $tspSigesWhite;
+  margin-bottom: 8px;
+  border-radius: 5px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+}
+
+.textCenter {
+  text-align: center;
+}
+
+.labelSumaryTable {
+  background-color: #80848bcf;
+  color: $tspSigesWhite;
+}
+
+.valueSumaryTable {
+  border-top: 1px solid #80848bcf;
+  border-right: 1px solid #80848bcf;
+  border-left: 1px solid #80848bcf;
+}
+
+.currentStock {
+  border-radius: 7px;
+  text-align: center;
+  color: $tspSigesWhite;
+  background-color: green;
+}
+
+.contentSaleAndConsumption {
+  margin-right: 10px;
+  margin-left: 10px;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.card-header {
+  padding: 0px 10px 0;
+  margin-bottom: 10px;
+}

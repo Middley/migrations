@@ -1,0 +1,118 @@
+<div class="container">
+  <div class="tsp-title-header-modal row">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+      <div>
+        <mat-label class="tsp-font-size-modal-titles">{{
+          'SMART_PRINT.PRINT_SETTINGS.DATA.REGISTER_TITLE' | translate
+        }}</mat-label>
+      </div>
+    </div>
+  </div>
+  <div [formGroup]="form">
+    <div mat-dialog-content class="container">
+      <div class="row">
+        <div class="col-sm-6 col-6 col-md-6 col-lg-6 col-xl-6">
+          <mat-form-field appearance="fill" class="general-input">
+            <mat-label class="tsp-font-size-default-content">{{
+              'SMART_PRINT.PRINT_SETTINGS.DATA.ESTABLISHMENT' | translate
+            }}</mat-label>
+            <mat-select
+              (ngModelChange)="selectedEstablishment($event)"
+              formControlName="establishment"
+              class="tsp-font-size-default-content"
+            >
+              <mat-option
+                *ngFor="let establishment of establishments"
+                [value]="establishment.id"
+                class="tsp-font-size-default-content"
+              >
+                {{ establishment.name }}
+              </mat-option>
+            </mat-select>
+            <mat-error
+              class="tsp-font-size-errors-messages"
+              *ngIf="form.controls.establishment.errors?.required && form.controls.establishment.touched"
+            >
+              {{ 'GENERAL.ERRORS.REQUIRED' | translate }}</mat-error
+            >
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-4 col-4 col-md-4 col-lg-4 col-xl-4">
+          <mat-form-field appearance="fill" class="general-input">
+            <mat-label class="tsp-font-size-default-content">{{
+              'SMART_PRINT.PRINT_SETTINGS.DATA.SERVICE_CENTER' | translate
+            }}</mat-label>
+            <mat-select formControlName="serviceCenter" class="tsp-font-size-default-content">
+              <mat-option
+                *ngFor="let serviceCenter of serviceCenters"
+                [value]="serviceCenter.id"
+                class="tsp-font-size-default-content"
+              >
+                {{ serviceCenter.name }}
+              </mat-option>
+            </mat-select>
+            <mat-error
+              class="tsp-font-size-errors-messages"
+              *ngIf="form.controls.serviceCenter.errors?.required && form.controls.serviceCenter.touched"
+            >
+              {{ 'GENERAL.ERRORS.REQUIRED' | translate }}</mat-error
+            >
+          </mat-form-field>
+        </div>
+        <div class="col-sm-4 col-4 col-md-4 col-lg-4 col-xl-4">
+          <mat-form-field appearance="fill" class="general-input">
+            <mat-label class="tsp-font-size-default-content">{{
+              'SMART_PRINT.PRINT_SETTINGS.DATA.PRINTABLE_DOCUMENT' | translate
+            }}</mat-label>
+            <mat-select formControlName="printableDocument" class="tsp-font-size-default-content">
+              <mat-option
+                *ngFor="let printableDocument of printableDocuments"
+                [value]="printableDocument.id"
+                class="tsp-font-size-default-content"
+              >
+                {{ printableDocument.name }}
+              </mat-option>
+            </mat-select>
+            <mat-error
+              class="tsp-font-size-errors-messages"
+              *ngIf="form.controls.printableDocument.errors?.required && form.controls.printableDocument.touched"
+            >
+              {{ 'GENERAL.ERRORS.REQUIRED' | translate }}</mat-error
+            >
+          </mat-form-field>
+        </div>
+        <div class="col-sm-4 col-4 col-md-4 col-lg-4 col-xl-4">
+          <mat-form-field appearance="fill" class="general-input">
+            <mat-label class="tsp-font-size-default-content">{{
+              'SMART_PRINT.PRINT_SETTINGS.DATA.PRINTER' | translate
+            }}</mat-label>
+            <mat-select formControlName="printer" class="tsp-font-size-default-content">
+              <mat-option *ngFor="let printer of printers" [value]="printer.id" class="tsp-font-size-default-content">
+                {{ printer.name }}
+              </mat-option>
+            </mat-select>
+            <mat-error
+              class="tsp-font-size-errors-messages"
+              *ngIf="form.controls.printer.errors?.required && form.controls.printer.touched"
+            >
+              {{ 'GENERAL.ERRORS.REQUIRED' | translate }}</mat-error
+            >
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-12 col-md-12 col-lg-12 col-xl-12 buttons-container">
+        <button mat-raised-button [disabled]="form.invalid" class="tsp-button-success" (click)="save()">
+          <mat-icon class="icons">save</mat-icon>{{ 'GENERAL.BUTTONS.SAVE' | translate }}
+        </button>
+        <button mat-raised-button color="warn" class="marging-buttons button-close" mat-dialog-close>
+          <mat-icon class="icons">close</mat-icon>{{ 'GENERAL.BUTTONS.CLOSE' | translate }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

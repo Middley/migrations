@@ -1,0 +1,228 @@
+<cad-header-title [Title]="'CONSUMO DE INSUMOS'"></cad-header-title>
+
+<div class="row">
+  <div class="col-sm-12 col-12 col-md-12 col-lg-12 col-xl-12">
+    <!-- FILTERS -->
+    <mat-card>
+      <mat-card-content class="row">
+        <div class="col-sm-5 col-5 col-md-5 col-lg-5 col-xl-4 filterDate">
+          <div class="contentFilter row" [formGroup]="form" *ngIf="form">
+            <span class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 title tsp-font-size-default-title">{{
+              'RESTAURANTE.INVENTENTORY_INSUMO.FILTERS.DATE.TITLE' | translate
+            }}</span>
+            <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 dateStart">
+              <mat-form-field appearance="fill" class="generalMatForm">
+                <mat-label class="tsp-font-size-default-content"
+                  >{{ 'RESTAURANTE.INVENTENTORY_INSUMO.FILTERS.DATE.FROM_START' | translate }}
+                </mat-label>
+                <input
+                  (dateChange)="clearEndDate()"
+                  class="tsp-font-size-default-content"
+                  matInput
+                  [matDatepicker]="picker1"
+                  formControlName="fromDate"
+                />
+                <mat-datepicker-toggle matSuffix [for]="picker1" class="tsp-font-size-default-content"> </mat-datepicker-toggle>
+                <mat-datepicker #picker1></mat-datepicker>
+              </mat-form-field>
+            </div>
+            <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 dateEnd">
+              <mat-form-field appearance="fill" class="generalMatForm">
+                <mat-label class="tsp-font-size-default-content"
+                  >{{ 'RESTAURANTE.INVENTENTORY_INSUMO.FILTERS.DATE.TO_DATE' | translate }}
+                </mat-label>
+                <input
+                  [matDatepickerFilter]="filterEndDate"
+                  class="tsp-font-size-default-content"
+                  matInput
+                  [matDatepicker]="picker"
+                  formControlName="toDate"
+                />
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-3 filterWarehouse">
+          <div class="contentFilter row">
+            <span class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 title tsp-font-size-default-title">{{
+              'RESTAURANTE.INVENTENTORY_INSUMO.FILTERS.WAREHOUSE' | translate
+            }}</span>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+              <!-- <mat-form-field appearance="fill" class="cmbbox">
+                <mat-label>{{ 'RESTAURANTE.INVENTENTORY_INSUMO.FILTERS.WAREHOUSE' | translate }}</mat-label>
+                <mat-select [formControl]="animalControl" required>
+                  <mat-option>--</mat-option>
+                  <mat-option *ngFor="let animal of animals" [value]="animal">
+                    {{ animal.name }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field> -->
+              <select class="select2 form-control cmbbox" [(ngModel)]="idWarehouse">
+                <optgroup *ngFor="let establishment of establishments" label="{{ establishment }}">
+                  <ng-container *ngFor="let warehouse of wareHouses">
+                    <option *ngIf="warehouse.establishmentName === establishment" value="{{ warehouse.id }}">
+                      {{ warehouse.wareHouseName }}
+                    </option>
+                  </ng-container>
+                </optgroup>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-5 col-5 col-md-5 col-lg-5 col-xl-5 filterItem" *ngIf="settings != null">
+          <cad-chips-input
+            [InputLabel]="'RESTAURANTE.INVENTENTORY_INSUMO.FILTERS.ITEM.TITLE' | translate"
+            [InputCheckLabel]="'GENERAL.FILTERS.ALL' | translate"
+            [items]="settings.items"
+            (selectedItems)="selectedItem($event)"
+          ></cad-chips-input>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 alingItemEnd">
+          <div class="btnSearch">
+            <button mat-raised-button class="tsp-buttons-actions tsp-font-size-buttons button-success" (click)="searchData()">
+              {{ 'GENERAL.BUTTONS.SEARCH' | translate }}
+            </button>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <!-- CONTENT SALE AND CONSUMPTION-->
+  <div class="col-sm-6 col-6 col-md-6 col-lg-6 col-xl-6">
+    <mat-card class="mt-2">
+      <mat-card-header class="card-header">
+        <mat-card-title class="title tsp-font-size-default-title">{{
+          'RESTAURANTE.INVENTENTORY_INSUMO.DATA.SALE_AND_CONSUMPTION' | translate | uppercase
+        }}</mat-card-title>
+        <!-- <mat-divider></mat-divider> -->
+      </mat-card-header>
+
+      <mat-card-content class="row">
+        <!-- CONTENT -->
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 row mb-5 contentSaleAndConsumption">
+          <div class="col-sm-12 col-12 col-md-12 col-lg-12 col-xl-12">
+            <div class="row titleInsumo">
+              <span class="col-sm-6 col-6 col-md-6 col-lg-6 col-xl-6 tsp-font-size-default-content">HAMBURGUESA ESCOLAR</span>
+              <span class="col-sm-6 col-6 col-md-6 col-lg-6 col-xl-6 tsp-font-size-default-content alingItemEnd"
+                >50 UNIDADES</span
+              >
+            </div>
+          </div>
+          <div class="col-sm-8 col-8 col-md-8 col-lg-8 col-xl-8">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th class="tsp-font-size-default-content textCenter">
+                    {{ 'RESTAURANTE.INVENTENTORY_INSUMO.DATA.TABLE.INSUMO' | translate }}
+                  </th>
+                  <th class="tsp-font-size-default-content textCenter">
+                    {{ 'RESTAURANTE.INVENTENTORY_INSUMO.DATA.TABLE.UM' | translate }}
+                  </th>
+                  <th class="tsp-font-size-default-content textCenter">
+                    {{ 'RESTAURANTE.INVENTENTORY_INSUMO.DATA.TABLE.QUANTITY' | translate }}
+                  </th>
+                  <th class="tsp-font-size-default-content textCenter">
+                    {{ 'RESTAURANTE.INVENTENTORY_INSUMO.DATA.TABLE.PU' | translate }}
+                  </th>
+                  <th class="tsp-font-size-default-content textCenter">
+                    {{ 'RESTAURANTE.INVENTENTORY_INSUMO.DATA.TABLE.SUB_TOTAL' | translate }}
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="tsp-font-size-default-content textCenter">QUESO</td>
+                  <td class="tsp-font-size-default-content textCenter">KG</td>
+                  <td class="tsp-font-size-default-content textCenter">1</td>
+                  <td class="tsp-font-size-default-content textCenter">12</td>
+                  <td class="tsp-font-size-default-content textCenter">12</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="col-sm-4 col-4 col-md-4 col-lg-4 col-xl-4 row">
+            <div class="col-sm-6 col-6 col-md-6 col-lg-6 col-xl-6 tsp-font-size-default-content summaryTable labelSumaryTable">
+              <span>{{ 'RESTAURANTE.INVENTENTORY_INSUMO.DATA.TABLE.SALE' | translate }}</span>
+            </div>
+            <div class="col-sm-6 col-6 col-md-6 col-lg-6 col-xl-6 tsp-font-size-default-content summaryTable valueSumaryTable">
+              <span>250</span>
+            </div>
+            <div class="col-sm-6 col-6 col-md-6 col-lg-6 col-xl-6 tsp-font-size-default-content summaryTable labelSumaryTable">
+              <span>{{ 'RESTAURANTE.INVENTENTORY_INSUMO.DATA.TABLE.COST' | translate }}</span>
+            </div>
+            <div class="col-sm-6 col-6 col-md-6 col-lg-6 col-xl-6 tsp-font-size-default-content summaryTable valueSumaryTable">
+              <span>77</span>
+            </div>
+            <div class="col-sm-6 col-6 col-md-6 col-lg-6 col-xl-6 tsp-font-size-default-content summaryTable labelSumaryTable">
+              <span>{{ 'RESTAURANTE.INVENTENTORY_INSUMO.DATA.TABLE.GROSS_PROFIT' | translate }}</span>
+            </div>
+            <div
+              class="col-sm-6 col-6 col-md-6 col-lg-6 col-xl-6 tsp-font-size-default-content summaryTable valueSumaryTable"
+              style="border-bottom: 1px solid #80848bcf"
+            >
+              <span>120</span>
+            </div>
+          </div>
+        </div>
+        <!-- FIN CONTENT -->
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <!-- CONTENT PHYSICAL INVENTORY-->
+  <div class="col-sm-6 col-6 col-md-6 col-lg-6 col-xl-6">
+    <mat-card class="mt-2">
+      <mat-card-header class="card-header">
+        <mat-card-title class="title tsp-font-size-default-title">{{
+          'RESTAURANTE.INVENTENTORY_INSUMO.DATA.TABLE.GROSS_PROFIT' | translate | uppercase
+        }}</mat-card-title>
+        <!-- <mat-divider></mat-divider> -->
+      </mat-card-header>
+      <mat-card-content>
+        <!-- CONTENT -->
+        <table class="table">
+          <thead>
+            <tr>
+              <th class="tsp-font-size-default-content textCenter">
+                {{ 'RESTAURANTE.INVENTENTORY_INSUMO.DATA.TABLE.INSUMO' | translate }}
+              </th>
+              <th class="tsp-font-size-default-content textCenter">
+                {{ 'RESTAURANTE.INVENTENTORY_INSUMO.DATA.TABLE.UM' | translate }}
+              </th>
+              <th class="tsp-font-size-default-content textCenter">
+                {{ 'RESTAURANTE.INVENTENTORY_INSUMO.DATA.TABLE.PREVIOUS_STOCK' | translate }}
+              </th>
+              <th class="tsp-font-size-default-content textCenter">
+                {{ 'RESTAURANTE.INVENTENTORY_INSUMO.DATA.TABLE.INCOME_STOCK' | translate }}
+              </th>
+              <th class="tsp-font-size-default-content textCenter">
+                {{ 'RESTAURANTE.INVENTENTORY_INSUMO.DATA.TABLE.CONSUMPTION' | translate }}
+              </th>
+              <th class="tsp-font-size-default-content textCenter">
+                {{ 'RESTAURANTE.INVENTENTORY_INSUMO.DATA.TABLE.CURRENT_STOCK' | translate }}
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="tsp-font-size-default-content textCenter">QUESO</td>
+              <td class="tsp-font-size-default-content textCenter">KG</td>
+              <td class="tsp-font-size-default-content textCenter">1</td>
+              <td class="tsp-font-size-default-content textCenter">12</td>
+              <td class="tsp-font-size-default-content textCenter">12</td>
+              <td class="tsp-font-size-default-content textCenter">
+                <div class="currentStock">
+                  <span>11</span>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <!-- FIN CONTENT -->
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

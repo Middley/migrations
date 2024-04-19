@@ -1,0 +1,5 @@
+<cad-report-viewer *ngIf="columns && paginated" [columns]="columns" [paginated]="paginated" [totalAmount]="total"
+    [length]="paginated.totalItems" [pageSize]="filters.pageSize" [pageIndex]="filters.pageIndex"
+    [titleReport]="titleReport" [pageSizeOptions]="pageSizeOptions" [reportType]="reportType"
+    (paginatedEvent)="setPaginated($event)" [logo]="logo" [filters]="filters.filters" [User]="data.user"
+    [ReportDate]="data.currentDate"></cad-report-viewer>

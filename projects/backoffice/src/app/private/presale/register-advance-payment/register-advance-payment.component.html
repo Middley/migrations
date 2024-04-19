@@ -1,0 +1,83 @@
+<div class="dialog" *ngIf="generalData">
+    <div class="">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 title">
+            <div class="col-11 col-sm-11 col-md-11 col-lg-11 col-xl-11 contentTitle d-flex">
+                <span class="tsp-font-size-modal-titles ">{{ 'PRESALE.DATA.REGISTER_ADVANCE_PAYMENT' | translate
+                    }}</span>&nbsp;
+                <span class="tsp-font-size-modal-titles">{{generalData.comprobant}}</span>
+            </div>
+            <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1">
+                <button mat-icon-button color="warn" mat-dialog-close>
+                    <mat-icon>close</mat-icon>
+                </button>
+            </div>
+        </div>
+        <div mat-dialog-content class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 container">
+            <div class="row">
+                <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                    <span class="tsp-font-size-default-content tsp-labels">{{ 'PRESALE.DATA.CLIENT' | translate
+                        }}</span>&nbsp;
+                    <span class="tsp-font-size-default-content">{{generalData.client}}</span>
+                </div>
+                <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                    <span class="tsp-font-size-default-content tsp-labels">{{ 'PRESALE.DATA.TOTAL_PRESALE' | translate
+                        }}</span>&nbsp;
+                    <span class="tsp-font-size-default-content">{{generalData.totalAmountPresale}}</span>
+                </div>
+                <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                    <span class="tsp-font-size-default-content tsp-labels">{{ 'PRESALE.DATA.EMITED' | translate
+                        }}</span>&nbsp;
+                    <span class="tsp-font-size-default-content">{{generalData.registerDate |date:'d/M/yy, h:mm
+                        a'}}</span>
+                </div>
+                <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                    <span class="tsp-font-size-default-content tsp-labels">{{ 'PRESALE.DATA.TOTAL_ANTICIPOS' | translate
+                        }}</span>&nbsp;
+                    <span class="tsp-font-size-default-content">{{generalData.totalAmountAdvancePayment}}</span>
+                </div>
+                <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                    <span class="tsp-font-size-default-content tsp-labels">{{ 'PRESALE.DATA.COMPROBANT' | translate
+                        }}</span>&nbsp;
+                    <span class="tsp-font-size-default-content">{{generalData.comprobant}}</span>
+                </div>
+                <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                    <span class="tsp-font-size-default-content tsp-labels">{{ 'PRESALE.DATA.OUTSTANDING' | translate
+                        }}</span>&nbsp;
+                    <span class="tsp-font-size-default-content">{{generalData.totalAmountOutstanding}}</span>
+                </div>
+                <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6" *ngIf="generalData.applyAmazonLaw">
+                    <div class="igv-input-container">
+                        <span class="tsp-font-size-default-content tsp-labels">{{ 'PRESALE.DATA.WITH_IGV' | translate
+                            }}</span>
+                        <input style="margin-left: 2px;" type="checkbox"
+                            [(ngModel)]="advancePayment.applyIGVAnticipo" />
+                    </div>
+                </div>
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 alignCenter ">
+                    <div class="col-12 col-sm-12 col-md-10 col-lg-10 col-xl-10 ">
+                        <cad-register-invoicing [comprobantTypeID]="generalData.firstComprobantTypeID"
+                            [parameterComprobantType]="generalData.parameterComprobantType"
+                            [disableClient]="disableClient" [actorCommercial]="advancePayment.client"
+                            (sendActorComercial)="setActorComercial($event)"
+                            (sendComprobant)="setComrpobant($event)"></cad-register-invoicing>
+                        <cad-multipay-register *ngIf="parameterForPaymentMode && parameterPaymentMethods"
+                            [parameterPaymentMode]="parameterForPaymentMode" [AllowPaymentToCredit]="false"
+                            [paymentMethods]="paymentMethods" [parameterPaymentMethod]="parameterPaymentMethods"
+                            [bankAccounts]="bankAccounts" [ammountTotal]="generalData.totalAmountOutstanding"
+                            [cards]="cards" [financialEntities]="financialEntities"
+                            (multipay)="setPayData($event)"></cad-multipay-register>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="alignEnd" mat-dialog-actions>
+            <span>
+                <button mat-flat-button color="primary" (click)="save()" [disabled]="!aciveButtonSave">{{
+                    'GENERAL.BUTTONS.SAVE' | translate
+                    }}</button>
+            </span>
+
+        </div>
+
+    </div>
+</div>
